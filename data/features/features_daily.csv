@@ -1,0 +1,1 @@
+ticker,date,trend_score,rs_score,atr_pct,stage,phase,vol_dry_up_ratio,price,ema50,ema150,ema200,pct_of_52w_high,rel_ret_3m,rel_ret_6m,rel_ret_12m,base_high,extension_pct,weeks_since_break,bottoming,is_making_new_lows,atr_contracting,weeks_in_base,base_low,base_low_undercut_since,rel_ret_30d,rs_improving,no_new_low,volume_dry_up,above_ema20,ema20_rising

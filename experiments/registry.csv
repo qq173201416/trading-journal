@@ -1,0 +1,1 @@
+signal_date,ticker,price_at_signal,stage,trend_score,rs_score,extension_pct,weeks_in_base,vol_dry_up_ratio,model_version,future_5d_return,future_20d_return,future_60d_return,future_120d_return

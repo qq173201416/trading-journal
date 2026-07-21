@@ -1,0 +1,30 @@
+universe:
+  min_price: 20
+  min_market_cap: 2000000000
+  min_volume: 500000
+  exclude_sectors: [Financial, Utility, Energy, REIT, Biotech]
+
+ranking:
+  trend_weight: 0.20
+  rs_weight: 0.20
+  cup_weight: 0.15
+  vcp_weight: 0.15
+  compression_weight: 0.10
+  fundamental_weight: 0.10
+  pocket_pivot_weight: 0.05
+  tight_close_weight: 0.05
+
+risk:
+  market_regime_warning: 40
+
+extension:
+  # Hard classification gate, applied BEFORE Bottom Score ranking.
+  # Only "early_breakout" (and "base", for the watchlist) should reach Top 20 output.
+  stage2_max_pct: 10.0      # max % above base_high still counted as a fresh breakout
+  stage2_max_weeks: 4.0     # max weeks since breakout still counted as fresh
+  extended_max_pct: 20.0    # above this % extension -> classified "extended", excluded from Top 20
+  # NOTE: base_high/weeks_since_break are a placeholder proxy for the real Pivot,
+  # which the Cup/Handle detector (Phase 4) will supply. Revisit these thresholds
+  # once Cup detection lands.
+
+model_version: v1.1
