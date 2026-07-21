@@ -13,7 +13,8 @@ Branch permission: default (no "Allow unrestricted branch pushes" needed —
 
 ## Routine A — Scanner Universe Update
 
-Trigger: Schedule, weekly
+Trigger: Schedule, weekly, Monday 18:37 UTC (~1:30–2:30pm ET depending on DST —
+mid-session, past the thin pre-market/open window)
 Repository: trading-journal
 
 ```
@@ -38,8 +39,13 @@ git pull 拿最新版本。
    - Last(股價) > $20
    - Market Cap > $2,000,000,000
    - Average Volume(30日,1d區間) > 500,000
-   - Sector ANY_OF: Technology, Communication Services, Consumer Cyclical,
-     Healthcare, Industrials
+   - Sector 排除(對應 config.yaml 的 exclude_sectors,不要另外用白名單
+     限制只留特定板塊):Financial, Utility, Energy, REIT, Biotech。
+     先呼叫 get_scanner_filter_specs 確認 sector 篩選欄位支援的
+     predicate——優先用排除類的predicate(例如NOT_IN_LIST/EXCLUDE等,
+     實際名稱以get_scanner_filter_specs回傳為準);若該API不支援排除
+     predicate,退而求其次:取得完整sector清單後,用ANY_OF列出「除了
+     這5個以外的所有sector」,讓最終效果等同於排除這5個。
 
 2. 取得掃描結果的完整清單(ticker、sector、market_cap、average_volume)。
 
@@ -75,10 +81,20 @@ data/features/、experiments/、reports/ 裡的任何檔案,不呼叫任何
 
 ## Routine B — Scanner Daily Pipeline
 
-Trigger: Schedule, every trading day (after close, e.g. after 16:30 ET)
+Trigger: Schedule, weekdays, 21:30 UTC (16:30 ET in EST / 17:30 ET in EDT —
+chosen so it always lands at or after the 16:30 ET gate below in both DST
+states; the previous 21:00 UTC only cleared the gate in EDT and would have
+self-aborted every day once DST ended)
 Repository: trading-journal
 
 ```
+【執行時機檢查,必須在分支持久化之前先做】
+用 Bash 執行 `TZ=America/New_York date +"%u %H:%M"`,取得目前真實的美東
+時間與星期幾(這個指令會自動處理夏令時轉換,不用自己換算UTC offset)。
+確認:(a) 星期幾是1-5(週一到週五),且 (b) 時分已經是16:30或之後
+(即收盤4:00pm ET之後至少30分鐘)。兩個條件都成立才繼續往下執行;
+任一不成立就直接結束,不做任何git操作、不呼叫任何其他工具。
+
 【分支持久化,第一步必做】
 git fetch origin claude/scanner-state
 git checkout claude/scanner-state 2>/dev/null || git checkout -b claude/scanner-state
