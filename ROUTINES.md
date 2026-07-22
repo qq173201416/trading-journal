@@ -109,39 +109,69 @@ git pull 拿最新版本。
 代表Universe Update routine還沒成功跑過至少一次,不要在這裡自己
 重新掃描全市場。
 
-【第二層:增量更新每檔股票的歷史價格,以及SPY基準】
-對 universe.csv 裡每一檔 ticker(以及額外固定加上SPY作為大盤基準,
-SPY只需維護一份、不受universe篩選影響),分別檢查
-data/prices/{TICKER}.csv 是否存在:
+【第二層:更新每檔股票的歷史價格,以及SPY基準 —— 分批處理,可跨多次
+執行接續完成,不要為了在一次執行內處理完全部股票池而放棄這個上限】
 
-- 若不存在,或現有資料列數少於260列:視為第一次執行或資料不足,
-  用 get_equity_historicals(單一symbol、interval="day",
-  start_time設為約13個月前)取得完整歷史,寫入
-  data/prices/{TICKER}.csv(欄位:begins_at,open_price,close_price,
-  high_price,low_price,volume,session),過濾掉interpolated=true
-  的補值bar。
+0. SPY 永遠第一個處理,不受下方batch上限限制(只有1檔,成本低):
+   檢查 data/prices/SPY.csv 是否存在且資料列數>=260。不存在或不足,
+   用 get_equity_historicals(interval="day", start_time設為約13個月前)
+   取得完整歷史;已存在且足夠,只查「最後日期隔天」到「今天」的新K線
+   追加進去。
 
-- 若已存在且資料足夠:讀取檔案裡最後一列的日期,只用
-  get_equity_historicals查詢「最後日期隔天」到「今天」這段區間的
-  新K線,追加到檔案尾端(不要整批重下載)。若查回來的區間裡今天
-  的bar還沒收盤結算(例如盤中執行),仍先寫入、下次執行會用同樣邏輯
-  再次核對更新最新一筆。
+A.【回填批次 —— 尚未完成初始回填的股票,每次執行有上限】
+   依 universe.csv 裡的 ticker 字母順序(不含SPY),找出
+   data/prices/{TICKER}.csv 不存在或資料列數<260 的股票(視為
+   "尚未完成初始回填"),從順序中第一檔開始,最多處理60檔:
+   用 get_equity_historicals(單一symbol、interval="day",
+   start_time設為約13個月前)取得完整歷史,寫入
+   data/prices/{TICKER}.csv(欄位:begins_at,open_price,close_price,
+   high_price,low_price,volume,session),過濾掉interpolated=true
+   的補值bar。
+   這60檔的上限是為了避免單次執行處理過多股票導致中途被中斷、
+   留下不完整的資料——如果全部1008檔還沒回填完,本來就需要跨好幾個
+   交易日的執行才能全部補齊,這是預期中的正常過程,不是錯誤。
+   (60是保守估計的起始值,若之後觀察到實際能穩定處理更多或更少,
+   之後可以調整這個數字,不用經過我的prompt改動,你自己在
+   Instructions欄位改這個數字即可。)
+
+B.【增量批次 —— 已完成初始回填的股票,沒有上限】
+   對「本次執行開始時就已經有>=260列資料」的股票(A的產出不算,
+   避免同一檔股票同一次執行內被查兩次),讀取檔案最後一列的日期,
+   只用get_equity_historicals查詢「最後日期隔天」到「今天」這段
+   區間的新K線,追加到檔案尾端(不要整批重下載)。若查回來的區間裡
+   今天的bar還沒收盤結算(例如盤中執行),仍先寫入、下次執行會用
+   同樣邏輯再次核對更新最新一筆。
 
 - 【重要】get_equity_historicals查歷史範圍時,一次只查一檔symbol,
   不要把多檔股票或股票與SPY放進同一次呼叫的symbols陣列裡一起查
   這麼長的範圍。
 
-【第三層:跑技術引擎】
-對每一檔股票(不含SPY本身),讀取 data/prices/{TICKER}.csv 和
+【第二層批次進度commit —— 這是本routine唯一允許在第四層最終驗證
+之前就先commit的情況,跟下面第四層那個"全部驗證通過才commit"的
+規則是分開的兩件事】
+若A或B這次有任何一檔股票的data/prices/{TICKER}.csv被新增或更新過:
+  git add data/prices/
+  git commit -m "prices batch YYYY-MM-DD (N tickers backfilled, M tickers incremented)"
+  git push origin claude/scanner-state
+  (push失敗處理同其他步驟:先pull重新同步一次,再重試一次)
+這個commit範圍只限data/prices/,不影響第四層features_daily.csv、
+registry.csv、reports/那組最終commit的獨立驗證規則。
+
+【第三層:跑技術引擎 —— 只對「今天已經有完整資料」的股票計算,
+回填期間本來就只涵蓋部分股票池,屬於正常現象】
+對 universe.csv 裡「此刻data/prices/{TICKER}.csv已存在且資料列數
+>=260、且最後一列日期是今天」的股票(不含SPY本身),讀取該檔案和
 data/prices/SPY.csv 的完整內容,用 scripts/technical_engine.py 的
 compute_features(symbol, bars, spy_bars) 算出完整特徵(trend_score、
 rs_score、atr_pct、stage、phase、extension_pct、weeks_in_base、
 vol_dry_up_ratio、rs_improving等,完整欄位見該函式回傳的dict)。
+還沒回填完成、或今天資料還沒抓到的股票,這次就跳過,不算錯誤,
+之後每次執行涵蓋的股票數會逐步增加,直到整個universe都回填完成。
 
-把今天所有股票的計算結果,追加寫入 data/features/features_daily.csv
-(欄位順序需與現有檔案表頭一致)。若今天的日期已經在檔案裡出現過
-(代表這個routine今天已經執行過一次),不要重複追加,直接使用已有
-的今天資料繼續下一步即可。
+把這次算出的計算結果,追加寫入 data/features/features_daily.csv
+(欄位順序需與現有檔案表頭一致)。若某檔股票、今天的日期組合已經在
+檔案裡出現過(代表這個routine今天已經執行過一次或這檔股票在B批次
+已經算過),不要重複追加。
 
 【第四層:篩選輸出】
 從今天算出的特徵裡,篩出 stage == "deep_base_watch" 的股票
@@ -152,7 +182,10 @@ vol_dry_up_ratio < 0.7、weeks_in_base >= 8且base_low_undercut_since
 1. 產生 reports/{今天日期}.md,列出這些股票的完整細節表格
    (ticker、extension_pct、weeks_in_base、vol_dry_up_ratio、
    rel_ret_30d、price)。若今天沒有任何股票符合,報告裡仍要產生,
-   內容寫明"今天沒有股票通過deep_base_watch門檻"。
+   內容寫明"今天沒有股票通過deep_base_watch門檻"。若universe裡還有
+   股票尚未完成初始回填(第二層A還沒處理到),在報告開頭加一行註記
+   今天實際涵蓋了幾檔、還剩幾檔沒回填,讓每天的結果口徑透明,不要
+   讓人誤以為today的報告已經涵蓋整個universe。
 
 2. 對每一檔符合的股票,在 experiments/registry.csv 追加一列
    (欄位:signal_date,ticker,price_at_signal,stage,trend_score,
@@ -191,3 +224,28 @@ Universe Update must be run once (manual "Run now") before Daily Pipeline's
 first run — Daily Pipeline's Layer 1 refuses to run against an empty
 `data/universe.csv`, and the seed file committed to this branch has headers
 only, no rows.
+
+## Bootstrap period (initial price backfill)
+
+The universe currently has ~1008 tickers. Layer 2's first-time historical
+fetch is one `get_equity_historicals` call per ticker (~380 days each) —
+too much for a single routine run to finish in one pass, which is what
+caused the 2026-07-21 run to stop after 1 ticker (`data/prices/A.csv`) and
+leave a stray `fetch prices: partial batch update (in progress)` commit
+that didn't follow the prompt's commit rules at all.
+
+Fixed by capping Layer 2's backfill to 60 not-yet-backfilled tickers per
+run, with an explicit intra-run checkpoint commit (`prices batch YYYY-MM-DD
+(N tickers backfilled, M tickers incremented)`) separate from Layer 4's
+final all-or-nothing commit. Resume state is just "does
+`data/prices/{TICKER}.csv` exist with >=260 rows" — no separate cursor
+file needed. At 60/weekday run and one run/day, full backfill of ~1008
+tickers takes roughly 3-4 weeks; Layer 3/4 run against whatever subset is
+ready each day and grow their coverage daily rather than waiting for the
+full backfill to finish. Manually clicking "Run now" more than once a day
+is safe and speeds up the bootstrap — each run picks up the next 60
+un-backfilled tickers.
+
+60 is a starting estimate, not a measured limit — if commit history shows
+a run consistently finishing well under 60 with room to spare, or getting
+cut off before 60, adjust the number directly in the Instructions field.
