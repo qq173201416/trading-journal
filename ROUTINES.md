@@ -112,6 +112,15 @@ git pull 拿最新版本。
 【第二層:更新每檔股票的歷史價格,以及SPY基準 —— 分批處理,可跨多次
 執行接續完成,不要為了在一次執行內處理完全部股票池而放棄這個上限】
 
+【重要禁令,優先於下面所有步驟】全程只能在單一個連續的主線程裡循序
+處理每一檔股票,絕對不可以用Task/Agent工具或任何背景、非同步子任務
+的方式平行處理多檔股票。這個routine run被判定完成時,只看主線程有沒有
+跑完——任何丟給背景子任務去做的工作,就算子任務本身之後真的執行完成,
+也沒有任何東西會在routine run結束後回來把它的結果commit進repo,等於
+白做、資料會遺失。這不是效能考量的建議,是這個平台執行模型下的硬性
+限制:寧可循序處理少一點(受下方60檔上限保護),也不要平行處理更多但
+可能全部遺失。
+
 0. SPY 永遠第一個處理,不受下方batch上限限制(只有1檔,成本低):
    檢查 data/prices/SPY.csv 是否存在且資料列數>=260。不存在或不足,
    用 get_equity_historicals(interval="day", start_time設為約13個月前)
@@ -215,7 +224,8 @@ git push origin claude/scanner-state
 這個routine只產生候選名單和特徵數據,不做任何進場/出場判斷,不呼叫
 任何下單、watchlist修改、或帳戶操作類工具,不涉及虛擬或真實資金部位,
 不跟repo裡其他分支(例如trading-journal本身的交易日誌分支)有任何
-讀寫互動。
+讀寫互動。不可以用Task/Agent工具或任何背景/非同步子任務處理股票批次
+(見第二層開頭的禁令說明)。
 ```
 
 ## First-run order
@@ -249,3 +259,18 @@ un-backfilled tickers.
 60 is a starting estimate, not a measured limit — if commit history shows
 a run consistently finishing well under 60 with room to spare, or getting
 cut off before 60, adjust the number directly in the Instructions field.
+
+### 2026-07-21 evening run: lost work from background subagents
+
+A manual run committed the SPY refresh (`cb3873d`) then, on its own
+initiative (not instructed to), dispatched 3 background Task/Agent
+subagents to backfill the 60-ticker batch in parallel (20 tickers each).
+The routine run was marked complete while those subagents still showed as
+"running" in the UI, and none of their work ever landed — no further
+commits appeared. Routines are judged complete based on the main thread
+only; work handed off to background subagents has nothing left alive to
+commit and push it once the run ends, so it's effectively lost, not just
+delayed. Added an explicit prohibition at the top of Layer 2 (and restated
+under 禁止事項) against using Task/Agent or any background/async execution
+for batch processing — everything must happen sequentially in the single
+live thread so it's guaranteed to be captured before the run ends.
