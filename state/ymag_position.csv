@@ -1,0 +1,2 @@
+date,shares,avg_cost,cash_principal,cash_reserved,cash_uninvested,cumulative_dividends,cumulative_realized_gain,cumulative_dividend_cash_in,cumulative_sale_cash_in,total_account_value,prev_market_trend,prev_mag7_breadth_healthy,recovery_pending,status
+2026-07-23,0,0,100,0,0,0,0,0,0,100,up,true,false,flat
