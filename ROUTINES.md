@@ -166,21 +166,30 @@ B.【增量批次 —— 已完成初始回填的股票,沒有上限】
 這個commit範圍只限data/prices/,不影響第四層features_daily.csv、
 registry.csv、reports/那組最終commit的獨立驗證規則。
 
-【第三層:跑技術引擎 —— 只對「今天已經有完整資料」的股票計算,
-回填期間本來就只涵蓋部分股票池,屬於正常現象】
-對 universe.csv 裡「此刻data/prices/{TICKER}.csv已存在且資料列數
->=260、且最後一列日期是今天」的股票(不含SPY本身),讀取該檔案和
-data/prices/SPY.csv 的完整內容,用 scripts/technical_engine.py 的
-compute_features(symbol, bars, spy_bars) 算出完整特徵(trend_score、
-rs_score、atr_pct、stage、phase、extension_pct、weeks_in_base、
-vol_dry_up_ratio、rs_improving等,完整欄位見該函式回傳的dict)。
-還沒回填完成、或今天資料還沒抓到的股票,這次就跳過,不算錯誤,
-之後每次執行涵蓋的股票數會逐步增加,直到整個universe都回填完成。
+【第三層:跑技術引擎 —— 對每檔已完成回填的股票,用其目前最新一筆
+真實(非interpolated)資料計算特徵】
+【重要,實測發現】Robinhood歷史K線API對「今天」這個日曆日期的資料,
+執行當下(即使已經收盤數小時)往往只會回傳interpolated=true的佔位
+bar(volume=0,沒有真實成交數據),已經在第二層被過濾掉,不會出現在
+data/prices/{TICKER}.csv裡。真實的「今天」日K線通常要等到隔天才查得
+到。所以這裡**不要求**最後一列日期一定要等於執行當下的日曆日期——
+只要求資料本身足夠(>=260列)即可,直接用檔案裡實際存在的最新一筆
+真實資料計算,那就是目前能拿到的最新狀態。
 
-把這次算出的計算結果,追加寫入 data/features/features_daily.csv
-(欄位順序需與現有檔案表頭一致)。若某檔股票、今天的日期組合已經在
-檔案裡出現過(代表這個routine今天已經執行過一次或這檔股票在B批次
-已經算過),不要重複追加。
+對 universe.csv 裡「此刻data/prices/{TICKER}.csv已存在且資料列數
+>=260」的股票(不含SPY本身),讀取該檔案和data/prices/SPY.csv 的
+完整內容,用 scripts/technical_engine.py 的 compute_features(symbol,
+bars, spy_bars) 算出完整特徵(trend_score、rs_score、atr_pct、stage、
+phase、extension_pct、weeks_in_base、vol_dry_up_ratio、rs_improving
+等,完整欄位見該函式回傳的dict)。還沒完成初始回填的股票,這次就
+跳過,不算錯誤,之後每次執行涵蓋的股票數會逐步增加。
+
+每一檔股票的features列,date欄位填該股票資料檔案裡「最後一列的實際
+日期」(即這次compute_features實際使用的最新bar日期,不是執行當下
+的日曆日期——不同股票這個日期可能不完全一樣,這是正常的)。把這次
+算出的計算結果,追加寫入 data/features/features_daily.csv(欄位順序
+需與現有檔案表頭一致)。若某檔股票、這個date的組合已經在檔案裡出現
+過,不要重複追加。
 
 【第四層:篩選輸出】
 從今天算出的特徵裡,篩出 stage == "deep_base_watch" 的股票
@@ -200,9 +209,11 @@ vol_dry_up_ratio < 0.7、weeks_in_base >= 8且base_low_undercut_since
    (欄位:signal_date,ticker,price_at_signal,stage,trend_score,
    rs_score,extension_pct,weeks_in_base,vol_dry_up_ratio,model_version,
    future_5d_return,future_20d_return,future_60d_return,
-   future_120d_return),model_version填config.yaml裡目前的版本號,
-   四個future_return欄位留空。若今天這檔股票、這個日期的組合已經在
-   registry.csv裡存在,不要重複追加。
+   future_120d_return),signal_date用第三層算出的該股票features那一列
+   的date(該股票最新一筆真實資料的實際日期,不是執行當下的日曆日期),
+   model_version填config.yaml裡目前的版本號,四個future_return欄位
+   留空。若這檔股票、這個signal_date的組合已經在registry.csv裡存在,
+   不要重複追加。
 
 【驗證,commit前必做】
 - reports/{今天日期}.md 檔案存在且非空
