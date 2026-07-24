@@ -20,13 +20,17 @@ bid/ask quotes — it never sends a real order.
 
 ## Relationship to v1.0 (claude/ymag-paper-state)
 
-Same buy/sell rules as v1.0. The only intentional difference: **decision
-basis and execution price are separated**. Technical signals are computed
-from T-1 (yesterday's already-settled close) to avoid look-ahead bias, but
-the simulated fill price uses today's live bid/ask at execution time
-instead of today's close. v1.0 keeps running unchanged in parallel — the
-two are meant to be compared (idealized close-price fills vs. real
-intraday fills net of spread cost).
+Same buy/sell rules as v1.0, but with **decision basis and execution price
+separated**: technical signals are computed from T-1 (yesterday's
+already-settled close) to avoid look-ahead bias, while the simulated fill
+price uses today's live bid/ask at execution time instead of today's
+close — a closer approximation of a real live-market fill.
+
+**This is the only YMAG routine actually scheduled to run.** v1.0's branch
+and files exist in the repo (as the design this variant builds on) but has
+no active Routine trigger — by decision, only this intraday/live-quote
+variant runs on a schedule, since it's the more realistic simulation of
+actual execution.
 
 ## Fixes applied in this copy (before first run)
 
@@ -417,11 +421,10 @@ git push origin claude/ymag-paper-state-intraday
 其他分支有任何讀寫互動。所有買賣僅為文件內模擬記賬,即使用了真實的盤中
 報價計算成交價,也絕對不代表任何真實交易指令。
 
-【這份和v1.0(收盤記賬版)可以同時跑,不衝突】
-兩者在不同分支上,互相獨立,數據也分開存(data/prices/在兩個分支上各自
-維護一份,不共享)。這樣可以對照著看:同一套買賣規則,"理想化收盤價成
-交"(v1.0)和"真實盤中報價成交、扣掉價差成本"(這份)長期下來結果差多
-少。
+【目前只跑這一份,不跑v1.0】
+claude/ymag-paper-state(v1.0,收盤記賬版)分支和文件仍保留在repo裡,但
+沒有設定排程觸發——依決定,只讓這個盤中真實報價成交版本作為唯一實際運
+行的routine,因為它更貼近真實下單會經歷的成交價格與價差成本。
 
 首次運行前置條件
 無需依賴v1.0或其他routine——本routine第一層會自行拉取YMAG完整歷史價
