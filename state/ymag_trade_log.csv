@@ -1,1 +1,1 @@
-date,execution_time_et,action,signal_basis_date,execution_price,live_bid,live_ask,spread_cost_pct,shares_traded,cash_amount,realized_gain,gap_pct,reason
+date,execution_time_et,action,signal_basis_date,t1_close,execution_price,live_bid,live_ask,spread_cost_pct,shares_traded,cash_amount,realized_gain,gap_pct,slippage_pct,reason

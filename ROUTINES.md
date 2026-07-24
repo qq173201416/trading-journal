@@ -94,6 +94,51 @@ Trading in earnest. All four are incorporated below:
    P&L off `live_last` instead of `live_mid` (mid is still used for
    `spread_cost_pct`, where it's the correct reference).
 
+**Round 4 (this revision, based on a third external review):** four
+refinements, none of which change the core design, all confirmed sound by
+review:
+
+1. **Fixed 09:45 ET instead of a DST-drifting single UTC time.** Round 3's
+   15:15 UTC (11:15 EDT / 10:15 EST) was judged too late and, more
+   importantly, not truly fixed — the ET wall-clock time it lands on
+   drifts by an hour across DST. Since this platform's cron only runs in
+   UTC (no DST-aware scheduling), a genuinely fixed ET time requires
+   nudging the cron value at the DST boundary rather than a single
+   set-and-forget value. **Fix:** cron set to `13:45 UTC` (= 09:45 EDT),
+   correct for now (EDT runs roughly mid-March to early November). It
+   must be changed to `14:45 UTC` when EST begins (~early November) and
+   back to `13:45 UTC` when EDT resumes (~mid-March) — otherwise this
+   silently reintroduces the exact Round 2 bug (a stale UTC value drifting
+   outside the intended ET window, and potentially outside the 09:35 ET
+   time-check guard, causing silent no-ops). This is a recurring
+   maintenance item, not a one-time fix — flagged here so it isn't
+   forgotten at the next DST transition.
+2. **Gap filter made asymmetric.** Round 3's gap filter blocked a buy on
+   either a big gap up or a big gap down. On reflection, gap-down before a
+   buy isn't the same risk for a dividend-income ETF that gap-up is — a
+   lower entry price usually just means a higher effective yield on that
+   tranche, consistent with the strategy's "build the position, don't
+   time it perfectly" intent. Gap-up is the one worth blocking: it means
+   chasing a price the T-1 signal never confirmed, at a premium the
+   tranche sizing didn't account for. **Fix:** only skip the buy when
+   `gap_pct > +5%` (today's live price already up more than 5% from T-1
+   close); gap-down no longer blocks a buy at all.
+3. **Recovery Buy cooldown.** Without a minimum wait after a
+   `TRIM_MAG7_BREADTH`/`TRIM_MARKET_TREND` cut, a choppy market could in
+   principle trigger trim-then-recover-then-trim-again in quick
+   succession. **Fix:** added `recovery_pending_since` (the date of the
+   triggering trim) to `state/ymag_position.csv`; Recovery Buy now also
+   requires at least 2 trading days (counted from `data/prices/YMAG.csv`,
+   not naive weekday counting, so market holidays aren't miscounted) to
+   have elapsed since that date.
+4. **Slippage tracking.** Added `t1_close` and `slippage_pct` (=
+   `(execution_price − t1_close) / t1_close`) to every trade log entry —
+   distinct from `gap_pct` (which measures market movement using
+   `live_last`, independent of the bid/ask spread). Slippage captures what
+   was actually given up (gap *and* spread) relative to the T-1 reference
+   price the signal was computed against, for later analysis of whether
+   spread cost is eating the strategy's edge.
+
 The dividend-detection layer is written out in full here rather than "see
 v1.0" — a routine's executing agent has no access to another branch's
 routine text and is explicitly barred from reading `claude/ymag-paper-state`
@@ -103,18 +148,26 @@ to look it up, so this prompt has to be self-contained.
 
 ## Routine — YMAG Intraday Signal & Paper Trade
 
-Trigger: Schedule, weekdays, **15:15 UTC only** (= 11:15 EDT / 10:15 EST —
-DST-safe, one fixed execution point per day; do NOT set this to an hourly
-or multi-hour range — see Round 3 fix #1 above for why)
+Trigger: Schedule, weekdays, **13:45 UTC only** (= 09:45 ET, currently
+EDT). Do NOT set this to an hourly or multi-hour range — see Round 3 fix
+#1 above for why. **DST maintenance:** this value must change twice a
+year to stay fixed at 09:45 ET — `13:45 UTC` during EDT (~mid-March to
+early November, current setting), `14:45 UTC` during EST (~early November
+to mid-March). See Round 4 fix #1 above.
 Repository: trading-journal
 
 ```
 【執行時機檢查,必須在分支持久化之前先做】
 用 Bash 執行 `TZ=America/New_York date +"%u %H:%M"`,確認 (a) 星期一到五
 (b) 時分在09:35到15:55之間。這是一道防呆(例如萬一被手動誤觸發、或遇到
-假日),正常情況下這個routine只在15:15 UTC(=11:15 EDT/10:15 EST)這個固
-定時間點被排程觸發一次,執行時間本身應該每天一致。任一不成立就直接結
-束,不做任何git操作。
+假日),正常情況下這個routine只在13:45 UTC(=09:45 ET)這個固定時間點被
+排程觸發一次,執行時間本身應該每天一致。【重要,需要季節性維護】因為排
+程平台的cron只認UTC、不會自動處理夏令時,13:45 UTC只在夏令時(EDT)期間
+等於09:45 ET;冬令時(EST,約每年11月初到隔年3月中)開始時,這個cron必須
+手動改成14:45 UTC才能維持09:45 ET不變,否則會悄悄重演Round 2修過的那個
+bug(UTC值沒跟著調整、實際執行的美東時間跑掉,甚至可能落在09:35的時機
+檢查門檻之前導致每天空跑)。任一時機檢查條件不成立就直接結束,不做任何
+git操作。
 
 【分支持久化,第一步必做】
 git fetch origin claude/ymag-paper-state-intraday
@@ -177,12 +230,13 @@ symbol,分別檢查 data/prices/{TICKER}.csv 是否存在:
 讀取 state/ymag_position.csv(字段:date,shares,avg_cost,cash_principal,
 cash_reserved,cash_uninvested,cumulative_dividends,cumulative_realized_gain,
 cumulative_dividend_cash_in,cumulative_sale_cash_in,total_account_value,
-prev_market_trend,prev_mag7_breadth_healthy,recovery_pending,status)。
+prev_market_trend,prev_mag7_breadth_healthy,recovery_pending,
+recovery_pending_since,status)。
 若不存在,視為空倉,初始化 shares=0, cash_principal=100, cash_reserved=0,
 cash_uninvested=0, cumulative_dividends=0, cumulative_realized_gain=0,
 cumulative_dividend_cash_in=0, cumulative_sale_cash_in=0,
 prev_market_trend="up", prev_mag7_breadth_healthy=true,
-recovery_pending=false, status="flat"。
+recovery_pending=false, recovery_pending_since=(空), status="flat"。
 初始模擬本金:$100,全部放在cash_principal裡,初始 total_account_value=100。
 
 資金流規則:
@@ -298,10 +352,13 @@ ex_date_within_window = (estimated_next_ex_date − 今天) <= 3天 且 >= 0。
 1. 【cross trigger】prev_mag7_breadth_healthy == true 且 (T-1)
    mag7_breadth <= 2 且 status != "flat":減倉40%,不受除息日保護限
    制。執行後prev_mag7_breadth_healthy更新為false、recovery_pending更
-   新為true——寫入trade_log,action="TRIM_MAG7_BREADTH"
+   新為true、recovery_pending_since更新為今天日期(不管recovery_pending
+   之前是不是已經是true,每次這條或下面第2條觸發都重置成今天,見下方
+   Recovery Buy的冷卻期說明)——寫入trade_log,action="TRIM_MAG7_BREADTH"
 2. 【cross trigger】prev_market_trend == "up" 且 (T-1)market_trend ==
    "down" 且 status != "flat":減倉20%,不受除息日保護限制。執行後
-   prev_market_trend更新為"down"、recovery_pending更新為true——寫入
+   prev_market_trend更新為"down"、recovery_pending更新為true、
+   recovery_pending_since更新為今天日期(同上,每次觸發都重置)——寫入
    trade_log,action="TRIM_MARKET_TREND"
 3. consec_below_ma20(截至T-1)精確等於3(one-shot cross trigger,不是
    >=3,不會在第4、5、6...天因為條件仍然成立而重複觸發)且 status !=
@@ -323,11 +380,16 @@ ex_date_within_window = (estimated_next_ex_date − 今天) <= 3天 且 >= 0。
 - 賣出股數 × live_bid = 賣出所得,計入cash_reserved;avg_cost不變;
   realized_gain_this_trade = 賣出股數 × (live_bid − avg_cost),累加進
   cumulative_realized_gain;賣出所得全額累加進cumulative_sale_cash_in
+- slippage_pct = (live_bid − t1_close) / t1_close(供事後檢視,跟第三點
+  五層的gap_pct不同:gap_pct用live_last衡量純粹的價格波動,slippage_pct
+  用實際成交價live_bid衡量連價差都算進去、實際上被"讓利"了多少)
 - 寫入 state/ymag_trade_log.csv 一行:date,execution_time_et,
   action(TRIM_MAG7_BREADTH/TRIM_MARKET_TREND/TRIM_STOPLOSS/
   EXIT_BREAKDOWN/TRIM_PROFIT/TRIM_SEASONAL),signal_basis_date,
-  execution_price(=live_bid),live_bid,live_ask,spread_cost_pct,
-  shares_traded,cash_amount(=賣出所得),realized_gain,reason
+  t1_close,execution_price(=live_bid),live_bid,live_ask,spread_cost_pct,
+  shares_traded,cash_amount(=賣出所得),realized_gain,gap_pct(留空,
+  跳空閘門只套用在買入方向,賣出不受影響,這裡固定留空或記0以維持欄位
+  對齊),slippage_pct,reason
 - 【Trade Lock,修正點】今天已經執行了賣出動作,今天**不再檢查任何買入
   條件**(包括Recovery Buy)——直接跳到本層最後的total_account_value重
   新計算與第六層報告。一天最多只執行一個方向的交易動作,避免同一天先賣
@@ -361,22 +423,33 @@ $6.25):
 【Recovery Buy】僅在recovery_pending=true時生效(同樣受上面的Trade
 Lock保護——今天已賣出就不會走到這裡):
 mag7_breadth >= 6 且 market_trend == "up" 且 mag7_mom_5d > 0(均為T-1數
-值)且 invested_tranches < 4 時,豁免"range_pct_4w < 5%"這一條(其餘條件
-仍適用,包括price_vs_ma20_pct>0),按標準月份規則基礎金額買入一檔,
-action="RECOVERY_BUY",並把recovery_pending重置為false。
+值)且 invested_tranches < 4 且【冷卻期,修正點】以下條件也成立時,豁免
+"range_pct_4w < 5%"這一條(其餘條件仍適用,包括price_vs_ma20_pct>0):
+cooldown_trading_days = data/prices/YMAG.csv裡日期晚於
+recovery_pending_since、且不晚於昨天(T-1)的交易日筆數(用實際交易日曆
+算,不是自然日/星期幾,這樣遇到假日不會算錯);要求
+cooldown_trading_days >= 2(即距離觸發那次TRIM_MAG7_BREADTH或
+TRIM_MARKET_TREND至少已經過了2個完整交易日,避免震盪行情下才剛砍倉又
+馬上回補)。
+全部條件(含冷卻期)都成立才按標準月份規則基礎金額買入一檔,
+action="RECOVERY_BUY",並把recovery_pending重置為false、
+recovery_pending_since清空。若recovery_pending=true但冷卻期還沒到,本
+次不觸發Recovery Buy,不算錯誤,等下次執行再檢查。
 
-【買入前的跳空閘門,修正點,買入方向專用(含Recovery Buy),不適用於賣
-出】不管是常規買入條件還是Recovery Buy,只要判定"今天應該買入",在真正
-下模擬單之前,先做這一道檢查:
+【買入前的跳空閘門,修正點(已改為單向),買入方向專用(含Recovery
+Buy),不適用於賣出】不管是常規買入條件還是Recovery Buy,只要判定"今天
+應該買入",在真正下模擬單之前,先做這一道檢查:
 gap_pct = (live_last − t1_close) / t1_close
-若 abs(gap_pct) >= 5%(不分方向,今天價格相對T-1收盤已經跳空上漲或下跌
-超過5%):放棄本次買入,不執行、不消耗今天的Trade Lock額度,在報告裡註
-明"信號來自T-1收盤,但今日價格已跳空(gap_pct=X%),暫緩本次建倉,等明天
-用新的T-1數據重新評估"。
-若 abs(gap_pct) < 5%:通過閘門,繼續往下執行買入。
-(理由:訊號是用昨天收盤算出來的,如果今天開盤或執行當下價格已經大幅偏
-離昨天收盤,不管是往下的"接刀"還是往上的"追價",都跟訊號當初評估的價位
-脫節,寧可等明天T-1重新確認。)
+若 gap_pct > 5%(只擋往上跳空追高的情況——今天價格已經比T-1收盤高出超
+過5%):放棄本次買入,不執行、不消耗今天的Trade Lock額度,在報告裡註明
+"信號來自T-1收盤,但今日價格已跳空上漲(gap_pct=X%),暫緩本次建倉,等明
+天用新的T-1數據重新評估"。
+若 gap_pct <= 5%(包含任何幅度的跳空下跌):通過閘門,照常執行買入,不
+額外攔阻。
+(理由:訊號是用昨天收盤算出來的,今天已經大幅追高再買,等於付出訊號當
+初完全沒評估過的溢價;但跳空下跌不同——YMAG是分紅型ETF,價格更低通常代
+表這一檔的有效殖利率更高,跟"建立分紅底倉、不追求完美擇時"的策略定位一
+致,不需要因為跌了就迴避。)
 
 若通過跳空閘門,執行買入:
 - 本次建倉金額按上述規則確定,優先從cash_reserved扣減,不足部分從
@@ -385,14 +458,17 @@ gap_pct = (live_last − t1_close) / t1_close
 - 按live_ask計算模擬買入股數(允許小數股),更新shares,並按加權平均重
   新計算avg_cost = (原shares×原avg_cost + 本次買入金額) / 新shares;若
   買入前status為"flat",買入後把status更新為"holding"
+- slippage_pct = (live_ask − t1_close) / t1_close(供事後檢視,跟
+  gap_pct不同,見上方賣出方向的說明)
 - 寫入 state/ymag_trade_log.csv 一行:date,execution_time_et(執行時的
   美東時間,精確到分鐘),action="BUY"或"RECOVERY_BUY",
-  signal_basis_date(T-1日期),execution_price(=live_ask),live_bid,
-  live_ask,spread_cost_pct,shares_traded,cash_amount(=本次花費金額),
-  realized_gain(留空/0),gap_pct(本次跳空幅度,供事後檢視),
+  signal_basis_date(T-1日期),t1_close,execution_price(=live_ask),
+  live_bid,live_ask,spread_cost_pct,shares_traded,
+  cash_amount(=本次花費金額),realized_gain(留空/0),
+  gap_pct(本次跳空幅度,供事後檢視),slippage_pct,
   reason(寫明命中的具體條件、當時的月份倉位倍數、market_trend和
   mag7_breadth數值;RECOVERY_BUY要註明是在哪次
-  TRIM_MAG7_BREADTH/TRIM_MARKET_TREND之後觸發的回補)
+  TRIM_MAG7_BREADTH/TRIM_MARKET_TREND之後觸發的回補、冷卻期是否已滿足)
 
 【重新計算total_account_value,必須在本層(第五層)全部買賣判斷執行完
 之後做】,不要挪到更早的層,且用live_last(不是live_mid):
@@ -431,6 +507,10 @@ get_equity_quotes。
   天)
 - 累計價差成本:把trade_log裡所有BUY/SELL的spread_cost_pct按成交金額
   加權平均,展示這個策略因為在盤中用真實報價成交而額外付出了多少成本
+- 累計滑點(slippage):把trade_log裡所有交易的slippage_pct按成交金額加
+  權平均,分開列出買入方向和賣出方向各自的平均值——這是"訊號來自T-1收
+  盤、但實際用今天的live價格成交"這整套設計最終要驗證的核心指標:半年
+  下來看這個數字能回答"價差加跳空,到底吃掉了多少報酬"
 
 更新 state/ymag_position.csv 為最新一行(覆蓋式更新當前狀態,不是追加歷
 史,歷史交易只在ymag_trade_log.csv裡追加)。
@@ -453,6 +533,9 @@ get_equity_quotes。
   execution_price必須落在live_bid和live_ask之間
 - 若本次同時新增了BUY/RECOVERY_BUY和任何SELL類(TRIM_*/EXIT_BREAKDOWN)
   行——即Trade Lock被違反——視為邏輯錯誤,不commit
+- recovery_pending=true時,recovery_pending_since必須是有效日期(不可為
+  空);recovery_pending=false時,recovery_pending_since必須為空——兩者
+  不一致視為邏輯錯誤,不commit
 - 若本次判定為新一筆分紅並已入賬,state/ymag_dividend_log.csv 必須新增
   對應行,且dividend_income不可為負數,source_used字段不可為空
 - mag7_breadth 必須是0到7之間的整數,超出範圍視為計算錯誤,本次不commit
@@ -479,12 +562,14 @@ git push origin claude/ymag-paper-state-intraday
 get_equity_quotes是否正常返回)。
 ```
 
-## Initial state (seeded 2026-07-23)
+## Initial state (seeded 2026-07-23, updated Round 3/4)
 
-`state/ymag_position.csv`, `state/ymag_trade_log.csv` (header only, with
-the intraday-specific columns `execution_time_et`/`signal_basis_date`/
-`execution_price`/`live_bid`/`live_ask`/`spread_cost_pct`/`gap_pct` in
-addition to the v1.0 columns), and `state/ymag_dividend_log.csv` (header
-only) were pre-seeded so the first run's starting state is explicit and
-auditable. `data/prices/` is left empty (`.gitkeep` only) — Layer 1
-populates all 9 symbols' full ~13-month history on first run.
+`state/ymag_position.csv` (now includes `recovery_pending_since`),
+`state/ymag_trade_log.csv` (header only, with the intraday-specific
+columns `execution_time_et`/`signal_basis_date`/`t1_close`/
+`execution_price`/`live_bid`/`live_ask`/`spread_cost_pct`/`gap_pct`/
+`slippage_pct` in addition to the v1.0 columns), and
+`state/ymag_dividend_log.csv` (header only) were pre-seeded so the first
+run's starting state is explicit and auditable. `data/prices/` is left
+empty (`.gitkeep` only) — Layer 1 populates all 9 symbols' full ~13-month
+history on first run.
