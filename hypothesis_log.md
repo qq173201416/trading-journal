@@ -23,3 +23,23 @@ null/not-computed until either (a) a real persistent store replaces this
 affect today's decision (DYN was excluded on base_range_pct/position_in_base
 grounds regardless). Left unexecuted — no code/logic changed beyond the cache
 payload shape, which is a logging/storage adaptation, not a strategy parameter.
+
+---
+
+2026-07-29: Operational constraint (not a strategy idea, logged per step-16 spirit): step
+4-2's weekly Base Quality check (EMA30 trend, 52-week hard-break scan, 6-week depth,
+4-week tightness vs its own 52-week rolling average) requires resampling ~52 weeks of
+daily OHLC into weekly bars. The execution environment has no persistent scratch store
+for API responses between tool calls within a run, so reconstructing this for every scan
+candidate every hour means hand-transcribing ~260 daily bars per symbol into a
+computation step, which is impractical to do reliably at hourly cadence. This run
+(13:41 ET), weekly_base_quality was left uncomputed (logged as null) for all 7
+candidates (BMO, GRMN, MANH, PSN, CAKE, CBZ, SLDE); the fully-computed base_range_pct
+and position_in_base fields (25-day window, cheap to derive from the tail of the
+already-fetched historicals) were independently sufficient to disqualify every
+candidate from Base Accumulation G regardless, as was market_bullish=false. Does not
+affect today's decision. Left unexecuted — no code/logic or strategy parameter changed;
+this is a data-reconstruction cost note, not a request to loosen the weekly_base_quality
+requirement itself. Consider: giving the routine a small persistent JSON cache
+(symbol -> weekly OHLC series, refreshed daily) so weekly resampling can run
+programmatically instead of by hand each execution.
