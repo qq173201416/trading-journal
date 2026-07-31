@@ -284,3 +284,12 @@ CECO,2026-07-29,60,46.4,9.12,weakening,falling,0.914,59.82,80.6002,72.4059,68.32
 CELC,2026-07-29,20,57.8,7.11,weakening,falling,1.096,83.26,100.3386,100.8474,95.4992,0.5513,-0.3255,-0.322,1.0143,144.98,-42.57,,False,True,True,1,82.62,False,-1.87,False,False,False,False,False
 CELH,2026-07-29,0,12.8,4.57,weakening,falling,0.836,28.88,30.4033,36.3071,38.3537,0.4327,-0.1409,-0.5132,-0.5395,64.86,-55.47,,False,True,True,1,27.12,False,-0.98,False,False,False,False,False
 CENX,2026-07-29,40,55.4,5.33,weakening,stabilizing,0.889,42.66,49.8878,49.4233,46.8836,0.6057,-0.3018,-0.1783,0.7621,68.77,-37.97,,False,False,True,2,41.5,False,-17.55,False,False,False,False,False
+A,2026-07-30,80,56.1,2.88,base,accumulating,0.915,138.71,131.1658,127.7469,127.347,0.8655,0.1684,-0.0278,0.006,157.2,-11.76,,True,False,True,18,110.24,False,11.47,True,False,False,True,True
+AA,2026-07-30,20,36.8,4.45,weakening,falling,1.043,44.97,53.9891,56.2569,54.3439,0.5329,-0.3271,-0.3271,0.324,83.79,-46.33,,False,True,True,2,43.98,False,-27.25,False,False,False,False,False
+AAOI,2026-07-30,40,100,14.71,weakening,falling,0.759,90.11,129.0653,113.4143,102.0852,0.3856,-0.4838,1.2086,2.7386,223.1,-59.61,,False,True,True,29,34.04,False,-46.25,False,False,False,False,False
+AAON,2026-07-30,40,39.8,7.58,weakening,falling,0.903,87.59,112.8624,106.4249,102.8977,0.5821,-0.0933,-0.13,-0.0842,148.25,-40.92,,False,True,True,19,80.01,False,-34.42,False,False,False,False,False
+AAP,2026-07-30,60,44.6,5.24,weakening,falling,0.878,56.19,56.5089,54.8987,54.4483,0.8617,-0.0878,0.099,-0.1626,64.17,-12.44,,False,False,False,28,43.2,False,-3.39,False,False,False,False,True
+AAPL,2026-07-30,100,77.3,2.41,early_breakout,accumulating,0.918,333.43,309.938,285.9689,277.9405,0.9677,0.1967,0.2223,0.426,315.2,5.78,3.2,False,False,False,19,247.99,False,12.57,False,False,False,True,True
+CF,2026-07-30,80,62.9,3.34,base,accumulating,0.835,125.77,117.3553,110.6612,107.7054,0.886,-0.0194,0.2689,0.1886,137.6,-8.6,,True,False,True,29,82.6,False,18.72,False,False,False,True,True
+CGNX,2026-07-30,60,90.4,5.21,weakening,falling,0.809,62.62,62.9875,56.3202,53.593,0.8592,0.096,0.5333,0.6858,72.42,-13.53,,False,True,False,26,38.74,False,-3.42,False,False,False,False,False
+CGON,2026-07-30,100,100,5.78,base,accumulating,0.892,73.03,68.1079,60.9254,57.4404,0.9484,0.0622,0.2984,1.5449,74.0,-1.31,3.0,False,False,False,25,50.36,False,20.75,False,False,False,True,True
