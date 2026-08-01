@@ -43,3 +43,21 @@ this is a data-reconstruction cost note, not a request to loosen the weekly_base
 requirement itself. Consider: giving the routine a small persistent JSON cache
 (symbol -> weekly OHLC series, refreshed daily) so weekly resampling can run
 programmatically instead of by hand each execution.
+
+---
+
+2026-08-01: RESOLVED (infrastructure fix per step-16, not a strategy parameter
+change) — both constraints above are fixed as of v1.2.1:
+- Replaced the 256-char-limited Robinhood watchlist with a repo-committed
+  rs_score_cache.json (benchmark + per-symbol score history, no character
+  limit, pruned to a 95-day rolling window on write).
+- Extended the 4-1 historicals fetch window from ~380 calendar days
+  (~262 trading days) to ~460 calendar days (~312 trading days), so the
+  rs_deterioration_60d fallback recompute path has enough history even before
+  the cache accumulates 60 days of its own data.
+- Added weekly_base_quality_cache.json, keyed by symbol with a `date` field;
+  a symbol's weekly resample is now only recomputed once per calendar day and
+  reused across that day's remaining hourly runs, instead of being
+  reconstructed by hand every execution.
+No strategy thresholds, entry/exit rules, or frozen parameters were touched —
+only the data plumbing that feeds already-specified metrics.
