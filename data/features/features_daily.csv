@@ -412,3 +412,16 @@ DE,2026-08-04,100,50.3,3.22,base,falling,0.807,617.37,596.8426,571.5688,561.7082
 CRWD,2026-07-31,80,100,4.78,base,stabilizing,0.692,190.86,176.3787,148.0454,141.9554,0.8775,0.6098,0.6109,0.4574,195.54,-2.39,4.0,False,False,False,18,92.4,False,6.33,False,False,True,True,False
 DELL,2026-08-04,100,100,8.15,early_breakout,accumulating,0.737,467.27,385.5377,284.6394,257.0134,0.9798,1.0944,2.87,2.366,465.96,0.28,0.2,False,False,False,27,114.44,False,4.09,False,False,False,True,True
 CSCO,2026-07-31,80,83.2,3.08,base,stabilizing,0.802,115.99,112.6647,99.066,94.5519,0.8897,0.1971,0.3623,0.4817,130.0,-10.78,,True,False,True,29,73.88,False,-8.12,False,False,False,True,False
+DHI,2026-08-04,60,37.4,3.2,base,falling,1.106,150.37,149.7778,149.7564,149.3234,0.8148,-0.0224,-0.1443,-0.2448,184.04,-18.29,,False,False,False,20,133.12,False,-8.64,False,False,False,True,False
+DHR,2026-08-04,20,38.8,3.8,base,accumulating,1.288,194.78,190.8169,194.3326,196.3205,0.8022,0.0664,-0.2226,-0.2394,242.05,-19.53,,False,False,False,12,161.91,False,3.85,True,False,False,True,True
+DIOD,2026-08-04,60,67.9,7.23,weakening,falling,0.718,88.29,94.2597,85.5007,81.0002,0.7008,-0.2642,0.3905,0.5592,122.76,-28.08,,False,True,True,28,56.47,False,-26.21,False,False,False,False,False
+DIS,2026-08-04,0,29.6,2.25,weakening,accumulating,1.081,98.18,98.6333,102.6455,104.4742,0.8197,-0.0719,-0.1798,-0.4032,119.35,-17.74,,True,False,True,19,92.42,False,-10.15,False,False,False,True,True
+DKNG,2026-08-04,0,18.9,3.93,weakening,stabilizing,0.906,23.61,24.8937,26.837,28.1534,0.484,-0.0722,-0.2395,-0.7018,48.23,-51.05,,True,False,True,19,20.72,False,-11.11,False,False,False,False,False
+DKS,2026-08-05,20,29.8,3.17,weakening,falling,0.956,200.32,214.391,214.5611,214.1051,0.8197,-0.1646,-0.1703,-0.2819,239.17,-16.24,,False,True,True,19,189.36,False,-20.44,False,False,False,False,False
+DLB,2026-08-05,20,33.8,3.44,base,accumulating,0.985,61.36,53.7631,58.236,60.0699,0.811,0.0093,-0.1702,-0.3805,75.62,-18.86,,False,False,False,3,49.07,False,11.58,True,False,False,True,True
+DLTR,2026-08-05,100,56.1,3.14,base,accumulating,0.685,128.76,119.5066,113.9175,112.9343,0.9042,0.2852,-0.0649,-0.1126,141.21,-8.82,,True,False,True,12,89.58,False,2.9,False,False,True,True,True
+DNLI,2026-08-05,80,71.2,4.21,base,falling,0.917,24.42,23.1623,21.0003,20.2304,0.8945,0.1475,0.0257,0.483,26.69,-8.51,4.0,False,False,False,29,17.99,False,-6.6,False,False,False,True,False
+DNTH,2026-08-05,100,100,5.21,watch,accumulating,0.911,112.5,96.6348,79.3456,72.4388,0.9821,0.1952,1.2156,4.0708,98.07,14.71,4.0,False,False,False,29,44.1,False,18.91,False,False,False,True,True
+DOCN,2026-08-05,60,100,10.19,weakening,stabilizing,1.056,124.46,132.7455,109.8642,99.3439,0.6638,-0.2759,1.0514,2.3496,181.29,-31.35,,True,False,True,29,52.76,False,-21.22,False,False,False,False,False
+DOCS,2026-08-05,0,0.9,3.86,weakening,accumulating,0.683,21.63,21.6757,28.147,31.8292,0.2827,-0.207,-0.5082,-0.8525,75.12,-71.21,,False,False,False,12,18.97,False,-1.14,False,False,True,True,True
+DOCU,2026-08-05,40,47.3,4.95,base,accumulating,0.81,57.49,50.1736,52.2837,54.5756,0.6635,0.1865,0.1079,-0.4473,85.01,-32.37,,False,False,False,17,42.89,False,24.97,True,False,False,True,True
