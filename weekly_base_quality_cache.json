@@ -532,5 +532,47 @@
     "base_depth_6wk": 0.2703,
     "tightness_now_4wk": 0.113,
     "tightness_avg_52wk": 0.0588
+  },
+  "ACM": {
+    "date": "2026-08-10",
+    "weekly_base_quality": false,
+    "ema30_rising": false,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.1321,
+    "tightness_now_4wk": 0.0444,
+    "tightness_avg_52wk": 0.0345
+  },
+  "LQDA": {
+    "date": "2026-08-10",
+    "weekly_base_quality": true,
+    "ema30_rising": true,
+    "has_hard_break": false,
+    "base_depth_6wk": 0.2387,
+    "tightness_now_4wk": 0.0503,
+    "tightness_avg_52wk": 0.0694
+  },
+  "ORKA": {
+    "date": "2026-08-10",
+    "weekly_base_quality": true,
+    "ema30_rising": true,
+    "has_hard_break": false,
+    "base_depth_6wk": 0.1955,
+    "tightness_now_4wk": 0.0334,
+    "tightness_avg_52wk": 0.0762
+  },
+  "JMKE": {
+    "date": "2026-08-10",
+    "weekly_base_quality": false,
+    "error": "insufficient_weekly_data",
+    "n_weeks": 2
+  },
+  "MNDY": {
+    "date": "2026-08-10",
+    "weekly_base_quality": false,
+    "ema30_rising": false,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.2761,
+    "tightness_now_4wk": 0.0881,
+    "tightness_avg_52wk": 0.0733
   }
 }
