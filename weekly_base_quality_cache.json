@@ -574,5 +574,50 @@
     "base_depth_6wk": 0.2761,
     "tightness_now_4wk": 0.0881,
     "tightness_avg_52wk": 0.0733
+  },
+  "SION": {
+    "date": "2026-08-10",
+    "weekly_base_quality": true,
+    "ema30_rising": true,
+    "has_hard_break": false,
+    "base_depth_6wk": 0.2556,
+    "tightness_now_4wk": 0.0425,
+    "tightness_avg_52wk": 0.0612
+  },
+  "B": {
+    "date": "2026-08-10",
+    "weekly_base_quality": false,
+    "ema30_rising": false,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.229,
+    "tightness_now_4wk": 0.0871,
+    "tightness_avg_52wk": 0.0445
+  },
+  "EMBJ": {
+    "date": "2026-08-10",
+    "weekly_base_quality": false,
+    "ema30_rising": true,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.1651,
+    "tightness_now_4wk": 0.0519,
+    "tightness_avg_52wk": 0.0385
+  },
+  "CEF": {
+    "date": "2026-08-10",
+    "weekly_base_quality": false,
+    "ema30_rising": false,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.1161,
+    "tightness_now_4wk": 0.0397,
+    "tightness_avg_52wk": 0.037
+  },
+  "HP": {
+    "date": "2026-08-10",
+    "weekly_base_quality": false,
+    "ema30_rising": true,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.1969,
+    "tightness_now_4wk": 0.0321,
+    "tightness_avg_52wk": 0.0381
   }
 }

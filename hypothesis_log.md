@@ -61,3 +61,20 @@ change) — both constraints above are fixed as of v1.2.1:
   reconstructed by hand every execution.
 No strategy thresholds, entry/exit rules, or frozen parameters were touched —
 only the data plumbing that feeds already-specified metrics.
+
+---
+
+2026-08-10: BUG FIX (per step-16, not a strategy parameter change) — noticed
+that SION's weekly_base_quality had been computed at 09:50 ET this morning
+(and re-logged identically at 10:42/12:43/13:39/14:41 ET) but was never
+actually written into weekly_base_quality_cache.json — the cache file simply
+had no SION key. Root cause not fully diagnosed (possibly an early-morning
+run computed the value inline for logging but skipped the cache-write step);
+did not affect any trading decision since SION was independently disqualified
+every run today on hard structural grounds (base_range_pct blown out by the
+intraday crash, position_in_base structurally invalid, above_ema200 false)
+regardless of weekly_base_quality. Fixed this run (15:42 ET) by writing the
+previously-logged values (ema30_rising=true, has_hard_break=false,
+base_depth_6wk=0.2556, tightness_now_4wk=0.0425, tightness_avg_52wk=0.0612)
+into the cache under today's date, so later runs today reuse it instead of
+silently recomputing or silently missing it. No strategy logic changed.
