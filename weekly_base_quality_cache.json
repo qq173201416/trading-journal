@@ -99,13 +99,13 @@
     "tightness_avg_52wk": 0.0311
   },
   "ZIM": {
-    "date": "2026-08-04",
-    "weekly_base_quality": true,
+    "date": "2026-08-10",
+    "weekly_base_quality": false,
     "ema30_rising": true,
-    "has_hard_break": false,
-    "base_depth_6wk": 0.1113,
-    "tightness_now_4wk": 0.0254,
-    "tightness_avg_52wk": 0.0433
+    "has_hard_break": true,
+    "base_depth_6wk": 0.1645,
+    "tightness_now_4wk": 0.0381,
+    "tightness_avg_52wk": 0.0441
   },
   "ZBRA": {
     "date": "2026-08-04",
