@@ -619,5 +619,14 @@
     "base_depth_6wk": 0.1969,
     "tightness_now_4wk": 0.0321,
     "tightness_avg_52wk": 0.0381
+  },
+  "FA": {
+    "date": "2026-08-11",
+    "weekly_base_quality": false,
+    "ema30_rising": true,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.2427,
+    "tightness_now_4wk": 0.108,
+    "tightness_avg_52wk": 0.0637
   }
 }
