@@ -261,13 +261,13 @@
     "tightness_avg_52wk": 0.0455
   },
   "GIL": {
-    "date": "2026-08-05",
+    "date": "2026-08-12",
     "weekly_base_quality": false,
     "ema30_rising": false,
     "has_hard_break": true,
-    "base_depth_6wk": 0.1425,
-    "tightness_now_4wk": 0.0471,
-    "tightness_avg_52wk": 0.0323
+    "base_depth_6wk": 0.17,
+    "tightness_now_4wk": 0.0598,
+    "tightness_avg_52wk": 0.0333
   },
   "FSLY": {
     "date": "2026-08-05",
