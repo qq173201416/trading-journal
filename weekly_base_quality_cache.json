@@ -144,13 +144,13 @@
     "tightness_avg_52wk": 0.0394
   },
   "LXP": {
-    "date": "2026-08-06",
+    "date": "2026-08-13",
     "weekly_base_quality": true,
     "ema30_rising": true,
     "has_hard_break": false,
-    "base_depth_6wk": 0.1276,
-    "tightness_now_4wk": 0.0156,
-    "tightness_avg_52wk": 0.0202
+    "base_depth_6wk": 0.11442948,
+    "tightness_now_4wk": 0.00214133,
+    "tightness_avg_52wk": 0.0223897
   },
   "WBS": {
     "date": "2026-08-05",
@@ -736,5 +736,59 @@
     "base_depth_6wk": 0.3443,
     "tightness_now_4wk": 0.12335,
     "tightness_avg_52wk": 0.08865
+  },
+  "WDAY": {
+    "date": "2026-08-13",
+    "weekly_base_quality": false,
+    "ema30_rising": true,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.316,
+    "tightness_now_4wk": 0.1065,
+    "tightness_avg_52wk": 0.0453
+  },
+  "HPQ": {
+    "date": "2026-08-13",
+    "weekly_base_quality": false,
+    "ema30_rising": true,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.28863,
+    "tightness_now_4wk": 0.06942,
+    "tightness_avg_52wk": 0.045632
+  },
+  "NTNX": {
+    "date": "2026-08-13",
+    "weekly_base_quality": false,
+    "ema30_rising": true,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.224204,
+    "tightness_now_4wk": 0.070221,
+    "tightness_avg_52wk": 0.059855
+  },
+  "DOCU": {
+    "date": "2026-08-13",
+    "weekly_base_quality": false,
+    "ema30_rising": true,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.2611,
+    "tightness_now_4wk": 0.07645,
+    "tightness_avg_52wk": 0.0512
+  },
+  "ESTC": {
+    "date": "2026-08-13",
+    "weekly_base_quality": false,
+    "ema30_rising": true,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.275682,
+    "tightness_now_4wk": 0.123942,
+    "tightness_avg_52wk": 0.055601
+  },
+  "BILL": {
+    "date": "2026-08-13",
+    "weekly_base_quality": false,
+    "ema30_rising": true,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.248299,
+    "tightness_now_4wk": 0.052521,
+    "tightness_avg_52wk": 0.053812
   }
 }
