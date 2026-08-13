@@ -78,3 +78,20 @@ previously-logged values (ema30_rising=true, has_hard_break=false,
 base_depth_6wk=0.2556, tightness_now_4wk=0.0425, tightness_avg_52wk=0.0612)
 into the cache under today's date, so later runs today reuse it instead of
 silently recomputing or silently missing it. No strategy logic changed.
+
+---
+
+2026-08-13: TOOLING NOTE (per step-16, not a strategy parameter change) — when
+computing Base Accumulation G metrics for 3 new candidates in parallel this run
+(PAAS, DIOD, WIX), 2 of the 3 subagents independently reported that a shared
+scratchpad filename (`compute.py`) got silently overwritten mid-task by a
+concurrently-running sibling agent writing to the same generic filename in the
+same shared scratch directory. Both affected agents correctly detected this via
+cross-checking against their own originally-fetched tool-call data and did not
+use the corrupted intermediate file, so no computation was actually affected
+this run. Idea for future runs: when fanning out parallel per-symbol subagents
+for candidate metric computation, instruct each agent to use a symbol-prefixed
+scratch filename (e.g. `paas_compute.py`) to avoid this collision class
+entirely, rather than relying on agents to self-detect it. Not executed as a
+strategy change (it's a data-plumbing/orchestration detail, not a threshold or
+rule), just recorded here.

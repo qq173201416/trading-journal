@@ -709,5 +709,32 @@
     "base_depth_6wk": 0.3201,
     "tightness_now_4wk": 0.0438,
     "tightness_avg_52wk": 0.056
+  },
+  "PAAS": {
+    "date": "2026-08-13",
+    "weekly_base_quality": false,
+    "ema30_rising": false,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.2381,
+    "tightness_now_4wk": 0.0893,
+    "tightness_avg_52wk": 0.0665
+  },
+  "DIOD": {
+    "date": "2026-08-13",
+    "weekly_base_quality": false,
+    "ema30_rising": true,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.3173,
+    "tightness_now_4wk": 0.126,
+    "tightness_avg_52wk": 0.0615
+  },
+  "WIX": {
+    "date": "2026-08-13",
+    "weekly_base_quality": false,
+    "ema30_rising": false,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.3443,
+    "tightness_now_4wk": 0.12335,
+    "tightness_avg_52wk": 0.08865
   }
 }
