@@ -799,5 +799,14 @@
     "base_depth_6wk": 0.2475,
     "tightness_now_4wk": 0.11676,
     "tightness_avg_52wk": 0.08394
+  },
+  "SFNC": {
+    "date": "2026-08-14",
+    "weekly_base_quality": false,
+    "ema30_rising": true,
+    "has_hard_break": false,
+    "base_depth_6wk": 0.0915,
+    "tightness_now_4wk": 0.0116,
+    "tightness_avg_52wk": 0.02227
   }
 }
