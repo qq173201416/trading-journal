@@ -808,5 +808,14 @@
     "base_depth_6wk": 0.0915,
     "tightness_now_4wk": 0.0116,
     "tightness_avg_52wk": 0.02227
+  },
+  "KTOS": {
+    "date": "2026-08-14",
+    "weekly_base_quality": false,
+    "ema30_rising": false,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.3345,
+    "tightness_now_4wk": 0.1369,
+    "tightness_avg_52wk": 0.0729
   }
 }
