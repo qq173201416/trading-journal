@@ -693,13 +693,13 @@
     "tightness_avg_52wk": 0.0457
   },
   "CHEF": {
-    "date": "2026-08-13",
+    "date": "2026-08-14",
     "weekly_base_quality": false,
     "ema30_rising": true,
     "has_hard_break": true,
     "base_depth_6wk": 0.2339,
-    "tightness_now_4wk": 0.0831,
-    "tightness_avg_52wk": 0.0451
+    "tightness_now_4wk": 0.0728,
+    "tightness_avg_52wk": 0.0401
   },
   "GSHD": {
     "date": "2026-08-13",
