@@ -790,5 +790,14 @@
     "base_depth_6wk": 0.248299,
     "tightness_now_4wk": 0.052521,
     "tightness_avg_52wk": 0.053812
+  },
+  "HTFL": {
+    "date": "2026-08-14",
+    "weekly_base_quality": false,
+    "ema30_rising": false,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.2475,
+    "tightness_now_4wk": 0.11676,
+    "tightness_avg_52wk": 0.08394
   }
 }
