@@ -153,13 +153,13 @@
     "tightness_avg_52wk": 0.0223897
   },
   "WBS": {
-    "date": "2026-08-05",
+    "date": "2026-08-14",
     "weekly_base_quality": false,
     "ema30_rising": true,
     "has_hard_break": false,
-    "base_depth_6wk": 0.0411,
-    "tightness_now_4wk": 0.0106,
-    "tightness_avg_52wk": 0.02
+    "base_depth_6wk": 0.0586,
+    "tightness_now_4wk": 0.0187,
+    "tightness_avg_52wk": 0.0223
   },
   "PRU": {
     "date": "2026-08-05",
