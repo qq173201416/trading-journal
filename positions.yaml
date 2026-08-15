@@ -13,4 +13,34 @@
 #     avg_cost: 120.50
 #     shares: 30
 
-positions: []
+positions:
+  - ticker: TSM
+    avg_cost: 344.25
+    shares: 0.2
+  - ticker: SKHY
+    avg_cost: 158.439
+    shares: 1.8
+  - ticker: ORCL
+    avg_cost: 143.195
+    shares: 1.9
+  - ticker: NVDA
+    avg_cost: 193.175
+    shares: 0.8
+  - ticker: NOW
+    avg_cost: 110.60
+    shares: 1
+  - ticker: MSFT
+    avg_cost: 396.86
+    shares: 0.5
+  - ticker: INFQ
+    avg_cost: 9.687
+    shares: 6
+  - ticker: GRAB
+    avg_cost: 3.677
+    shares: 15
+  - ticker: GOOG
+    avg_cost: 335.10
+    shares: 0.7
+  - ticker: AVGO
+    avg_cost: 370.05
+    shares: 0.2
