@@ -1,0 +1,38 @@
+# 止盈监控 — 分层止盈阈值与规则参数
+# 下面全部是占位默认值,正式启用前请按你自己的策略改数字。
+
+default_profit_targets:
+  tier_1:
+    profit_pct: 20
+    action: "小幅减仓 25%,移动止盈到成本价"
+  tier_2:
+    profit_pct: 35
+    action: "减仓 40%,剩余仓位移动止盈到 tier_1 触发价"
+  tier_3:
+    profit_pct: 50
+    action: "减仓 60%,或 Hourly RSI > 80 时提前触发"
+
+# 单独设置某个 ticker 的阈值,覆盖 default_profit_targets,未列出的 ticker 用默认值。
+# 示例:
+# overrides:
+#   NVDA:
+#     tier_1: { profit_pct: 25, action: "小幅减仓 25%,移动止盈到成本价" }
+overrides: {}
+
+market_filter:
+  # market_trend == up 且 mag7_breadth >= 这个值时,判定"主升浪",命中tier只小幅减仓/移动止盈
+  mag7_breadth_strong_min: 5
+  # 大盘转弱时,减仓比例的加权倍数
+  weak_market_multiplier: 2
+
+earnings_guard:
+  # next_earnings_date 在这天数以内触发 [⚠️ 财报即将来临] 提醒
+  days_before: 3
+  # 财报临近时,建议减仓比例"提高一档"的档位数
+  extra_tier_bump: 1
+
+hourly_rsi:
+  # 仅作为 Tier 3 的紧急辅助触发,不影响 Tier 1/2 判断
+  overbought_threshold: 80
+  # 计算 RSI(14) 需要的小时K线根数(get_equity_historicals, interval=hour,每次现算不缓存)
+  lookback_bars: 15

@@ -1,0 +1,16 @@
+# 止盈监控 — 持仓清单
+# 这个文件只能人工修改,routine 不会写入 shares/avg_cost。
+#
+# ticker: 股票代码
+# avg_cost: 平均成本(每股,USD)
+# shares: 持股数(支持小数股)
+#
+# 目前是空列表,加仓位之前 routine 每次运行都不会做任何事、也不会发提醒。
+# 加真实持仓时按下面格式取消注释:
+#
+# positions:
+#   - ticker: NVDA
+#     avg_cost: 120.50
+#     shares: 30
+
+positions: []

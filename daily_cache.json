@@ -1,0 +1,5 @@
+{
+  "_schema_note": "date is the calendar date (America/New_York) this cache was computed for, YYYY-MM-DD. tickers.<TICKER> fields: rsi (T-1 daily RSI-14), ma20 (T-1 20-day MA), atr20 (T-1 ATR-20), pct_from_high (% off recent high as of T-1), t1_close, next_earnings_date (YYYY-MM-DD or null). Recomputed once per calendar date, first run of the day that sees a stale/missing date refreshes it.",
+  "date": null,
+  "tickers": {}
+}
