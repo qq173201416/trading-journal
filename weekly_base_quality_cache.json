@@ -817,5 +817,14 @@
     "base_depth_6wk": 0.3345,
     "tightness_now_4wk": 0.1369,
     "tightness_avg_52wk": 0.0729
+  },
+  "URGN": {
+    "date": "2026-08-17",
+    "weekly_base_quality": false,
+    "ema30_rising": true,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.2641,
+    "tightness_now_4wk": 0.0948,
+    "tightness_avg_52wk": 0.0614
   }
 }
