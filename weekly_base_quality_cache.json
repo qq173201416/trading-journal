@@ -826,5 +826,15 @@
     "base_depth_6wk": 0.2641,
     "tightness_now_4wk": 0.0948,
     "tightness_avg_52wk": 0.0614
+  },
+  "KLAR": {
+    "date": "2026-08-17",
+    "weekly_base_quality": false,
+    "ema30_rising": false,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.1775,
+    "tightness_now_4wk": 0.0763,
+    "tightness_avg_52wk": 0.0773,
+    "note": "IPO Sept 2025; only 49 weekly bars available (< 52wk spec), used all available"
   }
 }

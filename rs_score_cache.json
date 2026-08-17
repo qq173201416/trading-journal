@@ -1051,6 +1051,17 @@
         "R9": -11.9118,
         "R12": -7.668
       }
+    ],
+    "KLAR": [
+      {
+        "date": "2026-08-14",
+        "rs": -16.6485,
+        "R3": 26.2295,
+        "R6": 16.7978,
+        "R9": -43.6891,
+        "R12": -54.6268,
+        "note": "IPO ~2025-09-10; only 233 real trading days available, so R12 (and B12 benchmark alignment) uses full available history instead of standard 252d. B3/B6/B9/B12 used for this rs score were computed against SPY aligned to KLAR's own trading days (B3=3.7652, B6=13.9548, B9=13.6662, B12=19.0322), which differ slightly from the generic 2026-08-14 benchmark cache entry due to that alignment."
+      }
     ]
   }
 }
