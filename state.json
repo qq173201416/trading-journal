@@ -77,8 +77,8 @@
       "current_stage": "IDLE",
       "last_triggered_at": null,
       "rsi_peak": 48.24,
-      "hourly_rsi_peak": 41.6,
-      "highest_price_since_buy": 3.4999,
+      "hourly_rsi_peak": 29.83,
+      "highest_price_since_buy": 3.49,
       "last_avg_cost": 3.677,
       "last_shares": 15
     },
