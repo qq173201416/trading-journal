@@ -819,13 +819,13 @@
     "tightness_avg_52wk": 0.0729
   },
   "URGN": {
-    "date": "2026-08-17",
+    "date": "2026-08-19",
     "weekly_base_quality": false,
     "ema30_rising": true,
     "has_hard_break": true,
-    "base_depth_6wk": 0.2641,
-    "tightness_now_4wk": 0.0948,
-    "tightness_avg_52wk": 0.0614
+    "base_depth_6wk": 0.2615,
+    "tightness_now_4wk": 0.0943,
+    "tightness_avg_52wk": 0.063
   },
   "KLAR": {
     "date": "2026-08-17",
@@ -836,5 +836,95 @@
     "tightness_now_4wk": 0.0763,
     "tightness_avg_52wk": 0.0773,
     "note": "IPO Sept 2025; only 49 weekly bars available (< 52wk spec), used all available"
+  },
+  "MRK": {
+    "date": "2026-08-19",
+    "weekly_base_quality": true,
+    "ema30_rising": true,
+    "has_hard_break": false,
+    "base_depth_6wk": 0.1291,
+    "tightness_now_4wk": 0.0236,
+    "tightness_avg_52wk": 0.0291
+  },
+  "AEM": {
+    "date": "2026-08-19",
+    "weekly_base_quality": false,
+    "ema30_rising": true,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.2974,
+    "tightness_now_4wk": 0.0981,
+    "tightness_avg_52wk": 0.0497
+  },
+  "WPM": {
+    "date": "2026-08-19",
+    "weekly_base_quality": false,
+    "ema30_rising": true,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.2637,
+    "tightness_now_4wk": 0.0839,
+    "tightness_avg_52wk": 0.0497
+  },
+  "KGC": {
+    "date": "2026-08-19",
+    "weekly_base_quality": false,
+    "ema30_rising": false,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.2054,
+    "tightness_now_4wk": 0.0705,
+    "tightness_avg_52wk": 0.0507
+  },
+  "TX": {
+    "date": "2026-08-19",
+    "weekly_base_quality": false,
+    "ema30_rising": true,
+    "has_hard_break": false,
+    "base_depth_6wk": 0.2178,
+    "tightness_now_4wk": 0.0375,
+    "tightness_avg_52wk": 0.0291
+  },
+  "RGEN": {
+    "date": "2026-08-19",
+    "weekly_base_quality": false,
+    "ema30_rising": true,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.2389,
+    "tightness_now_4wk": 0.0672,
+    "tightness_avg_52wk": 0.0487
+  },
+  "AUGO": {
+    "date": "2026-08-19",
+    "weekly_base_quality": false,
+    "ema30_rising": true,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.3994,
+    "tightness_now_4wk": 0.1291,
+    "tightness_avg_52wk": 0.0784
+  },
+  "ELF": {
+    "date": "2026-08-19",
+    "weekly_base_quality": false,
+    "ema30_rising": true,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.2784,
+    "tightness_now_4wk": 0.0609,
+    "tightness_avg_52wk": 0.068
+  },
+  "CGAU": {
+    "date": "2026-08-19",
+    "weekly_base_quality": false,
+    "ema30_rising": true,
+    "has_hard_break": false,
+    "base_depth_6wk": 0.3363,
+    "tightness_now_4wk": 0.0887,
+    "tightness_avg_52wk": 0.0537
+  },
+  "IMNM": {
+    "date": "2026-08-19",
+    "weekly_base_quality": false,
+    "ema30_rising": true,
+    "has_hard_break": true,
+    "base_depth_6wk": 0.2456,
+    "tightness_now_4wk": 0.075,
+    "tightness_avg_52wk": 0.058
   }
 }
