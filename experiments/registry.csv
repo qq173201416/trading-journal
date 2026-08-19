@@ -3,3 +3,6 @@ signal_date,ticker,price_at_signal,stage,trend_score,rs_score,extension_pct,week
 2026-08-06,ACMR,78.98,deep_base_watch,60,100,-37.76,19,0.613,v1.1,,,,
 2026-08-07,ENPH,41.87,deep_base_watch,40,48.5,-42.11,17,0.654,v1.1,,,,
 2026-08-13,ACMR,81.19,deep_base_watch,60,100,-36.02,20,0.647,v1.1,,,,
+2026-08-14,MLYS,25.64,deep_base_watch,20,58.6,-45.83,9,0.479,v1.1,,,,
+2026-08-18,POWI,58.59,deep_base_watch,60,49.4,-32.93,26,0.652,v1.1,,,,
+2026-08-18,QCOM,160.19,deep_base_watch,40,35.4,-36.18,20,0.664,v1.1,,,,
