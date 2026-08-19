@@ -17,8 +17,8 @@
       "current_stage": "IDLE",
       "last_triggered_at": "2026-08-17T13:43:24Z",
       "rsi_peak": 51.4,
-      "hourly_rsi_peak": 46.95,
-      "highest_price_since_buy": 157.595,
+      "hourly_rsi_peak": 23.92,
+      "highest_price_since_buy": 157.9357,
       "last_avg_cost": 158.439,
       "last_shares": 1.8
     },
@@ -27,8 +27,8 @@
       "current_stage": "IDLE",
       "last_triggered_at": null,
       "rsi_peak": 49.55,
-      "hourly_rsi_peak": 45.37,
-      "highest_price_since_buy": 143.37,
+      "hourly_rsi_peak": 34.18,
+      "highest_price_since_buy": 143.77,
       "last_avg_cost": 143.195,
       "last_shares": 1.9
     },
@@ -47,8 +47,8 @@
       "current_stage": "IDLE",
       "last_triggered_at": null,
       "rsi_peak": 61.72,
-      "hourly_rsi_peak": 66.01,
-      "highest_price_since_buy": 127.87,
+      "hourly_rsi_peak": 75.13,
+      "highest_price_since_buy": 128.2705,
       "last_avg_cost": 110.6,
       "last_shares": 1
     },
@@ -77,8 +77,8 @@
       "current_stage": "IDLE",
       "last_triggered_at": null,
       "rsi_peak": 42.23,
-      "hourly_rsi_peak": 40.26,
-      "highest_price_since_buy": 3.5,
+      "hourly_rsi_peak": 31.57,
+      "highest_price_since_buy": 3.5201,
       "last_avg_cost": 3.677,
       "last_shares": 15
     },
