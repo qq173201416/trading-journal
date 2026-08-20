@@ -21,14 +21,14 @@ positions:
     avg_cost: 158.439
     shares: 1.8
   - ticker: ORCL
-    avg_cost: 143.195
-    shares: 1.9
+    avg_cost: 143.12
+    shares: 2
   - ticker: NVDA
     avg_cost: 193.175
     shares: 0.8
   - ticker: NOW
     avg_cost: 110.60
-    shares: 1
+    shares: 0.7
   - ticker: MSFT
     avg_cost: 396.86
     shares: 0.4
@@ -38,12 +38,15 @@ positions:
   - ticker: ACMR
     avg_cost: 84.31
     shares: 1
+  - ticker: BE
+    avg_cost: 204.10
+    shares: 0.1
+  - ticker: QCOM
+    avg_cost: 163.30
+    shares: 0.2
   - ticker: GRAB
     avg_cost: 3.677
     shares: 15
   - ticker: GOOG
     avg_cost: 335.10
     shares: 0.7
-  - ticker: AVGO
-    avg_cost: 370.05
-    shares: 0.2
