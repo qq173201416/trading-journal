@@ -17,8 +17,8 @@
       "current_stage": "IDLE",
       "last_triggered_at": "2026-08-17T13:43:24Z",
       "rsi_peak": 51.97,
-      "hourly_rsi_peak": 38.34,
-      "highest_price_since_buy": 162.85,
+      "hourly_rsi_peak": 53.74,
+      "highest_price_since_buy": 161.82,
       "last_avg_cost": 158.439,
       "last_shares": 1.8
     },
@@ -27,10 +27,10 @@
       "current_stage": "IDLE",
       "last_triggered_at": null,
       "rsi_peak": 50.64,
-      "hourly_rsi_peak": 39.85,
-      "highest_price_since_buy": 144.1,
-      "last_avg_cost": 143.195,
-      "last_shares": 1.9
+      "hourly_rsi_peak": 31.31,
+      "highest_price_since_buy": 141.41,
+      "last_avg_cost": 143.12,
+      "last_shares": 2.0
     },
     "NVDA": {
       "executed_tier": 0,
@@ -50,7 +50,7 @@
       "hourly_rsi_peak": 80.37,
       "highest_price_since_buy": 130.93,
       "last_avg_cost": 110.6,
-      "last_shares": 1.0
+      "last_shares": 0.7
     },
     "MSFT": {
       "executed_tier": 1,
@@ -77,8 +77,8 @@
       "current_stage": "IDLE",
       "last_triggered_at": null,
       "rsi_peak": 48.7,
-      "hourly_rsi_peak": 33.79,
-      "highest_price_since_buy": 3.505,
+      "hourly_rsi_peak": 44.96,
+      "highest_price_since_buy": 3.525,
       "last_avg_cost": 3.677,
       "last_shares": 15.0
     },
@@ -107,10 +107,30 @@
       "current_stage": "IDLE",
       "last_triggered_at": null,
       "rsi_peak": 43.71,
-      "hourly_rsi_peak": 32.94,
+      "hourly_rsi_peak": 38.42,
       "highest_price_since_buy": 77.18,
       "last_avg_cost": 84.31,
       "last_shares": 1.0
+    },
+    "BE": {
+      "executed_tier": 0,
+      "current_stage": "IDLE",
+      "last_triggered_at": null,
+      "rsi_peak": 43.97,
+      "hourly_rsi_peak": 29.21,
+      "highest_price_since_buy": 198.735,
+      "last_avg_cost": 204.1,
+      "last_shares": 0.1
+    },
+    "QCOM": {
+      "executed_tier": 0,
+      "current_stage": "IDLE",
+      "last_triggered_at": null,
+      "rsi_peak": 44.62,
+      "hourly_rsi_peak": 52.47,
+      "highest_price_since_buy": 162.46,
+      "last_avg_cost": 163.3,
+      "last_shares": 0.2
     }
   }
 }

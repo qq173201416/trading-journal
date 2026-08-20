@@ -89,6 +89,22 @@
       "pct_from_high": 26.77,
       "t1_close": 362.48,
       "next_earnings_date": "2026-09-02"
+    },
+    "BE": {
+      "rsi": 43.97,
+      "ma20": 211.7955,
+      "atr20": 25.5489,
+      "pct_from_high": 41.18,
+      "t1_close": 206.63,
+      "next_earnings_date": "2026-10-27"
+    },
+    "QCOM": {
+      "rsi": 44.62,
+      "ma20": 161.4345,
+      "atr20": 8.664,
+      "pct_from_high": 37.71,
+      "t1_close": 161.91,
+      "next_earnings_date": "2026-11-04"
     }
   }
 }
