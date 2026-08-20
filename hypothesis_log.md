@@ -145,3 +145,46 @@ routines. This removes both the file-collision class of bug and the
 permission-stall/delay class of bug at the source, since no subagent is ever
 spawned. No strategy thresholds, entry/exit rules, or frozen parameters were
 touched -- this is an execution-model constraint, not a strategy change.
+
+---
+
+2026-08-20 11:38 ET: INFRASTRUCTURE FAILURE (per step-16, not a strategy
+parameter change) -- `git push` failed this run with
+`fatal: could not read Username for 'https://github.com'`. The execution
+container has no git credential helper configured
+(`git config --get credential.helper` is empty, no ~/.git-credentials, no
+GIT_ASKPASS), so HTTPS pushes to origin cannot authenticate. Anonymous
+`git fetch`/`git pull` still work because the repo is public, which means
+the failure is silent on the read path and only surfaces at write time.
+This is a regression within the same trading day: the 10:37 ET run of this
+same routine pushed successfully (commit 357d04e is on origin), so
+credentials were present earlier this morning and are absent now. Retried
+the push 3x with backoff per the routine's git instructions; all three
+failed identically -- this is an auth failure, not a network flake, so
+retries cannot fix it. The GitHub MCP server IS still authenticated
+(get_me returns qq173201416), which is how this note reached the repo.
+Impact this run: NONE on strategy state. The scan returned 0 candidates,
+there are no open positions, and virtual_account.json /
+rs_score_cache.json / weekly_base_quality_cache.json are all byte-identical
+to origin -- the only thing that failed to persist is one risk-check log
+line in trader_history.jsonl, recording a run in which nothing happened.
+That line is reproduced here so it is not lost entirely:
+{"date":"2026-08-20","time":"11:38 ET","virtual_equity":100000.00,
+"weekly_pnl_pct":0.0,"weekly_loss_breaker_triggered":false,
+"current_position_count":0,"position_limit_triggered":false,
+"daily_risk_used_pct":0.0,"daily_risk_limit_triggered":false,
+"spy_change_pct":-0.4148,"black_swan_triggered":false,
+"new_entries_allowed":true}
+trader_history.jsonl itself (441KB) was NOT rewritten through the MCP
+Contents API, because that API requires resending the entire file body and
+hand-reproducing 514 lines of accumulated history risks corrupting real
+trade records to save one no-op entry -- not a trade worth making.
+RISK GOING FORWARD, needs a human fix: every subsequent hourly run will hit
+the same wall, and a run that actually opens or closes a virtual position
+will lose that position's state at container teardown, silently desyncing
+virtual_account.json from the trades recorded against it. The routine also
+has no PushNotification tool in its allowed list, so it cannot alert anyone
+when this happens -- this file is the only channel it has. Fix needed:
+restore git credentials in the scheduled-run environment (credential helper
+or tokenized remote URL). Not executed as a strategy change -- no
+thresholds, entry/exit rules, or frozen parameters touched.
