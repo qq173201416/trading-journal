@@ -122,3 +122,26 @@ with a "insufficient_time_to_evaluate" fallback cancel_reason instead of an
 unbounded wait, so a slow tool call can't silently drag the whole run's
 write-back past market close. Not executed -- no code/logic or strategy
 parameter changed this run, just a tooling risk observation.
+
+---
+
+2026-08-20: RESOLVED (infrastructure fix per step-16, not a strategy
+parameter change) -- root cause identified for both the file-collision
+incident above and the 2026-08-19 multi-hour delay: this routine's execution
+session has an allowed_tools list of Bash/Read/Write/Edit/Glob/Grep/
+WebFetch/WebSearch only -- the Agent/Task tool used to fan out parallel
+subagents is not on it. Spawning subagents anyway triggers a permission
+request that, in an unattended scheduled run, nobody is present to approve;
+the run then stalls until either it times out or a human happens to log in
+and approve it manually, which is what produced the ~5.5 hour and
+multi-hour delays observed. This is not a performance optimization the
+routine opted into -- it's an unauthorized-tool-use failure mode that
+happened to sometimes still produce correct (if very late) output. Fix:
+the routine prompt now contains an explicit, high-priority prohibition on
+Task/Agent tool use and any parallel/background subagent fan-out for
+per-candidate computation -- every candidate must be processed sequentially
+in the single main thread, same constraint already in place on the Scanner
+routines. This removes both the file-collision class of bug and the
+permission-stall/delay class of bug at the source, since no subagent is ever
+spawned. No strategy thresholds, entry/exit rules, or frozen parameters were
+touched -- this is an execution-model constraint, not a strategy change.
