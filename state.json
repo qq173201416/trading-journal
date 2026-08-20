@@ -17,8 +17,8 @@
       "current_stage": "IDLE",
       "last_triggered_at": "2026-08-17T13:43:24Z",
       "rsi_peak": 51.97,
-      "hourly_rsi_peak": 18.02,
-      "highest_price_since_buy": 164.38,
+      "hourly_rsi_peak": 43.88,
+      "highest_price_since_buy": 164.2922,
       "last_avg_cost": 158.439,
       "last_shares": 1.8
     },
@@ -27,7 +27,7 @@
       "current_stage": "IDLE",
       "last_triggered_at": null,
       "rsi_peak": 50.64,
-      "hourly_rsi_peak": 37.68,
+      "hourly_rsi_peak": 39.85,
       "highest_price_since_buy": 144.1,
       "last_avg_cost": 143.195,
       "last_shares": 1.9
@@ -48,9 +48,9 @@
       "last_triggered_at": null,
       "rsi_peak": 63.92,
       "hourly_rsi_peak": 75.25,
-      "highest_price_since_buy": 128.2705,
+      "highest_price_since_buy": 128.59,
       "last_avg_cost": 110.6,
-      "last_shares": 1
+      "last_shares": 1.0
     },
     "MSFT": {
       "executed_tier": 1,
@@ -70,17 +70,17 @@
       "hourly_rsi_peak": 69.1,
       "highest_price_since_buy": 13.4,
       "last_avg_cost": 9.687,
-      "last_shares": 5
+      "last_shares": 5.0
     },
     "GRAB": {
       "executed_tier": 0,
       "current_stage": "IDLE",
       "last_triggered_at": null,
       "rsi_peak": 48.7,
-      "hourly_rsi_peak": 41.66,
-      "highest_price_since_buy": 3.515,
+      "hourly_rsi_peak": 47.61,
+      "highest_price_since_buy": 3.485,
       "last_avg_cost": 3.677,
-      "last_shares": 15
+      "last_shares": 15.0
     },
     "GOOG": {
       "executed_tier": 0,
@@ -97,8 +97,8 @@
       "current_stage": "IDLE",
       "last_triggered_at": null,
       "rsi_peak": 35.4,
-      "hourly_rsi_peak": 11.0,
-      "highest_price_since_buy": 366.24,
+      "hourly_rsi_peak": 19.18,
+      "highest_price_since_buy": 366.54,
       "last_avg_cost": 370.05,
       "last_shares": 0.2
     },
@@ -107,10 +107,10 @@
       "current_stage": "IDLE",
       "last_triggered_at": null,
       "rsi_peak": 43.71,
-      "hourly_rsi_peak": 35.14,
-      "highest_price_since_buy": 77.47,
+      "hourly_rsi_peak": 40.79,
+      "highest_price_since_buy": 76.67,
       "last_avg_cost": 84.31,
-      "last_shares": 1
+      "last_shares": 1.0
     }
   }
 }
