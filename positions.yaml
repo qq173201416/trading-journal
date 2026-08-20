@@ -31,10 +31,13 @@ positions:
     shares: 1
   - ticker: MSFT
     avg_cost: 396.86
-    shares: 0.5
+    shares: 0.4
   - ticker: INFQ
     avg_cost: 9.687
-    shares: 6
+    shares: 5
+  - ticker: ACMR
+    avg_cost: 84.31
+    shares: 1
   - ticker: GRAB
     avg_cost: 3.677
     shares: 15
