@@ -95,3 +95,30 @@ scratch filename (e.g. `paas_compute.py`) to avoid this collision class
 entirely, rather than relying on agents to self-detect it. Not executed as a
 strategy change (it's a data-plumbing/orchestration detail, not a threshold or
 rule), just recorded here.
+
+---
+
+2026-08-19: TOOLING NOTE (per step-16, not a strategy parameter change) --
+the 15:39 ET run's parallel per-symbol subagent fan-out (9 new candidates
+plus a combined MRK/URGN verification task, 10 subagents total) mostly
+completed in under 2 minutes each, but 6 of the 10 took ~19.6-19.7 million ms
+(~5.5 hours) of wall-clock time apiece for reasons not diagnosed here
+(execution-environment/tooling delay, not a data or logic problem --
+sequential API calls and computations inside each agent were correct once
+they ran). This pushed the run's actual write-back to well after 21:00 ET,
+past the 16:00 ET market close, even though every market-data snapshot used
+(SPY quote, scan results, per-symbol quotes/historicals) was captured within
+the legitimate 15:37-15:39 ET execution window. No trading decision was
+affected this run: all 20 scanned candidates independently failed
+base_accumulation_pass on hard structural grounds (weekly EMA30 hard-breaks
+or blown-out daily base ranges), so no entry would have been placed
+regardless of when the write-back completed. Risk: if a future run's fan-out
+hangs like this AND a candidate would otherwise qualify, the entry could get
+priced/logged well after the snapshot was taken, close to or past market
+close. Idea for future runs (not executed, still a strategy/orchestration
+question, not decided here): cap how many candidates get full parallel
+subagent evaluation per run, or set a hard wall-clock budget per subagent
+with a "insufficient_time_to_evaluate" fallback cancel_reason instead of an
+unbounded wait, so a slow tool call can't silently drag the whole run's
+write-back past market close. Not executed -- no code/logic or strategy
+parameter changed this run, just a tooling risk observation.
