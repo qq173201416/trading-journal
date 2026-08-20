@@ -1,6 +1,6 @@
 {
   "_schema_note": "positions.<TICKER> fields: executed_tier (0/1/2/3), current_stage (IDLE/TIER1/TIER2/TIER3), last_triggered_at (ISO8601 or null), rsi_peak (max T-1 daily RSI seen this profit cycle), hourly_rsi_peak (max intraday Hourly RSI seen this profit cycle, tracked separately from rsi_peak since they're different timeframes), highest_price_since_buy, last_avg_cost, last_shares. last_avg_cost/last_shares/rsi_peak/hourly_rsi_peak/highest_price_since_buy are refreshed every run regardless of whether a new tier triggered. A reset (avg_cost/shares changed, or T-1 close below avg_cost) clears rsi_peak/hourly_rsi_peak/highest_price_since_buy back to null along with executed_tier/current_stage, since a new profit cycle starts fresh. A ticker missing from positions is first-run init, not a reset. last_heartbeat_date (YYYY-MM-DD, America/New_York) is set only after a confirmed-successful daily heartbeat Telegram send; a run that finds it stale retries on its next trigger rather than assuming the message went out.",
-  "last_heartbeat_date": "2026-08-19",
+  "last_heartbeat_date": "2026-08-20",
   "positions": {
     "TSM": {
       "executed_tier": 1,
@@ -16,9 +16,9 @@
       "executed_tier": 0,
       "current_stage": "IDLE",
       "last_triggered_at": "2026-08-17T13:43:24Z",
-      "rsi_peak": 51.4,
-      "hourly_rsi_peak": 18.46,
-      "highest_price_since_buy": 157.045,
+      "rsi_peak": 51.97,
+      "hourly_rsi_peak": 18.02,
+      "highest_price_since_buy": 164.38,
       "last_avg_cost": 158.439,
       "last_shares": 1.8
     },
@@ -26,8 +26,8 @@
       "executed_tier": 0,
       "current_stage": "IDLE",
       "last_triggered_at": null,
-      "rsi_peak": 49.55,
-      "hourly_rsi_peak": 34.85,
+      "rsi_peak": 50.64,
+      "hourly_rsi_peak": 37.68,
       "highest_price_since_buy": 144.1,
       "last_avg_cost": 143.195,
       "last_shares": 1.9
@@ -46,7 +46,7 @@
       "executed_tier": 0,
       "current_stage": "IDLE",
       "last_triggered_at": null,
-      "rsi_peak": 61.72,
+      "rsi_peak": 63.92,
       "hourly_rsi_peak": 75.25,
       "highest_price_since_buy": 128.2705,
       "last_avg_cost": 110.6,
@@ -57,10 +57,10 @@
       "current_stage": "TIER1",
       "last_triggered_at": "2026-08-15T06:13:35Z",
       "rsi_peak": 71.84,
-      "hourly_rsi_peak": 63.52,
+      "hourly_rsi_peak": 66.19,
       "highest_price_since_buy": 495.18,
       "last_avg_cost": 396.86,
-      "last_shares": 0.5
+      "last_shares": 0.4
     },
     "INFQ": {
       "executed_tier": 2,
@@ -70,15 +70,15 @@
       "hourly_rsi_peak": 69.1,
       "highest_price_since_buy": 13.4,
       "last_avg_cost": 9.687,
-      "last_shares": 6
+      "last_shares": 5
     },
     "GRAB": {
       "executed_tier": 0,
       "current_stage": "IDLE",
       "last_triggered_at": null,
-      "rsi_peak": 42.23,
-      "hourly_rsi_peak": 34.76,
-      "highest_price_since_buy": 3.55,
+      "rsi_peak": 48.7,
+      "hourly_rsi_peak": 41.66,
+      "highest_price_since_buy": 3.515,
       "last_avg_cost": 3.677,
       "last_shares": 15
     },
@@ -86,7 +86,7 @@
       "executed_tier": 0,
       "current_stage": "IDLE",
       "last_triggered_at": null,
-      "rsi_peak": 46.48,
+      "rsi_peak": 46.71,
       "hourly_rsi_peak": 64.53,
       "highest_price_since_buy": 343.54,
       "last_avg_cost": 335.1,
@@ -96,11 +96,21 @@
       "executed_tier": 0,
       "current_stage": "IDLE",
       "last_triggered_at": null,
-      "rsi_peak": 59.06,
-      "hourly_rsi_peak": 35.42,
-      "highest_price_since_buy": 397.4,
+      "rsi_peak": 35.4,
+      "hourly_rsi_peak": 11.0,
+      "highest_price_since_buy": 366.24,
       "last_avg_cost": 370.05,
       "last_shares": 0.2
+    },
+    "ACMR": {
+      "executed_tier": 0,
+      "current_stage": "IDLE",
+      "last_triggered_at": null,
+      "rsi_peak": 43.71,
+      "hourly_rsi_peak": 35.14,
+      "highest_price_since_buy": 77.47,
+      "last_avg_cost": 84.31,
+      "last_shares": 1
     }
   }
 }
