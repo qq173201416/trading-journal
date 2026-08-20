@@ -847,3 +847,15 @@ QURE,2026-08-18,80,100,4.4,base,accumulating,0.717,47.38,40.3479,32.1694,30.2919
 RAMP,2026-08-18,100,64.8,0.46,base,falling,0.64,37.43,37.0099,33.6282,32.8324,0.9791,-0.0526,0.3724,0.1918,38.01,-1.53,,False,True,True,28,23.21,False,-3.44,False,False,True,False,False
 RARE,2026-08-18,20,47.4,4.88,weakening,stabilizing,0.86,25.49,27.1051,26.5256,26.5762,0.639,0.0895,0.1282,-0.3347,36.54,-30.24,,True,False,True,21,19.38,False,-29.44,False,False,False,False,False
 RCL,2026-08-18,40,43.1,2.77,weakening,stabilizing,0.865,300.0,301.1244,294.8746,296.7393,0.8186,0.1676,-0.1773,-0.275,365.84,-18.0,,True,False,True,13,256.1,False,3.82,True,False,False,False,False
+AAP,2026-08-19,60,42.6,4.74,weakening,stabilizing,0.788,56.18,56.4937,55.1723,54.7176,0.8615,0.0589,-0.12,-0.2045,64.17,-12.45,,True,False,True,22,47.04,False,-0.16,False,False,False,False,True
+AAPL,2026-08-19,100,58.4,2.23,base,falling,0.929,316.83,309.3029,289.7904,281.9207,0.9195,0.0107,0.0923,0.1722,333.74,-5.07,3.6,False,False,False,22,247.99,False,-2.12,False,False,False,True,False
+AAUC,2026-08-19,40,50.3,5.21,base,accumulating,1.426,23.24,22.7197,24.5207,24.0964,0.7217,-0.1572,-0.3811,0.6009,32.01,-27.4,,False,False,False,3,18.23,False,-1.96,False,False,False,True,True
+RH,2026-08-18,60,41.3,5.12,base,falling,0.799,171.05,170.0141,164.7169,167.1079,0.6656,0.3629,-0.3183,-0.4558,251.0,-31.85,,False,False,False,20,113.46,False,2.9,True,False,False,False,False
+RHI,2026-08-18,100,94.2,4.26,early_breakout,accumulating,1.014,43.76,37.1133,32.5241,32.273,0.9841,0.6665,0.566,0.02,41.83,4.61,1.6,False,False,False,23,22.37,False,30.26,False,False,False,True,True
+RIO,2026-08-18,60,54.4,2.21,weakening,stabilizing,0.907,96.69,96.8851,93.4631,90.6617,0.8589,-0.0794,-0.1462,0.3999,112.04,-13.7,,True,False,True,22,83.15,False,6.58,False,False,False,False,False
+RKLB,2026-08-18,60,48.3,7.18,weakening,accumulating,0.79,79.16,82.4695,82.1981,79.1173,0.5242,-0.4157,-0.0599,0.5583,150.23,-47.31,,True,False,True,21,60.93,False,-7.34,False,False,False,True,True
+FLY,2026-08-19,0,13.7,7.59,deep_base_watch,accumulating,0.553,25.3,26.3613,29.8094,31.3761,0.4069,-0.4625,0.0515,-0.6457,58.81,-56.98,,True,False,True,25,19.27,False,-2.23,False,False,True,True,True
+RCUS,2026-08-18,100,100,4.13,base,accumulating,0.911,29.51,27.7894,24.7509,23.385,0.9299,0.2596,0.3952,1.6165,31.08,-5.05,,True,False,True,27,18.92,False,-4.79,False,False,False,True,True
+REGN,2026-08-18,100,63.2,2.39,base,accumulating,0.888,810.24,715.5976,698.4914,690.7161,0.9868,0.248,-0.1007,0.2098,812.27,-0.25,,False,False,False,9,609.94,False,19.92,True,False,False,True,True
+RELX,2026-08-18,20,35.4,3.08,base,falling,0.987,34.51,34.302,35.5563,36.8054,0.7046,-0.0098,0.0061,-0.4803,48.69,-29.12,,False,False,False,28,29.38,False,5.37,True,False,False,False,False
+REZI,2026-08-18,20,35.8,7.81,weakening,falling,1.14,21.02,23.7015,23.983,23.8263,0.6592,0.0769,-0.3123,-0.2629,31.33,-32.91,,False,True,False,14,19.96,False,-8.31,False,False,False,False,False
