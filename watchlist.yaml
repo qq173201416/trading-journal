@@ -1,0 +1,21 @@
+# 观察名单 — 只能由 routine 自动读写。人工不要手动编辑;永久保留历史,不删除条目
+# (清仓/重新买回的完整闭环记进每个条目的 history 数组,供以后复盘)。
+#
+# 目前是空的——AVGO 已经从 positions.yaml 里拿掉了(清仓),下一次 routine 运行会通过
+# 清仓自动检测把它加进这里并发一条通知,不需要人工写。
+#
+# 结构(routine 自动维护,人工不要手填):
+# NVDA:
+#   status: "watching"          # watching | holding
+#   exited_at: "2026-08-15T15:00:00-04:00"
+#   exit_price: 195.40
+#   exit_avg_cost: 187.32
+#   swing_high: 195.40
+#   reentry_alert_count: 0
+#   last_alerted_leg_high: null
+#   last_dca_trigger_trading_day: null
+#   history:
+#     - exited_at: "2025-11-02T14:10:00-04:00"
+#       exit_price: 142.80
+#       reentered_at: "2025-12-18T10:05:00-04:00"
+#       reentry_price: 151.20
