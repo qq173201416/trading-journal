@@ -17,11 +17,16 @@ profit_targets:
   tier_3: { threshold: 50, reduce_pct: 60 }
 
 # 止损:与止盈同级、方向相反,机械化无例外,不受财报护栏或大盘状态影响。
-# trend_break_ma: 跌破这条均线且处于浮亏,至少视为命中 tier_1(即使百分比还没到 -15%)。
+# trend_break_ma: 跌破这条均线且处于浮亏,至少视为命中 tier_1(即使百分比还没到 -15%)——
+# 但只在浮亏已经达到 trend_break_min_loss_pct 时才生效,避免亏零点几个百分点就单纯因为
+# 跌破MA50被判定为止损信号(2026-08-21 用真实数据模拟过一次,不加这条门槛的话同一天
+# 5支持仓会同时触发,大多数只亏1%左右,信号质量太低)。ma_50d 因为数据不足算不出来时
+# (比如新上市/新覆盖的ticker历史不够50个交易日),这条规则直接视为不满足,不强算。
 stop_loss_targets:
   tier_1: -15
   tier_2: -25
   trend_break_ma: ma_50d
+  trend_break_min_loss_pct: -3
 
 # Hourly RSI 紧急辅助强升(仅浮盈>0时生效,强制升级为 Tier 3)。
 hourly_rsi:
@@ -59,6 +64,11 @@ risk_control:
 
 market_risk_mode:
   vix_hard_stop: 25
+  # VIX 数据源:FRED(圣路易斯联储)官方 CBOE VIX 收盘值,无需 API key 的公开CSV端点。
+  # 不用 VIXY/UVXY 这类VIX期货ETF代替——它们因为期货展期长期损耗,同样的价格过一两年
+  # 对应的真实VIX点位会不一样,阈值需要不断重新校准;FRED拿到的是真正的VIX点位,阈值
+  # 长期有效。end-of-day数据,一天更新一次,配合其它T-1指标的更新频率使用,足够。
+  vix_source_url: "https://fred.stlouisfed.org/graph/fredgraph.csv?id=VIXCLS"
   check_qqq_50ma: true
   check_soxx_50ma: true
   # SOXX 破位规则只对这些 ticker 生效(v14 原文没给判断依据,这里用显式白名单代替调用
