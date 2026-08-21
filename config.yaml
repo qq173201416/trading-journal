@@ -61,6 +61,9 @@ market_risk_mode:
   vix_hard_stop: 25
   check_qqq_50ma: true
   check_soxx_50ma: true
+  # SOXX 破位规则只对这些 ticker 生效(v14 原文没给判断依据,这里用显式白名单代替调用
+  # 行业分类 API,按你实际持仓增删)。
+  semiconductor_tickers: ["NVDA", "AMD", "AVGO", "QCOM", "TSM", "SKHY", "ACMR"]
 
 # 同一天内"止盈/止损提醒"与"加仓建议"这两个方向相反的消息互斥,防止早发REDUCE晚发ADD
 # 建议自相矛盾。止损分支永远豁免此锁;同类别Tier升级(比如止盈Tier1当天升级Tier2)也豁免。
