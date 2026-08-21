@@ -31,7 +31,7 @@
       "current_stage": "TIER1",
       "last_triggered_at": "2026-08-15T06:13:35Z",
       "rsi_peak": 56.67,
-      "hourly_rsi_peak": 63.6828,
+      "hourly_rsi_peak": 65.5027,
       "highest_price_since_buy": 433.93,
       "swing_high": null,
       "dca_watch_stage": "IDLE",
@@ -53,8 +53,8 @@
       "current_stage": "IDLE",
       "last_triggered_at": "2026-08-17T13:43:24Z",
       "rsi_peak": 54.8729,
-      "hourly_rsi_peak": 66.5367,
-      "highest_price_since_buy": 164.505,
+      "hourly_rsi_peak": 70.6925,
+      "highest_price_since_buy": 166.195,
       "swing_high": null,
       "dca_watch_stage": "IDLE",
       "dca_watch_low": null,
@@ -75,7 +75,7 @@
       "current_stage": "IDLE",
       "last_triggered_at": null,
       "rsi_peak": 50.64,
-      "hourly_rsi_peak": 42.25,
+      "hourly_rsi_peak": 61.1057,
       "highest_price_since_buy": 147.03,
       "swing_high": null,
       "dca_watch_stage": "IDLE",
@@ -88,7 +88,7 @@
       "last_action_category": null,
       "last_action_date": null,
       "last_avg_cost": 143.12,
-      "last_shares": 2.0
+      "last_shares": 2
     },
     "NVDA": {
       "highest_alerted_profit_tier": 0,
@@ -100,9 +100,9 @@
       "hourly_rsi_peak": 70.77,
       "highest_price_since_buy": 227.01,
       "swing_high": 217.13,
-      "dca_watch_stage": "IDLE",
-      "dca_watch_low": null,
-      "dca_watch_started_at": null,
+      "dca_watch_stage": "WATCHING",
+      "dca_watch_low": 216.275,
+      "dca_watch_started_at": "2026-08-21T11:42:43-04:00",
       "dca_executed_count": 0,
       "peak_shares_since_buy": 0.8,
       "peak_marked_swing_high": 227.01,
@@ -120,7 +120,7 @@
       "last_triggered_at": "2026-08-20T16:37:00Z",
       "rsi_peak": 64.1651,
       "hourly_rsi_peak": 80.37,
-      "highest_price_since_buy": 130.93,
+      "highest_price_since_buy": 131.03,
       "swing_high": null,
       "dca_watch_stage": "IDLE",
       "dca_watch_low": null,
@@ -143,10 +143,10 @@
       "rsi_peak": 71.84,
       "hourly_rsi_peak": 66.19,
       "highest_price_since_buy": 495.18,
-      "swing_high": 484.2,
-      "dca_watch_stage": "IDLE",
-      "dca_watch_low": null,
-      "dca_watch_started_at": null,
+      "swing_high": 484.445,
+      "dca_watch_stage": "WATCHING",
+      "dca_watch_low": 484.445,
+      "dca_watch_started_at": "2026-08-21T11:42:43-04:00",
       "dca_executed_count": 0,
       "peak_shares_since_buy": 0.4,
       "peak_marked_swing_high": 495.18,
@@ -164,7 +164,7 @@
       "last_triggered_at": "2026-08-17T13:43:24Z",
       "rsi_peak": 63.57,
       "hourly_rsi_peak": 69.1,
-      "highest_price_since_buy": 13.4,
+      "highest_price_since_buy": 13.865,
       "swing_high": null,
       "dca_watch_stage": "IDLE",
       "dca_watch_low": null,
@@ -176,7 +176,7 @@
       "last_action_category": null,
       "last_action_date": null,
       "last_avg_cost": 9.687,
-      "last_shares": 5.0
+      "last_shares": 5
     },
     "GRAB": {
       "highest_alerted_profit_tier": 0,
@@ -198,7 +198,7 @@
       "last_action_category": null,
       "last_action_date": null,
       "last_avg_cost": 3.677,
-      "last_shares": 15.0
+      "last_shares": 15
     },
     "GOOG": {
       "highest_alerted_profit_tier": 0,
@@ -264,7 +264,7 @@
       "last_action_category": null,
       "last_action_date": null,
       "last_avg_cost": 84.31,
-      "last_shares": 1.0
+      "last_shares": 1
     },
     "BE": {
       "highest_alerted_profit_tier": 0,
@@ -296,7 +296,7 @@
       "last_triggered_at": null,
       "rsi_peak": 44.62,
       "hourly_rsi_peak": 56.43,
-      "highest_price_since_buy": 160.705,
+      "highest_price_since_buy": 160.995,
       "swing_high": null,
       "dca_watch_stage": "IDLE",
       "dca_watch_low": null,
