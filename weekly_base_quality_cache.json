@@ -80,6 +80,15 @@
   "tightness_now_4wk": 0.0731,
   "weekly_base_quality": false
  },
+ "BABA": {
+  "base_depth_6wk": 0.161,
+  "date": "2026-08-20",
+  "ema30_rising": false,
+  "has_hard_break": true,
+  "tightness_avg_52wk": 0.04655,
+  "tightness_now_4wk": 0.02282,
+  "weekly_base_quality": false
+ },
  "BILL": {
   "base_depth_6wk": 0.248299,
   "date": "2026-08-13",
@@ -632,11 +641,11 @@
  },
  "PAAS": {
   "base_depth_6wk": 0.2381,
-  "date": "2026-08-13",
+  "date": "2026-08-21",
   "ema30_rising": false,
   "has_hard_break": true,
-  "tightness_avg_52wk": 0.0665,
-  "tightness_now_4wk": 0.0893,
+  "tightness_avg_52wk": 0.0557,
+  "tightness_now_4wk": 0.0765,
   "weekly_base_quality": false
  },
  "PAY": {
@@ -989,14 +998,5 @@
   "tightness_avg_52wk": 0.0539,
   "tightness_now_4wk": 0.1126,
   "weekly_base_quality": false
- },
- "BABA": {
-  "date": "2026-08-20",
-  "weekly_base_quality": false,
-  "ema30_rising": false,
-  "has_hard_break": true,
-  "base_depth_6wk": 0.161,
-  "tightness_now_4wk": 0.02282,
-  "tightness_avg_52wk": 0.04655
  }
 }
