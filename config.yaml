@@ -1,66 +1,29 @@
-# 止盈止损与顺势加仓监控 — 配置文件 (v14 SOP)
-# 阈值类字段(tier数值/pullback_targets等)每次实质性修改后手动把 config_version +1。
-# schema_version 管的是"数据文件结构"是否变化,和 config_version(交易规则数值)是两回事,
-# 不要混用。
+# 止盈+止损监控 — 配置文件
+#
+# 从 v14 SOP 里只吸收了止损分支;顺势加仓/Watchlist重新建仓不采用(继续是 Portfolio
+# Monitor,不是 Portfolio Manager);也不引入 v14 里 schema_version/config_version 双轨
+# 版本管理、reason_code 编号体系、原子写入、per-ticker即时提交这些工程机制——这些是给
+# "长期运行进程+多人维护+下游有统计系统"设计的,和 Claude Routine "每次触发都是全新容器,
+# 每次都要重新读一遍 prompt"的执行模型不匹配,详见 docs/takeprofit-routine-spec-v14.md
+# 顶部的取舍说明。
 
-config_version: 1
-
-schema_version:
-  state: 1
-  runlog: 1
-  watchlist: 1
-
-trend_filter:
-  require_ma20_above_ma50: true
-  ma20_slope_lookback_days: 5
-  never_chase_max_extension_pct: 8
-
-pullback_targets:
-  tier_1: { pct_floor: 5,  atr_multiple: 1.0 }
-  tier_2: { pct_floor: 10, atr_multiple: 2.0 }
-  tier_3: { pct_floor: 15, atr_multiple: 3.0 }
-
-right_side_confirmation:
-  conditions: ["higher_low", "close_above_ma5", "volume_expansion"]
-  bull_market_required: 1
-  bear_market_required: 2
-
-stop_loss_targets:
-  tier_1: -15
-  tier_2: -25
-  trend_break_ma: ma_50d
-
-# reduce_pct 延续之前止盈版本已经在用的比例(25/40/60),迁移时保持不变,没有改你的策略。
-# 想让 Tier3 变成"全部离场"(ACTION=SELL),把 tier_3.reduce_pct 改成 100。
 profit_targets:
   tier_1: { threshold: 20, reduce_pct: 25 }
   tier_2: { threshold: 35, reduce_pct: 40 }
   tier_3: { threshold: 50, reduce_pct: 60 }
 
-# Hourly RSI 紧急辅助强升(沿用之前版本,v14文档正文确认"予以保留",只是没有重新列在
-# 它自己的 config 范例里)。仅当浮盈 > 0 时才会强制升级为 Tier 3。
+# 止损:与止盈同级、方向相反,机械化无例外,不受财报护栏或大盘状态影响。
+# trend_break_ma: 跌破这条均线且处于浮亏,至少视为命中 tier_1(即使百分比还没到 -15%)。
+stop_loss_targets:
+  tier_1: -15
+  tier_2: -25
+  trend_break_ma: ma_50d
+
+# Hourly RSI 紧急辅助强升(仅浮盈>0时生效,强制升级为 Tier 3)。
 hourly_rsi:
   overbought_threshold: 80
   lookback_bars: 15
 
-# 财报护栏:止盈只加标签、加仓/重新建仓直接跳过,不再有"提高一档"这个概念(v14 相对
-# 之前版本的行为简化,止损完全不受财报影响)。
+# 财报护栏:只影响止盈的展示标签,不影响止损(止损永远无视财报,风险控制优先于一切)。
 earnings_guard:
   days_before: 3
-
-risk_control:
-  max_dca_executions: 3
-  max_total_dca_pct: 30
-  dca_cooldown_trading_days: 5
-  remaining_position_dca_caps:
-    - { max_remaining_pct: 100, max_additional_dca: 3 }
-    - { max_remaining_pct: 50,  max_additional_dca: 1 }
-    - { max_remaining_pct: 25,  max_additional_dca: 0 }
-
-market_risk_mode:
-  vix_hard_stop: 25
-  check_qqq_50ma: true
-  check_soxx_50ma: true
-
-action_lock:
-  block_opposing_action_same_day: true
