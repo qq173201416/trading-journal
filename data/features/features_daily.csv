@@ -859,3 +859,17 @@ RCUS,2026-08-18,100,100,4.13,base,accumulating,0.911,29.51,27.7894,24.7509,23.38
 REGN,2026-08-18,100,63.2,2.39,base,accumulating,0.888,810.24,715.5976,698.4914,690.7161,0.9868,0.248,-0.1007,0.2098,812.27,-0.25,,False,False,False,9,609.94,False,19.92,True,False,False,True,True
 RELX,2026-08-18,20,35.4,3.08,base,falling,0.987,34.51,34.302,35.5563,36.8054,0.7046,-0.0098,0.0061,-0.4803,48.69,-29.12,,False,False,False,28,29.38,False,5.37,True,False,False,False,False
 REZI,2026-08-18,20,35.8,7.81,weakening,falling,1.14,21.02,23.7015,23.983,23.8263,0.6592,0.0769,-0.3123,-0.2629,31.33,-32.91,,False,True,False,14,19.96,False,-8.31,False,False,False,False,False
+AAP,2026-08-20,40,14.1,10.33,weakening,falling,1.097,42.39,55.9406,55.003,54.595,0.6501,-0.3036,-0.3474,-0.4456,64.17,-33.94,,False,True,True,0,42.39,False,-27.86,False,False,False,False,False
+AAPL,2026-08-20,100,57.3,2.38,base,stabilizing,0.931,311.3,309.3812,290.0753,282.213,0.9034,-0.0061,0.0705,0.1823,333.74,-6.72,3.8,True,False,True,22,247.99,False,-2.29,False,False,False,False,False
+AAUC,2026-08-20,40,48.6,5.0,base,accumulating,1.46,22.92,22.7276,24.4995,24.0847,0.7118,-0.1635,-0.3746,0.5452,32.01,-28.4,,False,False,False,3,18.23,False,-2.81,False,False,False,True,True
+ABBV,2026-08-20,100,61.2,2.29,early_breakout,accumulating,0.797,261.83,245.7653,231.2104,227.1483,0.9789,0.1939,0.0585,0.0568,261.07,0.29,3.6,True,False,True,17,198.71,False,4.53,False,False,False,True,True
+ABNB,2026-08-20,100,82.8,3.28,extended,accumulating,1.255,185.0,156.9789,143.1283,140.3205,0.9778,0.3513,0.3404,0.2854,148.93,24.22,3.6,False,False,False,27,121.35,False,23.47,False,False,False,True,True
+ABT,2026-08-20,40,48.3,2.13,base,accumulating,0.708,114.14,102.3578,103.4937,106.2874,0.8302,0.2737,-0.0889,-0.3333,136.62,-16.45,,False,False,False,15,84.32,False,20.5,True,False,False,True,True
+ACHC,2026-08-20,60,72.9,6.28,weakening,falling,0.892,26.97,29.5439,26.0381,25.011,0.7527,0.1448,0.5002,0.0711,35.61,-24.26,,False,False,False,28,13.37,False,-14.79,False,False,False,False,False
+ACN,2026-08-20,20,27.3,4.43,base,accumulating,0.753,181.35,164.0815,185.3421,196.4206,0.623,-0.0072,-0.264,-0.4841,288.54,-37.15,,False,False,False,9,127.98,False,33.09,True,False,False,True,True
+ADBE,2026-08-20,20,39.2,4.15,base,accumulating,0.776,272.22,245.3959,258.0621,268.9361,0.734,0.0884,-0.0535,-0.4249,367.46,-25.92,,False,False,False,9,195.16,False,20.71,True,False,False,True,True
+ADEA,2026-08-20,60,79.1,5.68,weakening,stabilizing,0.673,26.96,28.2295,25.8465,24.4752,0.7851,-0.004,0.3121,0.6617,33.63,-19.83,,True,False,True,29,18.09,False,-7.98,False,False,True,False,False
+ADI,2026-08-20,60,55.1,3.54,weakening,stabilizing,0.868,370.24,383.8994,362.01,348.1654,0.8303,-0.0631,-0.0633,0.3169,445.48,-16.89,,True,False,True,23,306.07,False,-7.44,False,False,False,False,False
+ADP,2026-08-20,80,56.8,2.59,base,accumulating,0.929,279.21,253.125,242.0475,245.0856,0.9004,0.2419,0.1957,-0.2916,309.03,-9.65,,False,False,False,19,188.79,False,14.4,True,False,False,True,True
+HTFL,2026-08-20,100,100,6.34,watch,accumulating,1.078,46.8,31.0462,29.639,29.5565,0.976,0.576,0.7584,0.4016,39.91,17.26,1.0,True,False,True,23,20.49,False,74.14,True,False,False,True,True
+RLAY,2026-08-20,100,100,4.9,base,stabilizing,0.639,19.7,18.4476,14.6317,13.281,0.9262,0.4154,1.1582,4.599,20.75,-5.06,,True,False,True,29,7.66,False,-2.54,False,False,True,False,True
