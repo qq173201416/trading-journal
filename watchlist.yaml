@@ -19,3 +19,14 @@
 #       exit_price: 142.80
 #       reentered_at: "2025-12-18T10:05:00-04:00"
 #       reentry_price: 151.20
+
+AVGO:
+  status: "watching"
+  exited_at: "2026-08-21T09:47:35-04:00"
+  exit_price: 373.335
+  exit_avg_cost: 370.05
+  swing_high: 373.335
+  reentry_alert_count: 0
+  last_alerted_leg_high: null
+  last_dca_trigger_trading_day: null
+  history: []
