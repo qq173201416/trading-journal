@@ -188,3 +188,41 @@ when this happens -- this file is the only channel it has. Fix needed:
 restore git credentials in the scheduled-run environment (credential helper
 or tokenized remote URL). Not executed as a strategy change -- no
 thresholds, entry/exit rules, or frozen parameters touched.
+
+---
+
+2026-08-21 (written 2026-08-22 00:2x ET): Discovered platform constraint
+(not a strategy idea, logged per step-16 spirit): during the 15:37 ET run,
+after run_scan and the SPY quote were captured on time (5 candidates:
+PAAS, DAR, WPP, ERO, SA), the Robinhood MCP server disconnected and
+reconnected mid-run while fetching PAAS's 460-day historicals. Execution
+was single-threaded throughout (no Agent/Task tool used, per the standing
+ban) -- the delay was purely the MCP connection itself stalling, not
+parallel processing. By the time the reconnect completed and the remaining
+4 symbols' historicals were fetched, wall-clock time had passed midnight
+into 2026-08-22 (Saturday), well past the 16:00 ET close. This is a
+different root cause from the 2026-08-19 subagent-parallelism delay (that
+one is already fixed by the Agent/Task ban) -- this is an MCP connectivity
+drop that can stall even fully compliant single-threaded execution.
+
+Impact this run: none on strategy state -- all 5 candidates independently
+failed Base Accumulation G on hard structural gates (weekly_base_quality
+and/or base_range_pct and/or position_in_base), computed from the live
+scan snapshot prices captured within the legitimate 15:37-15:39 ET window,
+so no entry would have been placed regardless of when the write-back
+happened. Logged in trader_history.jsonl per the 2026-08-19 precedent.
+
+Also newly confirmed: after the reconnect, get_equity_historicals returned
+an interpolated=true placeholder for 2026-08-21's day bar, and
+get_equity_quotes' official `close` field was still dated 2026-08-20 --
+i.e. the data vendor had not yet posted 08-21's settled close even well
+after the session ended. This means a future run that gets delayed past
+close by a similar disconnect must NOT try to price a decision off
+"today's official close" fetched after the fact -- only off snapshot data
+(quotes/scan results) already captured live during market hours should be
+used; anything requiring the current day's settled bar should be treated
+as unavailable until a later run. Not executed as a strategy change -- no
+thresholds, entry/exit rules, or frozen parameters touched. No fix needed
+from a human (unlike the 2026-08-20 git-credential incident) since the
+MCP server did reconnect on its own and the run completed correctly; noting
+it here in case repeated disconnects become a pattern worth investigating.
