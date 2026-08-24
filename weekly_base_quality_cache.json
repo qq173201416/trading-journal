@@ -122,6 +122,15 @@
     "tightness_now_4wk": 0.0377,
     "weekly_base_quality": false
   },
+  "BRZE": {
+    "base_depth_6wk": 0.3341,
+    "date": "2026-08-24",
+    "ema30_rising": true,
+    "has_hard_break": true,
+    "tightness_avg_52wk": 0.0714,
+    "tightness_now_4wk": 0.0837,
+    "weekly_base_quality": false
+  },
   "BWIN": {
     "base_depth_6wk": 0.1791,
     "date": "2026-08-12",
@@ -558,6 +567,15 @@
     "tightness_now_4wk": 0.00214133,
     "weekly_base_quality": true
   },
+  "MGA": {
+    "base_depth_6wk": 0.1289,
+    "date": "2026-08-24",
+    "ema30_rising": true,
+    "has_hard_break": false,
+    "tightness_avg_52wk": 0.0338,
+    "tightness_now_4wk": 0.0226,
+    "weekly_base_quality": true
+  },
   "MGNI": {
     "base_depth_6wk": 0.1719,
     "date": "2026-08-06",
@@ -727,6 +745,15 @@
     "has_hard_break": true,
     "tightness_avg_52wk": 0.023,
     "tightness_now_4wk": 0.0145,
+    "weekly_base_quality": false
+  },
+  "QGEN": {
+    "base_depth_6wk": 0.1355,
+    "date": "2026-08-24",
+    "ema30_rising": true,
+    "has_hard_break": true,
+    "tightness_avg_52wk": 0.0346,
+    "tightness_now_4wk": 0.0228,
     "weekly_base_quality": false
   },
   "QURE": {
