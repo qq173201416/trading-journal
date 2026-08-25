@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git fetch origin claude/scanner-state)",
+      "Bash(git checkout claude/scanner-state)",
+      "Bash(git checkout -b claude/scanner-state*)",
+      "Bash(git pull origin claude/scanner-state)",
+      "Bash(git branch --show-current)",
+      "Bash(git status)",
+      "Bash(git log*)",
+      "Bash(git add data/universe.csv)",
+      "Bash(git commit -m *)",
+      "Bash(git push -u origin claude/scanner-state)",
+      "Bash(git push origin claude/scanner-state)",
+      "Edit(data/universe.csv)",
+      "Write(data/universe.csv)"
+    ]
+  }
+}
