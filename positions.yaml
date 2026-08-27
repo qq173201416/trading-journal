@@ -24,17 +24,17 @@ positions:
     avg_cost: 143.12
     shares: 2
   - ticker: NVDA
-    avg_cost: 193.175
-    shares: 0.8
+    avg_cost: 195.256
+    shares: 0.4
   - ticker: NOW
     avg_cost: 110.60
     shares: 0.7
   - ticker: MSFT
     avg_cost: 396.86
-    shares: 0.4
+    shares: 0.3
   - ticker: INFQ
     avg_cost: 9.687
-    shares: 5
+    shares: 4
   - ticker: ACMR
     avg_cost: 84.31
     shares: 1
@@ -42,7 +42,10 @@ positions:
     avg_cost: 204.10
     shares: 0.1
   - ticker: QCOM
-    avg_cost: 163.30
+    avg_cost: 164.00
+    shares: 0.4
+  - ticker: VST
+    avg_cost: 136.40
     shares: 0.2
   - ticker: GRAB
     avg_cost: 3.677
