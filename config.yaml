@@ -83,5 +83,17 @@ market_risk_mode:
 
 # 同一天内"止盈/止损提醒"与"加仓建议"这两个方向相反的消息互斥,防止早发REDUCE晚发ADD
 # 建议自相矛盾。止损分支永远豁免此锁;同类别Tier升级(比如止盈Tier1当天升级Tier2)也豁免。
+# Trailing Stop 跌破提醒视同 REDUCE_SELL 类别(触发后同样锁住当天的加仓建议),但发送本身
+# 不受此锁拦截,理由与止损相同——两者都是保护性的,不应该被一个方向相反的旧状态拦住。
 action_lock:
   block_opposing_action_same_day: true
+
+# 结构化 Trailing Stop(取代/补充百分比止盈的第二条独立状态线,来自 lib/swing_structure.py
+# 的 ZigZag/ATR 波段结构判断——main 分支 git show main:lib/swing_structure.py 借用,不复制)。
+# 详见 docs/takeprofit-infq-spec-v3.1.md 第三节。核心逻辑:每次确认新的 LH(Lower High,
+# 用 date|price|high 做事件身份,不用序列位置)时,candidate = max(最近确认的swing low价格,
+# 最近确认的swing high价格 - atr_multiplier × 当次事件确认时的ATR20,只取一次并冻结),
+# trailing_stop_price = max(旧值, candidate)(只能上调,不能下调)。收盘价跌破且未提醒过
+# 才发一次 Telegram,与百分比止盈/止损两条状态线完全独立、互不覆盖。
+trailing_stop:
+  atr_multiplier: 2.0
