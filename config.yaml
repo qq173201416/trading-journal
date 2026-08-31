@@ -28,16 +28,25 @@ stop_loss_targets:
   trend_break_ma: ma_50d
   trend_break_min_loss_pct: -3
 
-# Hourly RSI 紧急辅助强升(仅浮盈>0时生效,强制升级为 Tier 3)。
+# Hourly RSI 紧急辅助强升(仅浮盈>=min_profit_pct_for_forced_tier3时生效,强制升级为 Tier 3,
+# 不受financial百分比档位限制提前触发)。
 # 2026-08-27 修复:get_equity_historicals(interval=hour)在收盘和次日开盘之间没有K线,
 # 数组里"相邻"的两根bar可能实际隔了一整晚。直接按相邻bar算涨跌幅,会把隔夜跳空当成
 # 盘中一小时暴涨算进RSI,导致读数被严重拉高且卡住不动(实测NVDA隔夜跳空+17点,被
 # 误判成Hourly RSI 80+,连续几小时靠这个假信号强推了4次Tier3"全部离场"提醒,其中
 # QCOM当时浮盈只有0.63%)。改成按交易日范围取数、排除隔夜断点,不再按固定bar数取。
+# 2026-08-31 加固:min_profit_pct_for_forced_tier3(浮盈门槛)。起因是同一天里同一种
+# 模式又出现了一次,这次是结构信号(LL_CONFIRMED)而不是Hourly RSI数据错——BE和VST
+# 浮盈都只有0.6%左右就被强推Tier3"全部离场"。根因分析发现"强制升级不看浮盈基数多大"
+# 这条本身就是个漏洞,不是这一次触发源头的问题,而是任何强制升级机制通用的缺口——
+# 于是把结构信号那条(见下方止盈判定注释)从止盈分支里整个移除,归类成独立的"结构性
+# 风险提示"(不属于止盈,不写highest_alerted_profit_tier),同时给剩下的Hourly RSI
+# 强升也补上这条门槛,双重加固,不再依赖"浮盈>0"这种几乎等于没有门槛的条件。
 hourly_rsi:
   overbought_threshold: 80
   lookback_trading_days: 5
   min_valid_deltas: 14
+  min_profit_pct_for_forced_tier3: 5
 
 # 财报护栏:止盈只加展示标签,加仓/重新建仓建议 3 天内直接跳过评估;止损永远无视财报。
 earnings_guard:

@@ -1,5 +1,5 @@
 {
-  "_schema_note": "positions.<TICKER> fields, all routine-derived cache -- never authoritative; positions.yaml (broker) is the only truth for shares/avg_cost, and any conflict is resolved in broker's favor. highest_alerted_profit_tier / highest_alerted_stop_tier / highest_alerted_add_tier: each 0-3, monotonic within its own cycle, never decreases except via a defined reset. current_stage: IDLE/TIER1/TIER2/TIER3, profit side only. rsi_peak / hourly_rsi_peak / highest_price_since_buy: max seen this profit cycle. swing_high: pullback-calc reference for add-on suggestions, separate from highest_price_since_buy, resets to the trigger price after a successful add suggestion (not after every run). dca_watch_stage/dca_watch_low/dca_watch_started_at: the IDLE->WATCHING state machine that tracks an in-progress pullback. dca_executed_count: how many add-on suggestions have actually been sent this cycle (informational -- nothing auto-executes). peak_shares_since_buy / peak_marked_swing_high: for the remaining-position DCA cap and its unlock condition. last_dca_trigger_trading_day: cooldown reference. last_action_category/last_action_date: for Action Lock (REDUCE_SELL vs ADD same-day exclusivity). last_avg_cost/last_shares: mirrors positions.yaml, refreshed every run unconditionally. Reset rules (from T-1 close vs avg_cost, not intraday price): t1_close < avg_cost resets profit-tier fields only; t1_close >= avg_cost resets highest_alerted_stop_tier only (mutually exclusive by definition). A same-cycle avg_cost/shares change (add-on or dilution, shares stays > 0 throughout) resets ONLY the add/watch fields (highest_alerted_add_tier, dca_watch_stage/low/started_at) -- never resets profit-tier or stop-tier memory, and peak_shares_since_buy bumps up to the new share count if it's higher. Full liquidation (shares 0 -> reappearing) resets everything. A ticker missing from state.json is first-run init, not a reset. trailing_stop_price / trailing_stop_triggered / last_processed_lh_event / atr_at_event: structural Trailing Stop state line (from lib/swing_structure.py, see docs/takeprofit-infq-spec-v3.1.md section 3), fully independent of the percentage-tier profit/stop fields above -- never read or written by the percentage-tier logic and vice versa. trailing_stop_price is ratchet-only (never decreases) and only updates when a NEW LH_CONFIRMED event is seen, identified by last_processed_lh_event = \"<date>|<price>|high\" (never a sequence index, since index position is not stable across reruns) -- same event id as last time means skip, don't recompute. atr_at_event is the ATR_20d value frozen at the moment that event was processed; it is never recalculated afterward even as ATR_20d itself drifts day to day, so the same LH event always implies the same trailing stop candidate. trailing_stop_triggered flips true the first time close price breaches trailing_stop_price and a Telegram alert is sent; stays true (no repeat alerts) until reset. Reset rules: both of the existing reset triggers below now ALSO clear all four of these fields together (trailing_stop_price=null, trailing_stop_triggered=false, last_processed_lh_event=null, atr_at_event=null) -- t1_close < avg_cost (profit-tier reset) and any same-cycle avg_cost change (add-on/dilution reset); a pure share decrease with avg_cost unchanged never resets them, same as it never resets the percentage-tier fields.",
+  "_schema_note": "positions.<TICKER> fields, all routine-derived cache -- never authoritative; positions.yaml (broker) is the only truth for shares/avg_cost, and any conflict is resolved in broker's favor. highest_alerted_profit_tier / highest_alerted_stop_tier / highest_alerted_add_tier: each 0-3, monotonic within its own cycle, never decreases except via a defined reset. current_stage: IDLE/TIER1/TIER2/TIER3, profit side only. rsi_peak / hourly_rsi_peak / highest_price_since_buy: max seen this profit cycle. swing_high: pullback-calc reference for add-on suggestions, separate from highest_price_since_buy, resets to the trigger price after a successful add suggestion (not after every run). dca_watch_stage/dca_watch_low/dca_watch_started_at: the IDLE->WATCHING state machine that tracks an in-progress pullback. dca_executed_count: how many add-on suggestions have actually been sent this cycle (informational -- nothing auto-executes). peak_shares_since_buy / peak_marked_swing_high: for the remaining-position DCA cap and its unlock condition. last_dca_trigger_trading_day: cooldown reference. last_action_category/last_action_date: for Action Lock (REDUCE_SELL vs ADD same-day exclusivity). last_avg_cost/last_shares: mirrors positions.yaml, refreshed every run unconditionally. Reset rules (from T-1 close vs avg_cost, not intraday price): t1_close < avg_cost resets profit-tier fields only; t1_close >= avg_cost resets highest_alerted_stop_tier only (mutually exclusive by definition). A same-cycle avg_cost/shares change (add-on or dilution, shares stays > 0 throughout) resets ONLY the add/watch fields (highest_alerted_add_tier, dca_watch_stage/low/started_at) -- never resets profit-tier or stop-tier memory, and peak_shares_since_buy bumps up to the new share count if it's higher. Full liquidation (shares 0 -> reappearing) resets everything. A ticker missing from state.json is first-run init, not a reset. trailing_stop_price / trailing_stop_triggered / last_processed_lh_event / atr_at_event: structural Trailing Stop state line (from lib/swing_structure.py, see docs/takeprofit-infq-spec-v3.1.md section 3), fully independent of the percentage-tier profit/stop fields above -- never read or written by the percentage-tier logic and vice versa. trailing_stop_price is ratchet-only (never decreases) and only updates when a NEW LH_CONFIRMED event is seen, identified by last_processed_lh_event = \"<date>|<price>|high\" (never a sequence index, since index position is not stable across reruns) -- same event id as last time means skip, don't recompute. atr_at_event is the ATR_20d value frozen at the moment that event was processed; it is never recalculated afterward even as ATR_20d itself drifts day to day, so the same LH event always implies the same trailing stop candidate. trailing_stop_triggered flips true the first time close price breaches trailing_stop_price and a Telegram alert is sent; stays true (no repeat alerts) until reset. Reset rules: both of the existing reset triggers below now ALSO clear all four of these fields together (trailing_stop_price=null, trailing_stop_triggered=false, last_processed_lh_event=null, atr_at_event=null) -- t1_close < avg_cost (profit-tier reset) and any same-cycle avg_cost change (add-on/dilution reset); a pure share decrease with avg_cost unchanged never resets them, same as it never resets the percentage-tier fields. last_alerted_ll_event: dedup guard for the independent structural Lower-Low protective alert (v17+) -- \"<date>|<price>|low\" identity of the last swing_current_state==LL_CONFIRMED daily_cache.swing_last_low that was actually alerted on, same event-id-not-index pattern as last_processed_lh_event. A different confirmed low (new date|price) means alert again; the same one means skip. This line is deliberately NOT profit-tier state -- it never reads or writes highest_alerted_profit_tier/current_stage, and is not reset by the profit-tier reset rules above; it only clears via full liquidation (fresh _default_new_ticker_record on re-init).",
   "_default_new_ticker_record": {
     "highest_alerted_profit_tier": 0,
     "highest_alerted_stop_tier": 0,
@@ -24,7 +24,8 @@
     "trailing_stop_price": null,
     "trailing_stop_triggered": false,
     "last_processed_lh_event": null,
-    "atr_at_event": null
+    "atr_at_event": null,
+    "last_alerted_ll_event": null
   },
   "last_heartbeat_date": "2026-08-31",
   "positions": {
@@ -52,7 +53,8 @@
       "trailing_stop_price": null,
       "trailing_stop_triggered": false,
       "last_processed_lh_event": null,
-      "atr_at_event": null
+      "atr_at_event": null,
+      "last_alerted_ll_event": null
     },
     "SKHY": {
       "highest_alerted_profit_tier": 0,
@@ -78,7 +80,8 @@
       "trailing_stop_price": null,
       "trailing_stop_triggered": false,
       "last_processed_lh_event": null,
-      "atr_at_event": null
+      "atr_at_event": null,
+      "last_alerted_ll_event": null
     },
     "ORCL": {
       "highest_alerted_profit_tier": 0,
@@ -104,7 +107,8 @@
       "trailing_stop_price": null,
       "trailing_stop_triggered": false,
       "last_processed_lh_event": null,
-      "atr_at_event": null
+      "atr_at_event": null,
+      "last_alerted_ll_event": null
     },
     "NVDA": {
       "highest_alerted_profit_tier": 0,
@@ -130,7 +134,8 @@
       "trailing_stop_price": null,
       "trailing_stop_triggered": false,
       "last_processed_lh_event": null,
-      "atr_at_event": null
+      "atr_at_event": null,
+      "last_alerted_ll_event": null
     },
     "NOW": {
       "highest_alerted_profit_tier": 3,
@@ -156,7 +161,8 @@
       "trailing_stop_price": null,
       "trailing_stop_triggered": false,
       "last_processed_lh_event": null,
-      "atr_at_event": null
+      "atr_at_event": null,
+      "last_alerted_ll_event": null
     },
     "MSFT": {
       "highest_alerted_profit_tier": 1,
@@ -182,7 +188,8 @@
       "trailing_stop_price": null,
       "trailing_stop_triggered": false,
       "last_processed_lh_event": null,
-      "atr_at_event": null
+      "atr_at_event": null,
+      "last_alerted_ll_event": null
     },
     "INFQ": {
       "highest_alerted_profit_tier": 2,
@@ -208,7 +215,8 @@
       "trailing_stop_price": null,
       "trailing_stop_triggered": false,
       "last_processed_lh_event": null,
-      "atr_at_event": null
+      "atr_at_event": null,
+      "last_alerted_ll_event": null
     },
     "ACMR": {
       "highest_alerted_profit_tier": 0,
@@ -234,14 +242,15 @@
       "trailing_stop_price": 75.45,
       "trailing_stop_triggered": true,
       "last_processed_lh_event": "2026-08-26|83.5|high",
-      "atr_at_event": 6.6641
+      "atr_at_event": 6.6641,
+      "last_alerted_ll_event": null
     },
     "BE": {
-      "highest_alerted_profit_tier": 3,
+      "highest_alerted_profit_tier": 0,
       "highest_alerted_stop_tier": 0,
       "highest_alerted_add_tier": 0,
-      "current_stage": "TIER3",
-      "last_triggered_at": "2026-08-31T09:52:37-04:00",
+      "current_stage": "IDLE",
+      "last_triggered_at": null,
       "rsi_peak": 49.2322,
       "hourly_rsi_peak": 79.82,
       "highest_price_since_buy": 223.1525,
@@ -253,14 +262,15 @@
       "peak_shares_since_buy": 0.1,
       "peak_marked_swing_high": 201.79,
       "last_dca_trigger_trading_day": null,
-      "last_action_category": "REDUCE_SELL",
-      "last_action_date": "2026-08-31",
+      "last_action_category": null,
+      "last_action_date": null,
       "last_avg_cost": 204.1,
       "last_shares": 0.1,
       "trailing_stop_price": null,
       "trailing_stop_triggered": false,
       "last_processed_lh_event": null,
-      "atr_at_event": null
+      "atr_at_event": null,
+      "last_alerted_ll_event": null
     },
     "QCOM": {
       "highest_alerted_profit_tier": 0,
@@ -286,7 +296,8 @@
       "trailing_stop_price": null,
       "trailing_stop_triggered": false,
       "last_processed_lh_event": null,
-      "atr_at_event": null
+      "atr_at_event": null,
+      "last_alerted_ll_event": null
     },
     "GRAB": {
       "highest_alerted_profit_tier": 0,
@@ -312,7 +323,8 @@
       "trailing_stop_price": null,
       "trailing_stop_triggered": false,
       "last_processed_lh_event": null,
-      "atr_at_event": null
+      "atr_at_event": null,
+      "last_alerted_ll_event": null
     },
     "GOOG": {
       "highest_alerted_profit_tier": 0,
@@ -338,14 +350,15 @@
       "trailing_stop_price": null,
       "trailing_stop_triggered": false,
       "last_processed_lh_event": null,
-      "atr_at_event": null
+      "atr_at_event": null,
+      "last_alerted_ll_event": null
     },
     "VST": {
-      "highest_alerted_profit_tier": 3,
+      "highest_alerted_profit_tier": 0,
       "highest_alerted_stop_tier": 0,
       "highest_alerted_add_tier": 0,
-      "current_stage": "TIER3",
-      "last_triggered_at": "2026-08-31T11:43:21-04:00",
+      "current_stage": "IDLE",
+      "last_triggered_at": null,
       "rsi_peak": 42.9216,
       "hourly_rsi_peak": 46.72205828720886,
       "highest_price_since_buy": 139.97,
@@ -357,14 +370,15 @@
       "peak_shares_since_buy": 0.2,
       "peak_marked_swing_high": 139.965,
       "last_dca_trigger_trading_day": null,
-      "last_action_category": "REDUCE_SELL",
-      "last_action_date": "2026-08-31",
+      "last_action_category": null,
+      "last_action_date": null,
       "last_avg_cost": 136.4,
       "last_shares": 0.2,
       "trailing_stop_price": null,
       "trailing_stop_triggered": false,
       "last_processed_lh_event": null,
-      "atr_at_event": null
+      "atr_at_event": null,
+      "last_alerted_ll_event": null
     }
   }
 }
