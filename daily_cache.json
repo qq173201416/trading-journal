@@ -1,5 +1,104 @@
 {
   "_schema_note": "date is the calendar date (America/New_York) this cache was computed for, YYYY-MM-DD. tickers.<TICKER> fields: rsi (T-1 daily RSI-14), ma20, ma_50d (null if the ticker has fewer than 50 real, non-interpolated trading days of history -- never force-computed from padded data), ma_20d_prev (MA20 as of ma20_slope_lookback_days trading days ago), atr20, pct_from_high, t1_close, t1_low_5d_min / t1_low_5d_min_prev (min close of the most recent 5 trading days and the 5 before that, for Higher Low confirmation), ma_5d, t1_volume, vol_20ma (20-day average volume, for volume-expansion confirmation), next_earnings_date (YYYY-MM-DD or null). Recomputed once per calendar date, first run of the day that sees a stale date refreshes it. Same fields also apply to the market-index tickers (SPY/QQQ/SOXX) used for market_risk_mode. This cache intentionally has no swing_structure fields (no swing_current_state/swing_last_high/etc.) -- this routine doesn't use Trailing Stop or the structural Lower-Low alert, those are take-profit-routine-only concepts; keeping this cache smaller and simpler is deliberate, not an oversight.",
-  "date": null,
-  "tickers": {}
+  "date": "2026-09-01",
+  "tickers": {
+    "GLW": {
+      "rsi": 44.42,
+      "ma20": 156.5615,
+      "ma_50d": 170.2002,
+      "ma_20d_prev": 152.5475,
+      "atr20": 10.6389,
+      "t1_close": 148.73,
+      "t1_low_5d_min": 147.16,
+      "t1_low_5d_min_prev": 145.55,
+      "ma_5d": 150.09,
+      "t1_volume": 9546326,
+      "vol_20ma": 9476588.15,
+      "next_earnings_date": "2026-10-27"
+    },
+    "PENG": {
+      "rsi": 40.26,
+      "ma20": 55.315,
+      "ma_50d": 60.3168,
+      "ma_20d_prev": 55.0755,
+      "atr20": 4.8824,
+      "t1_close": 49.08,
+      "t1_low_5d_min": 49.08,
+      "t1_low_5d_min_prev": 50.68,
+      "ma_5d": 50.656,
+      "t1_volume": 1616975,
+      "vol_20ma": 1554480.0,
+      "next_earnings_date": "2026-10-06"
+    },
+    "MRVL": {
+      "rsi": 45.57,
+      "ma20": 225.059,
+      "ma_50d": 226.5775,
+      "ma_20d_prev": 212.4232,
+      "atr20": 17.837,
+      "t1_close": 211.66,
+      "t1_low_5d_min": 211.66,
+      "t1_low_5d_min_prev": 216.0,
+      "ma_5d": 231.044,
+      "t1_volume": 23650755,
+      "vol_20ma": 24958039.3,
+      "next_earnings_date": "2026-12-01"
+    },
+    "OUST": {
+      "rsi": 39.75,
+      "ma20": 41.508,
+      "ma_50d": 41.953,
+      "ma_20d_prev": 41.7345,
+      "atr20": 3.8596,
+      "t1_close": 34.44,
+      "t1_low_5d_min": 34.44,
+      "t1_low_5d_min_prev": 35.75,
+      "ma_5d": 35.54,
+      "t1_volume": 1653160,
+      "vol_20ma": 2761903.7,
+      "next_earnings_date": "2026-11-03"
+    },
+    "POWI": {
+      "rsi": 32.65,
+      "ma20": 58.582,
+      "ma_50d": 66.3173,
+      "ma_20d_prev": 60.083,
+      "atr20": 3.5619,
+      "t1_close": 51.38,
+      "t1_low_5d_min": 51.38,
+      "t1_low_5d_min_prev": 53.18,
+      "ma_5d": 53.546,
+      "t1_volume": 946915,
+      "vol_20ma": 661326.55,
+      "next_earnings_date": "2026-11-04"
+    },
+    "QQQ": {
+      "rsi": 52.07,
+      "ma20": 718.7765,
+      "ma_50d": 711.5868,
+      "ma_20d_prev": 710.3985,
+      "atr20": 10.9602,
+      "t1_close": 716.76,
+      "t1_low_5d_min": 710.72,
+      "t1_low_5d_min_prev": 706.32,
+      "ma_5d": 715.278,
+      "t1_volume": 32237181,
+      "vol_20ma": 32611457.45,
+      "next_earnings_date": null
+    },
+    "SOXX": {
+      "rsi": 44.03,
+      "ma20": 529.6685,
+      "ma_50d": 547.5462,
+      "ma_20d_prev": 524.619,
+      "atr20": 21.7239,
+      "t1_close": 511.04,
+      "t1_low_5d_min": 508.62,
+      "t1_low_5d_min_prev": 506.18,
+      "ma_5d": 514.91,
+      "t1_volume": 6247026,
+      "vol_20ma": 7321020.25,
+      "next_earnings_date": null
+    }
+  }
 }

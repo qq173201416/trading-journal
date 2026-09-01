@@ -11,7 +11,43 @@
   },
   "candidates": {
     "GLW": {
-      "swing_high": null,
+      "swing_high": 144.08,
+      "watch_stage": "WATCHING",
+      "watch_low": 144.08,
+      "watch_started_at": "2026-09-01T15:18:33-04:00",
+      "last_alerted_leg_high": null,
+      "last_alert_trading_day": null,
+      "alert_count": 0
+    },
+    "PENG": {
+      "swing_high": 47.26,
+      "watch_stage": "IDLE",
+      "watch_low": null,
+      "watch_started_at": null,
+      "last_alerted_leg_high": null,
+      "last_alert_trading_day": null,
+      "alert_count": 0
+    },
+    "MRVL": {
+      "swing_high": 209.13,
+      "watch_stage": "IDLE",
+      "watch_low": null,
+      "watch_started_at": null,
+      "last_alerted_leg_high": null,
+      "last_alert_trading_day": null,
+      "alert_count": 0
+    },
+    "OUST": {
+      "swing_high": 33.33,
+      "watch_stage": "IDLE",
+      "watch_low": null,
+      "watch_started_at": null,
+      "last_alerted_leg_high": null,
+      "last_alert_trading_day": null,
+      "alert_count": 0
+    },
+    "POWI": {
+      "swing_high": 49.89,
       "watch_stage": "IDLE",
       "watch_low": null,
       "watch_started_at": null,
@@ -19,5 +55,6 @@
       "last_alert_trading_day": null,
       "alert_count": 0
     }
-  }
+  },
+  "last_heartbeat_date": "2026-09-01"
 }
