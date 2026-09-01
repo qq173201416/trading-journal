@@ -1329,3 +1329,4 @@ EWTX,2026-08-28,80,100,4.87,base,stabilizing,0.998,42.76,41.494,35.5196,33.153,0
 MEOH,2026-08-28,80,59.3,3.78,base,accumulating,0.724,57.67,55.4897,53.2526,51.5526,0.864,-0.0713,-0.0232,0.4289,65.72,-12.25,,False,False,False,8,45.47,False,1.76,False,False,False,True,True
 OLLI,2026-08-28,0,14.0,3.85,weakening,stabilizing,0.648,72.42,75.0475,86.1062,91.3664,0.5167,-0.1186,-0.407,-0.6344,138.31,-47.64,,False,False,True,7,64.9,False,3.73,True,False,True,False,False
 PHVS,2026-08-28,100,73.0,4.65,base,falling,1.259,35.32,34.3632,31.1733,30.1171,0.9263,0.1995,0.1405,0.3608,35.96,-1.78,2.6,False,False,False,24,25.42,False,1.6,False,False,False,False,True
+IPGP,2026-08-28,20,10.8,5.94,weakening,falling,1.315,76.53,91.0893,99.4155,98.7507,0.4911,-0.3497,-0.5546,-0.285,153.91,-50.28,,False,True,True,1,73.26,False,-25.5,False,False,False,False,False
