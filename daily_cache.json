@@ -1,0 +1,5 @@
+{
+  "_schema_note": "date is the calendar date (America/New_York) this cache was computed for, YYYY-MM-DD. tickers.<TICKER> fields: rsi (T-1 daily RSI-14), ma20, ma_50d (null if the ticker has fewer than 50 real, non-interpolated trading days of history -- never force-computed from padded data), ma_20d_prev (MA20 as of ma20_slope_lookback_days trading days ago), atr20, pct_from_high, t1_close, t1_low_5d_min / t1_low_5d_min_prev (min close of the most recent 5 trading days and the 5 before that, for Higher Low confirmation), ma_5d, t1_volume, vol_20ma (20-day average volume, for volume-expansion confirmation), next_earnings_date (YYYY-MM-DD or null). Recomputed once per calendar date, first run of the day that sees a stale date refreshes it. Same fields also apply to the market-index tickers (SPY/QQQ/SOXX) used for market_risk_mode. This cache intentionally has no swing_structure fields (no swing_current_state/swing_last_high/etc.) -- this routine doesn't use Trailing Stop or the structural Lower-Low alert, those are take-profit-routine-only concepts; keeping this cache smaller and simpler is deliberate, not an oversight.",
+  "date": null,
+  "tickers": {}
+}

@@ -1,0 +1,48 @@
+# 候选建仓观察 — 配置文件
+#
+# 设计原则(优先于下面任何具体数值,和 claude/takeprofit-monitor-state 分支同一套
+# 出发点):这个 routine 的唯一职责是依据下面定义的客观条件监测 candidates.yaml
+# 里的候选ticker,达标就提醒;是否真的建仓,永远由用户人工决定。routine 不执行任何
+# 交易,不下单。
+#
+# 和止盈止损 routine 的关系:这里的趋势过滤器/回调分层/右侧确认三项判据,数值和
+# claude/takeprofit-monitor-state 分支 config.yaml 里加仓判定用的那套完全一致
+# (故意保持一致,不是巧合——同一套已经在真实数据上验证过的机械规则,只是这里的
+# 基准换成"加入候选名单以来的高点",不是"持仓成本")。周线级别的趋势反转/RSI背离
+# 判断没有纳入,那类判断目前还没有足够机械化到可以放进 routine,继续放在对话里
+# 单独分析。
+
+trend_filter:
+  require_ma20_above_ma50: true
+  ma20_slope_lookback_days: 5
+  never_chase_max_extension_pct: 8
+
+pullback_targets:
+  tier_1: { pct_floor: 5,  atr_multiple: 1.0 }
+  tier_2: { pct_floor: 10, atr_multiple: 2.0 }
+  tier_3: { pct_floor: 15, atr_multiple: 3.0 }
+
+right_side_confirmation:
+  conditions: ["higher_low", "close_above_ma5", "volume_expansion"]
+  bull_market_required: 1
+  bear_market_required: 2
+
+# 冷却期:同一个ticker两次候选建仓提醒之间至少间隔这么多个交易日,避免同一段横盘反复
+# 提醒。和止盈止损 routine 的 dca_cooldown_trading_days 是同一个概念。
+alert_cooldown_trading_days: 5
+
+# 财报护栏:财报前3天内直接跳过评估,不产生候选建仓提醒。
+earnings_guard:
+  days_before: 3
+
+# 大盘风险状态:和止盈止损 routine 用同一套算法(FRED VIX + QQQ/SOXX 50MA),独立
+# 计算,不跨 routine 共享——每个 routine 都是独立容器,没有办法真的"共享"运行时数据,
+# 只能各自按同一套规则重新算一遍,结果理论上应该一致。
+market_risk_mode:
+  vix_hard_stop: 25
+  vix_source_url: "https://fred.stlouisfed.org/graph/fredgraph.csv?id=VIXCLS"
+  check_qqq_50ma: true
+  check_soxx_50ma: true
+  # 只对这些 ticker 生效 SOXX 破位的额外CAUTION覆盖规则;candidates.yaml 里的票如果
+  # 不是半导体,这里留空即可,不影响其它逻辑。按实际候选名单增删。
+  semiconductor_tickers: []

@@ -1,0 +1,23 @@
+{
+  "_schema_note": "candidates.<TICKER> fields, all routine-derived cache -- candidates.yaml is the only human-maintained source of which tickers to watch; a ticker present in state.json but removed from candidates.yaml is simply skipped (not evaluated, not deleted -- preserved in case it's re-added later, same 'never delete history' convention as the take-profit routine's watchlist.yaml). swing_high: the pullback-calc reference, ratchets up each run (max of prior value -- null treated as this run's current price on first sight -- and current price), and resets DOWN to the trigger price after a successful candidate alert (so the next evaluation measures a fresh pullback from that point, not the old already-alerted peak) -- identical convention to the take-profit routine's own swing_high field for its add-on judgment. watch_stage/watch_low/watch_started_at: the IDLE->WATCHING state machine tracking an in-progress pullback (mirrors the take-profit routine's dca_watch_stage/low/started_at). last_alerted_leg_high: dedup guard -- a candidate alert only fires again once swing_high has made a new leg high since the last alert (same pattern as watchlist.yaml's last_alerted_leg_high for reentry alerts). last_alert_trading_day: cooldown reference against alert_cooldown_trading_days. alert_count: informational count of how many candidate alerts have been sent for this ticker, never gates anything by itself. There is no avg_cost/exit_price concept here at all -- these tickers have never been held, so there is nothing to protect and no percentage profit/stop tiers, Trailing Stop, or Action Lock; this state exists purely to support the mechanical trend/pullback/confirmation gate, one-way (never suggests selling, only ever surfaces a candidate entry point).",
+  "_default_new_ticker_record": {
+    "swing_high": null,
+    "watch_stage": "IDLE",
+    "watch_low": null,
+    "watch_started_at": null,
+    "last_alerted_leg_high": null,
+    "last_alert_trading_day": null,
+    "alert_count": 0
+  },
+  "candidates": {
+    "GLW": {
+      "swing_high": null,
+      "watch_stage": "IDLE",
+      "watch_low": null,
+      "watch_started_at": null,
+      "last_alerted_leg_high": null,
+      "last_alert_trading_day": null,
+      "alert_count": 0
+    }
+  }
+}
