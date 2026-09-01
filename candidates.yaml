@@ -22,3 +22,15 @@ candidates:
   - ticker: GLW
     added_at: "2026-09-01"
     note: "深度回调后震荡筑底,周线均线未转向、RSI无背离,还没到确认止跌——先用日线机械判据挂着观察,等右侧确认信号,不代表现在建议买入"
+  - ticker: PENG
+    added_at: "2026-09-01"
+    note: ""
+  - ticker: MRVL
+    added_at: "2026-09-01"
+    note: ""
+  - ticker: OUST
+    added_at: "2026-09-01"
+    note: ""
+  - ticker: POWI
+    added_at: "2026-09-01"
+    note: ""

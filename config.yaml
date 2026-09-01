@@ -45,4 +45,7 @@ market_risk_mode:
   check_soxx_50ma: true
   # 只对这些 ticker 生效 SOXX 破位的额外CAUTION覆盖规则;candidates.yaml 里的票如果
   # 不是半导体,这里留空即可,不影响其它逻辑。按实际候选名单增删。
-  semiconductor_tickers: []
+  # MRVL(Marvell)、POWI(Power Integrations)是半导体公司,加进来;GLW(康宁,玻璃/
+  # 光通信材料)、PENG(Penguin Solutions,存储/网络硬件)、OUST(Ouster,激光雷达)
+  # 都不是半导体,不加。
+  semiconductor_tickers: ["MRVL", "POWI"]
