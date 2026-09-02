@@ -34,10 +34,14 @@ def send_telegram_message(message: str, max_retries: int = 3, base_delay_seconds
         }
 
     url = TELEGRAM_API_URL.format(token=token)
+    # 不传 parse_mode:止盈止损监控 routine 在 2026-09-01 真实运行中发现 parse_mode=
+    # "Markdown" 会把消息里 enum 类字段值(HL_CONFIRMED / WAIT_NO_SIGNAL 等)中的下划线
+    # 当成斜体分隔符,按整条消息里出现顺序两两配对消费掉,导致字段值显示错误。这个
+    # routine 的消息模板同样会出现下划线字段值,提前同步同一处修复。发送纯文本、不做
+    # 任何 markdown 解析,从根上消除风险,不需要对字段值做转义。
     payload = {
         "chat_id": chat_id,
         "text": message,
-        "parse_mode": "Markdown",
     }
 
     attempt = 0
