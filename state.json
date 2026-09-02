@@ -21,40 +21,40 @@
     },
     "PENG": {
       "swing_high": 47.26,
-      "watch_stage": "IDLE",
-      "watch_low": null,
-      "watch_started_at": null,
+      "watch_stage": "WATCHING",
+      "watch_low": 47.23,
+      "watch_started_at": "2026-09-02T15:18:06-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
       "alert_count": 0
     },
     "MRVL": {
       "swing_high": 209.13,
-      "watch_stage": "IDLE",
-      "watch_low": null,
-      "watch_started_at": null,
+      "watch_stage": "WATCHING",
+      "watch_low": 207.26,
+      "watch_started_at": "2026-09-02T15:18:06-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
       "alert_count": 0
     },
     "OUST": {
       "swing_high": 33.33,
-      "watch_stage": "IDLE",
-      "watch_low": null,
-      "watch_started_at": null,
+      "watch_stage": "WATCHING",
+      "watch_low": 34.58,
+      "watch_started_at": "2026-09-02T15:18:06-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
       "alert_count": 0
     },
     "POWI": {
       "swing_high": 49.89,
-      "watch_stage": "IDLE",
-      "watch_low": null,
-      "watch_started_at": null,
+      "watch_stage": "WATCHING",
+      "watch_low": 50.1062,
+      "watch_started_at": "2026-09-02T15:18:06-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
       "alert_count": 0
     }
   },
-  "last_heartbeat_date": "2026-09-01"
+  "last_heartbeat_date": "2026-09-02"
 }
