@@ -27,7 +27,7 @@
     "atr_at_event": null,
     "last_alerted_ll_event": null
   },
-  "last_heartbeat_date": "2026-09-01",
+  "last_heartbeat_date": "2026-09-02",
   "positions": {
     "TSM": {
       "highest_alerted_profit_tier": 1,
@@ -104,10 +104,10 @@
       "last_action_date": "2026-09-01",
       "last_avg_cost": 143.12,
       "last_shares": 2,
-      "trailing_stop_price": null,
+      "trailing_stop_price": 140.1842,
       "trailing_stop_triggered": false,
-      "last_processed_lh_event": null,
-      "atr_at_event": null,
+      "last_processed_lh_event": "2026-08-28|153.99|high",
+      "atr_at_event": 6.9029,
       "last_alerted_ll_event": null
     },
     "NVDA": {
@@ -175,7 +175,7 @@
       "highest_price_since_buy": 517.07,
       "swing_high": 517.07,
       "dca_watch_stage": "WATCHING",
-      "dca_watch_low": 501.08,
+      "dca_watch_low": 496.25,
       "dca_watch_started_at": "2026-08-27T15:42:15-04:00",
       "dca_executed_count": 0,
       "peak_shares_since_buy": 0.4,
@@ -236,13 +236,13 @@
       "peak_marked_swing_high": 78.49,
       "last_dca_trigger_trading_day": null,
       "last_action_category": "REDUCE_SELL",
-      "last_action_date": "2026-08-31",
+      "last_action_date": "2026-09-02",
       "last_avg_cost": 84.31,
       "last_shares": 1,
       "trailing_stop_price": 75.45,
       "trailing_stop_triggered": true,
       "last_processed_lh_event": "2026-08-26|83.5|high",
-      "atr_at_event": 6.6641,
+      "atr_at_event": 6.3869,
       "last_alerted_ll_event": null
     },
     "BE": {
@@ -307,7 +307,7 @@
       "last_triggered_at": null,
       "rsi_peak": 42.9216,
       "hourly_rsi_peak": 46.72205828720886,
-      "highest_price_since_buy": 139.97,
+      "highest_price_since_buy": 140.295,
       "swing_high": 139.965,
       "dca_watch_stage": "WATCHING",
       "dca_watch_low": 136.9,
@@ -320,10 +320,10 @@
       "last_action_date": "2026-09-01",
       "last_avg_cost": 136.4,
       "last_shares": 0.2,
-      "trailing_stop_price": null,
+      "trailing_stop_price": 134.5,
       "trailing_stop_triggered": false,
-      "last_processed_lh_event": null,
-      "atr_at_event": null,
+      "last_processed_lh_event": "2026-08-26|144.03|high",
+      "atr_at_event": 5.6022,
       "last_alerted_ll_event": "2026-08-24|134.5|low"
     },
     "GRAB": {
@@ -347,10 +347,10 @@
       "last_action_date": "2026-09-01",
       "last_avg_cost": 3.677,
       "last_shares": 15,
-      "trailing_stop_price": null,
+      "trailing_stop_price": 3.415,
       "trailing_stop_triggered": false,
-      "last_processed_lh_event": null,
-      "atr_at_event": null,
+      "last_processed_lh_event": "2026-08-27|3.6599|high",
+      "atr_at_event": 0.1309,
       "last_alerted_ll_event": "2026-08-24|3.415|low"
     },
     "GOOG": {
