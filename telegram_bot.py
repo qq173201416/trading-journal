@@ -34,10 +34,14 @@ def send_telegram_message(message: str, max_retries: int = 3, base_delay_seconds
         }
 
     url = TELEGRAM_API_URL.format(token=token)
+    # 不传 parse_mode:2026-09-01 真实数据发现 parse_mode="Markdown" 会把消息里 enum 类
+    # 字段值(HL_CONFIRMED / WAIT_NO_SIGNAL / market_state 等)中的下划线当成斜体分隔符,
+    # 按整条消息里出现顺序两两配对消费掉,导致 HL_CONFIRMED 显示成 HLCONFIRMED 这类拼接
+    # 错误。发送纯文本、不做任何 markdown 解析,从根上消除这类 field value 被解析器改写
+    # 的风险,不需要对字段值做转义。
     payload = {
         "chat_id": chat_id,
         "text": message,
-        "parse_mode": "Markdown",
     }
 
     attempt = 0
