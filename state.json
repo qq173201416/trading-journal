@@ -49,12 +49,12 @@
     "POWI": {
       "swing_high": 49.89,
       "watch_stage": "WATCHING",
-      "watch_low": 50.1062,
+      "watch_low": 49.92,
       "watch_started_at": "2026-09-02T15:18:06-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
       "alert_count": 0
     }
   },
-  "last_heartbeat_date": "2026-09-03"
+  "last_heartbeat_date": "2026-09-04"
 }
