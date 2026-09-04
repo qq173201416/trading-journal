@@ -24,3 +24,4 @@ signal_date,ticker,price_at_signal,stage,trend_score,rs_score,extension_pct,week
 2026-09-01,PENG,47.59,deep_base_watch,60,100,-41.53,23,0.492,v1.1,,,,
 2026-09-01,QCOM,166.61,deep_base_watch,20,35.5,-33.63,22,0.623,v1.1,,,,
 2026-09-01,TER,335.46,deep_base_watch,60,93.1,-30.67,26,0.647,v1.1,,,,
+2026-09-02,ALAB,274.13,deep_base_watch,60,85.9,-43.25,23,0.68,v1.1,,,,
