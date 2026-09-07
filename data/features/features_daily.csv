@@ -2192,3 +2192,12 @@ ZBIO,2026-09-03,80,100,5.27,base,accumulating,0.844,32.92,29.7325,25.993,24.9912
 ZIM,2026-09-03,100,73.4,3.0,base,accumulating,1.389,27.59,26.4393,24.9527,24.1678,0.9206,0.0448,-0.1578,0.8787,29.27,-5.74,,False,False,False,29,22.2,False,6.17,False,False,False,True,True
 ZLAB,2026-09-03,60,71.3,4.22,base,accumulating,1.357,27.0,22.8452,21.7221,22.4678,0.7776,0.5763,0.2319,-0.2911,34.44,-21.6,,False,False,False,13,16.62,False,35.84,False,False,False,True,True
 ZYME,2026-09-03,100,88.5,5.4,early_breakout,accumulating,1.197,29.9,26.0393,24.5487,23.754,0.9541,0.1955,0.0918,0.9325,28.56,4.69,2.0,False,False,False,5,21.94,False,26.16,True,False,False,True,True
+AAP,2026-09-04,0,16.7,4.76,weakening,stabilizing,1.344,44.18,51.3995,53.3914,53.4069,0.6775,-0.2851,-0.2708,-0.459,64.17,-31.15,,False,False,True,2,42.58,False,-27.68,False,False,False,False,False
+AAPL,2026-09-04,100,58.0,2.41,base,accumulating,0.741,319.97,312.5196,293.848,285.9066,0.9286,0.0192,0.0957,0.145,340.08,-5.91,,True,False,True,24,247.99,False,-9.24,False,False,False,True,True
+AAUC,2026-09-04,40,45.1,4.0,base,accumulating,0.737,23.62,23.0367,24.3759,24.0335,0.7335,-0.1214,-0.385,0.3826,32.01,-26.21,,False,False,True,5,18.23,False,9.08,True,False,False,True,True
+ABBV,2026-09-04,100,54.6,2.16,base,stabilizing,0.66,256.46,250.9469,235.2067,230.6254,0.9588,0.1078,-0.008,0.0166,263.3,-2.6,2.6,True,False,True,19,198.71,False,-4.38,False,False,True,False,True
+ABNB,2026-09-04,100,77.5,2.69,early_breakout,accumulating,1.165,181.94,167.2103,148.9651,145.0724,0.9405,0.3115,0.2219,0.2795,178.07,2.17,4.0,False,False,False,29,121.35,False,19.68,False,False,False,True,True
+ABT,2026-09-04,60,39.7,2.72,base,stabilizing,0.671,108.33,105.7406,104.6682,106.8964,0.7879,0.1551,-0.1739,-0.3751,136.62,-20.71,,True,False,True,17,84.32,False,-0.53,False,False,True,False,False
+ACHC,2026-09-04,60,52.7,4.88,weakening,stabilizing,0.571,28.13,29.2294,26.4006,25.3952,0.7851,0.0691,0.0029,-0.004,35.61,-21.01,,True,False,True,29,16.77,False,-17.65,False,False,True,False,False
+ASST,2026-09-04,40,100,7.7,base,accumulating,1.632,27.14,16.6987,18.0835,21.2889,0.1077,0.7425,2.0537,-0.8911,178.2,-84.77,,False,False,False,27,7.94,False,118.43,True,False,False,True,True
+SHAZ,2026-08-27,60,77.2,9.88,weakening,stabilizing,1.001,59.21,62.7244,54.4447,50.4562,0.426,-0.2611,1.2501,0.0062,139.0,-57.4,,True,False,True,29,1.9,False,-11.17,False,False,False,False,False
