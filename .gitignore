@@ -1,2 +1,6 @@
 __pycache__/
 *.pyc
+
+# Borrowed each run via `git show main:lib/swing_structure.py > swing_structure.py`
+# (see config.yaml's Trailing Stop comment) -- never committed to this branch.
+swing_structure.py
