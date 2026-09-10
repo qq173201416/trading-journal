@@ -29,7 +29,7 @@
       "alert_count": 0
     },
     "MRVL": {
-      "swing_high": 209.13,
+      "swing_high": 229.645,
       "watch_stage": "WATCHING",
       "watch_low": 207.26,
       "watch_started_at": "2026-09-02T15:18:06-04:00",
@@ -49,12 +49,12 @@
     "POWI": {
       "swing_high": 49.89,
       "watch_stage": "WATCHING",
-      "watch_low": 49.92,
+      "watch_low": 49.76,
       "watch_started_at": "2026-09-02T15:18:06-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
       "alert_count": 0
     }
   },
-  "last_heartbeat_date": "2026-09-09"
+  "last_heartbeat_date": "2026-09-10"
 }
