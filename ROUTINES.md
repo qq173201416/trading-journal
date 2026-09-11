@@ -144,6 +144,41 @@ v1.0" — a routine's executing agent has no access to another branch's
 routine text and is explicitly barred from reading `claude/ymag-paper-state`
 to look it up, so this prompt has to be self-contained.
 
+**Round 5 (this revision, after ~7 weeks of live paper trading, first
+real BUY on 2026-09-04 and first real dividend on 2026-09-09):** the
+first live trade and dividend checked out exactly — share count,
+`avg_cost`, `cash_principal` deduction, `dividend_income`, and
+`total_account_value` were all independently re-verified against the
+actual logged numbers with no discrepancy. Two changes based on what the
+live run actually surfaced:
+
+1. **Dividend detection simplified to Robinhood-only.** The dual-source
+   design (Robinhood + web fallback) never once got a working fallback
+   read in 7 weeks — early on the fallback sites returned HTTP 403, more
+   recently the log shows `EGRESS_BLOCKED` from this environment's own
+   network proxy, meaning the block is structural to this environment,
+   not a per-site fluke that might resolve itself. Retrying three
+   guaranteed-dead `web_fetch` calls every single day added latency and
+   log noise for zero benefit. **Fix:** Robinhood (`get_equity_fundamentals`)
+   is now the sole, authoritative source. The `sa_ex_date`/`sa_amount`
+   columns stay in `state/ymag_dividend_log.csv` for schema continuity
+   with 7 weeks of already-committed rows, just left empty going forward.
+   If this environment's egress policy ever changes, dual-source
+   cross-checking can be reinstated.
+2. **Quote validity check hardened against stale snapshots.** On
+   2026-09-07 (Labor Day, a market holiday the time-window guard doesn't
+   know about), `get_equity_quotes` returned the *same* frozen
+   Friday-close snapshot on all 4 attempts, with an 18.6% bid/ask spread
+   versus this strategy's normal 0.08–0.2% — technically "valid" by the
+   old check (bid/ask both positive, bid < ask), but obviously not a live
+   quote. The executing agent caught it that day through its own judgment
+   and correctly skipped trading, but that was a judgment call, not a
+   guaranteed rule, and every future market holiday hits the same gap.
+   **Fix:** the retry condition now explicitly also treats a stale
+   timestamp (not today's date) or an abnormal spread (`spread_cost_pct`
+   > 2%, generously above the observed normal range) as an invalid quote
+   requiring retry/skip — not just missing/negative/crossed values.
+
 ---
 
 ## Routine — YMAG Intraday Signal & Paper Trade
@@ -246,13 +281,27 @@ recovery_pending=false, recovery_pending_since=(空), status="flat"。
   cash_reserved,avg_cost賣出時不變
 - shares允許小數(碎股處理),本金規模小,取整會造成明顯的資金利用率損失
 
-【第三點五層:實時報價(含重試)】
+【第三點五層:實時報價(含重試,含新鮮度檢查)】
 調用 get_equity_quotes(symbols=["YMAG"]) 取得當下(routine執行這一刻)的
-bid_price、ask_price、last_trade_price。記為 live_bid、live_ask、
-live_last。
-- 若任一必要欄位缺失,或明顯不合理(例如bid/ask為0或負數、bid>ask):
-  間隔約30秒後重試,最多重試3次(即最多共嘗試4次)。仍未取得有效報價,
-  才視為本次無法取得報價(見下方失敗處理)。
+bid_price、ask_price、last_trade_price,以及報價本身附帶的時間戳(例如
+venue_last_trade_time或等效欄位)。記為 live_bid、live_ask、live_last。
+
+視為「無效報價、需要重試」的情況,以下任一成立即算(不只是缺失/負值/
+bid>ask 這種明顯錯誤,也要抓「看起來合法但其實是凍結快照」的情況——這是
+實測在假日(例如Labor Day)踩到過的真實案例,務必納入規則,不要只靠臨場
+判斷):
+- 必要欄位缺失,或明顯不合理(bid/ask為0或負數、bid>ask)
+- 報價附帶的時間戳所屬日曆日(美東時區)不是今天,或跟前一次交易日收盤
+  的時間戳完全相同——代表這是尚未更新的舊快照,不是即時報價
+- spread_cost_pct(見下方公式)超過2%——本策略歷史正常價差落在
+  0.08%~0.2%之間,2%已經是數十倍的寬鬆容忍,超過此值視為數據異常
+  (實測案例中,假日凍結快照的價差高達18.6%)
+
+符合以上任一情況:間隔約30秒後重試,最多重試3次(即最多共嘗試4次)。四
+次都拿到無效/新鮮度不合格的報價,才視為本次無法取得報價(見下方失敗處
+理)——不要因為字面上bid/ask都是正值、bid<ask就直接判定"報價有效",還要
+過新鮮度與價差合理性這兩關。
+
 - live_mid = (live_bid + live_ask) / 2,只用於計算spread_cost_pct,不用
   於帳戶估值(見下方"標記價格"說明)
 - 若買入條件成立,模擬買入的實際成交價 = live_ask(買方要付出的價格)
@@ -265,6 +314,7 @@ live_ask/live_last數值,不需要在後面的層重新拉取。
 
 若重試後仍沒有返回有效報價,本次不執行任何買賣判斷,只更新價格歷史和分
 紅檢測,在報告裡註明"本次未能取得實時報價(已重試3次),跳過買賣判斷",
+並具體說明是缺失/不合理值、還是新鮮度不合格(附上時間戳與spread數值),
 不得用T-1收盤價代替實時報價去模擬"盤中成交"。
 
 【標記價格(mark price)說明,修正點】total_account_value與浮動盈虧的估
@@ -279,43 +329,38 @@ live_bid/live_ask/live_last/spread_cost_pct,供下面第四層(分紅)、第五
 shares/cash_reserved/cash_uninvested/cash_principal,提前算會在最終驗證
 時對不上。
 
-【第四層:每日檢測分紅信息(雙源交叉驗證,已證實Robinhood單一源會滯後)】
+【第四層:每日檢測分紅信息(Robinhood為唯一來源,修正點)】
 每天執行本routine時都跑一次本層檢測,不再假設分紅只會在固定星期幾出現。
-分紅這件事本身是基於每日/每週的規律,不受"今天幾點跑"影響:
+分紅這件事本身是基於每日/每週的規律,不受"今天幾點跑"影響。
 
-1. 源A(Robinhood):調用 get_equity_fundamentals(symbols=["YMAG"]),取得
+【關於雙源交叉驗證的取捨說明】原本設計是Robinhood+網頁備援雙源交叉,原
+因是實測發現過Robinhood單一源會滯後。但實際運行7週以來,
+stockanalysis.com、dividendinvestor.com、marketchameleon.com 三個備援
+網頁源**沒有一次成功過**——早期是網站本身回HTTP 403,後期則是這個執行
+環境的網路出站代理直接把這幾個網域擋掉(EGRESS_BLOCKED),不是網站端偶
+發問題,是這個環境結構性打不通。既然備援從未真正發揮作用,不如簡化為
+Robinhood單一權威來源,不必每天浪費3次注定失敗的web_fetch呼叫、也不用
+在日誌裡重複記錄"備援又打不通"這種已知結果。若之後這個環境的網路政策
+有調整、備援網域打得通了,可以再考慮恢復雙源。
+
+1. 調用 get_equity_fundamentals(symbols=["YMAG"]),取得
    dividend_per_share、ex_dividend_date、record_date、payable_date,記為
-   rh_ex_date、rh_amount。
-2. 源B(網頁,更新更快):web_fetch https://stockanalysis.com/etf/ymag/dividend/ ,
-   從頁面裡的分紅歷史表格中取最新一行的 ex-dividend date 和 per-share
-   金額,記為 sa_ex_date、sa_amount。若該頁面結構變化導致抓取失敗,嘗試
-   改抓 https://www.dividendinvestor.com 或
-   https://marketchameleon.com/Overview/YMAG/Dividends/ 之一作為替代,
-   仍失敗則 sa_ex_date 記為空。
-3. 取兩個源裡日期較新的一個作為本次候選:candidate_ex_date =
-   max(rh_ex_date, sa_ex_date)(忽略為空的一側)。若兩個源都為空,記錄
-   "本次分紅數據兩個來源均未獲取",跳過入賬,不影響其他字段。
-4. 去重判斷:讀取 state/ymag_dividend_log.csv 最後一行記錄的
+   candidate_ex_date、candidate_amount。
+2. 去重判斷:讀取 state/ymag_dividend_log.csv 最後一行記錄的
    ex_dividend_date。
    - 若 candidate_ex_date 與已記錄的最後一次相同或更早:說明沒有新分
      紅,跳過
    - 若 candidate_ex_date 更新(出現了新日期):視為一次新分紅,繼續下
      一步
-5. 確定金額:若 candidate_ex_date 由源A提供,用 rh_amount;若由源B提供,
-   用 sa_amount。若兩個源都返回了同一個candidate_ex_date但金額不一致,
-   兩個數值都寫入日誌的備註欄,金額本身取源A(Robinhood,同一賬戶體系,
-   口徑更貼近實際持倉計算)為準,並在報告裡註明"兩源金額不一致,已採用
-   Robinhood數值,請人工核對"。
-6. 入賬(僅在步驟4判定為"新分紅"時執行):
+3. 入賬(僅在步驟2判定為"新分紅"時執行):
    - 除息資格的持股數,明確定義為candidate_ex_date前一個交易日收盤時的
      持倉股數(即除息日當天開盤前已經持有、不含除息日當天或之後新買入
      的部分),記為shares_before_ex_date。這個數字只能從
      state/ymag_trade_log.csv 按時間順序回放到candidate_ex_date(不含
      當天)倒推取得——不能用ymag_position.csv,因為該文件是每次覆蓋式
-     更新的當前狀態,不保留歷史,在偵測滯後(源A/源B都可能滯後)導致
-     ex_date是幾天前而期間又有交易發生的情況下,只有trade_log能正確
-     回放出當時的持股數。
-   - dividend_income = shares_before_ex_date × 確定的per-share金額
+     更新的當前狀態,不保留歷史,在偵測滯後導致ex_date是幾天前而期間
+     又有交易發生的情況下,只有trade_log能正確回放出當時的持股數。
+   - dividend_income = shares_before_ex_date × candidate_amount
    - cumulative_dividends += dividend_income
    - cumulative_dividend_cash_in += dividend_income(不管下面流向哪個池
      子,都計入這個只增不減的來源追蹤計數器)
@@ -324,9 +369,10 @@ shares/cash_reserved/cash_uninvested/cash_principal,提前算會在最終驗證
      cash_reserved
    - 否則:計入 cash_uninvested
    - 寫入 state/ymag_dividend_log.csv 一行:date(執行日),ex_dividend_date,
-     source_used("robinhood"或"web:域名"),rh_amount,sa_amount,
-     shares_before_ex_date,dividend_income,routed_to
-7. 釋放擱置資金(目標是"今天實際會用到的建倉金額",不是寫死的$25):若
+     source_used("robinhood"),rh_amount(=candidate_amount),sa_amount
+     (留空——不再要求嘗試網頁備援,欄位保留只是為了不打亂既有7週資料的
+     schema),shares_before_ex_date,dividend_income,routed_to
+4. 釋放擱置資金(目標是"今天實際會用到的建倉金額",不是寫死的$25):若
    當前(用T-1技術指標判斷)同時滿足"站上20日均線 且
    range_pct_4w<5%",且 cash_uninvested > 0:先按第五層的月份/深跌例外
    規則算出"如果今天要買入,基礎金額會是多少"(標準月$25、非優選月
@@ -337,7 +383,7 @@ shares/cash_reserved/cash_uninvested/cash_principal,提前算會在最終驗證
    (action="RELEASE_UNINVESTED",amount=release_amount)。若
    release_amount為0(cash_reserved已經達到next_tranche_target),本次
    不釋放,cash_uninvested留待下次機會。
-8. 本層只處理分紅入賬與資金池調度,不觸發任何買入/賣出判斷。
+5. 本層只處理分紅入賬與資金池調度,不觸發任何買入/賣出判斷。
 
 【第五層:決策引擎(不下真實訂單,只寫入模擬決策;判斷基準是T-1,成交
 價是live_ask/live_bid)】
