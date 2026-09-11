@@ -1,2 +1,2 @@
 date,shares,avg_cost,cash_principal,cash_reserved,cash_uninvested,cumulative_dividends,cumulative_realized_gain,cumulative_dividend_cash_in,cumulative_sale_cash_in,total_account_value,prev_market_trend,prev_mag7_breadth_healthy,recovery_pending,recovery_pending_since,status
-2026-09-10,2.212389,11.30,75,0.187389,0,0.187389,0,0.187389,0,99.800217,up,true,false,,holding
+2026-09-11,1.769911,11.30,75,5.165264,0,0.187389,-0.022124,0.187389,4.977875,100.12986,down,true,true,2026-09-11,holding
