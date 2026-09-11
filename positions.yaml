@@ -19,7 +19,7 @@ positions:
     shares: 0.2
   - ticker: SKHY
     avg_cost: 158.439
-    shares: 1.8
+    shares: 1.5
   - ticker: ORCL
     avg_cost: 143.12
     shares: 2
@@ -28,7 +28,7 @@ positions:
     shares: 0.4
   - ticker: NOW
     avg_cost: 110.60
-    shares: 0.7
+    shares: 0.4
   - ticker: MSFT
     avg_cost: 396.86
     shares: 0.3
@@ -37,19 +37,25 @@ positions:
     shares: 4
   - ticker: ACMR
     avg_cost: 84.31
-    shares: 1
+    shares: 0.2
   - ticker: BE
     avg_cost: 204.10
     shares: 0.1
   - ticker: QCOM
-    avg_cost: 164.00
-    shares: 0.4
+    avg_cost: 166.92
+    shares: 0.5
   - ticker: VST
     avg_cost: 136.40
     shares: 0.2
   - ticker: GRAB
-    avg_cost: 3.677
-    shares: 15
+    avg_cost: 3.553
+    shares: 4
   - ticker: GOOG
     avg_cost: 335.10
     shares: 0.7
+  - ticker: SPCX
+    avg_cost: 148.60
+    shares: 0.1
+  - ticker: NKE
+    avg_cost: 37.60
+    shares: 0.1
