@@ -34,3 +34,7 @@ signal_date,ticker,price_at_signal,stage,trend_score,rs_score,extension_pct,week
 2026-09-03,QCOM,168.57,deep_base_watch,20,34.7,-32.85,22,0.603,v1.1,,,,
 2026-09-03,TER,338.59,deep_base_watch,60,88.4,-30.02,26,0.622,v1.1,,,,
 2026-09-04,FLY,21.67,deep_base_watch,0,10.7,-63.15,27,0.644,v1.1,,,,
+2026-09-09,NFLX,76.03,deep_base_watch,0,18.2,-39.81,8,0.672,v1.1,,,,
+2026-09-09,OUST,36.24,deep_base_watch,60,63.6,-42.03,24,0.65,v1.1,,,,
+2026-09-09,FLY,21.81,deep_base_watch,0,14.1,-62.91,28,0.649,v1.1,,,,
+2026-09-10,VECO,43.9,deep_base_watch,40,57.6,-47.13,29,0.515,v1.1,,,,
