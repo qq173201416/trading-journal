@@ -41,3 +41,4 @@ signal_date,ticker,price_at_signal,stage,trend_score,rs_score,extension_pct,week
 2026-09-10,FLY,20.9,deep_base_watch,0,9.4,-64.46,28,0.668,v1.1,,,,
 2026-09-10,NFLX,76.01,deep_base_watch,0,19.1,-39.83,8,0.667,v1.1,,,,
 2026-09-10,OUST,35.23,deep_base_watch,60,56.4,-43.65,24,0.633,v1.1,,,,
+2026-09-15,ARM,241.83,deep_base_watch,60,94.3,-44.97,29,0.466,v1.1,,,,
