@@ -20,7 +20,7 @@
       "alert_count": 0
     },
     "PENG": {
-      "swing_high": 47.26,
+      "swing_high": 48.91,
       "watch_stage": "WATCHING",
       "watch_low": 47.23,
       "watch_started_at": "2026-09-02T15:18:06-04:00",
@@ -29,7 +29,7 @@
       "alert_count": 0
     },
     "MRVL": {
-      "swing_high": 229.645,
+      "swing_high": 232.39,
       "watch_stage": "WATCHING",
       "watch_low": 207.26,
       "watch_started_at": "2026-09-02T15:18:06-04:00",
@@ -38,9 +38,9 @@
       "alert_count": 0
     },
     "OUST": {
-      "swing_high": 33.33,
+      "swing_high": 34.27,
       "watch_stage": "WATCHING",
-      "watch_low": 34.58,
+      "watch_low": 34.27,
       "watch_started_at": "2026-09-02T15:18:06-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
@@ -49,12 +49,57 @@
     "POWI": {
       "swing_high": 49.89,
       "watch_stage": "WATCHING",
-      "watch_low": 49.76,
+      "watch_low": 48.27,
       "watch_started_at": "2026-09-02T15:18:06-04:00",
+      "last_alerted_leg_high": null,
+      "last_alert_trading_day": null,
+      "alert_count": 0
+    },
+    "OLLI": {
+      "swing_high": 76.89,
+      "watch_stage": "IDLE",
+      "watch_low": null,
+      "watch_started_at": null,
+      "last_alerted_leg_high": null,
+      "last_alert_trading_day": null,
+      "alert_count": 0
+    },
+    "BFAM": {
+      "swing_high": 69.0,
+      "watch_stage": "IDLE",
+      "watch_low": null,
+      "watch_started_at": null,
+      "last_alerted_leg_high": null,
+      "last_alert_trading_day": null,
+      "alert_count": 0
+    },
+    "NFLX": {
+      "swing_high": 77.28,
+      "watch_stage": "IDLE",
+      "watch_low": null,
+      "watch_started_at": null,
+      "last_alerted_leg_high": null,
+      "last_alert_trading_day": null,
+      "alert_count": 0
+    },
+    "LRCX": {
+      "swing_high": 272.4334,
+      "watch_stage": "IDLE",
+      "watch_low": null,
+      "watch_started_at": null,
+      "last_alerted_leg_high": null,
+      "last_alert_trading_day": null,
+      "alert_count": 0
+    },
+    "TER": {
+      "swing_high": 344.75,
+      "watch_stage": "IDLE",
+      "watch_low": null,
+      "watch_started_at": null,
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
       "alert_count": 0
     }
   },
-  "last_heartbeat_date": "2026-09-11"
+  "last_heartbeat_date": "2026-09-16"
 }
