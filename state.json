@@ -13,7 +13,7 @@
     "GLW": {
       "swing_high": 169.565,
       "watch_stage": "WATCHING",
-      "watch_low": 144.08,
+      "watch_low": 143.23,
       "watch_started_at": "2026-09-01T15:18:33-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
@@ -40,7 +40,7 @@
     "OUST": {
       "swing_high": 34.27,
       "watch_stage": "WATCHING",
-      "watch_low": 34.27,
+      "watch_low": 33.3,
       "watch_started_at": "2026-09-02T15:18:06-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
@@ -49,7 +49,7 @@
     "POWI": {
       "swing_high": 49.89,
       "watch_stage": "WATCHING",
-      "watch_low": 48.27,
+      "watch_low": 46.9925,
       "watch_started_at": "2026-09-02T15:18:06-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
@@ -57,45 +57,45 @@
     },
     "OLLI": {
       "swing_high": 76.89,
-      "watch_stage": "IDLE",
-      "watch_low": null,
-      "watch_started_at": null,
+      "watch_stage": "WATCHING",
+      "watch_low": 75.21,
+      "watch_started_at": "2026-09-16T15:16:27-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
       "alert_count": 0
     },
     "BFAM": {
-      "swing_high": 69.0,
-      "watch_stage": "IDLE",
-      "watch_low": null,
-      "watch_started_at": null,
+      "swing_high": 69.03,
+      "watch_stage": "WATCHING",
+      "watch_low": 69.03,
+      "watch_started_at": "2026-09-16T15:16:27-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
       "alert_count": 0
     },
     "NFLX": {
       "swing_high": 77.28,
-      "watch_stage": "IDLE",
-      "watch_low": null,
-      "watch_started_at": null,
+      "watch_stage": "WATCHING",
+      "watch_low": 76.665,
+      "watch_started_at": "2026-09-16T15:16:27-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
       "alert_count": 0
     },
     "LRCX": {
       "swing_high": 272.4334,
-      "watch_stage": "IDLE",
-      "watch_low": null,
-      "watch_started_at": null,
+      "watch_stage": "WATCHING",
+      "watch_low": 266.68,
+      "watch_started_at": "2026-09-16T15:16:27-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
       "alert_count": 0
     },
     "TER": {
       "swing_high": 344.75,
-      "watch_stage": "IDLE",
-      "watch_low": null,
-      "watch_started_at": null,
+      "watch_stage": "WATCHING",
+      "watch_low": 338.1,
+      "watch_started_at": "2026-09-16T15:16:27-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
       "alert_count": 0
