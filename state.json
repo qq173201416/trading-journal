@@ -20,7 +20,7 @@
       "alert_count": 0
     },
     "PENG": {
-      "swing_high": 52.2351,
+      "swing_high": 52.72,
       "watch_stage": "WATCHING",
       "watch_low": 47.23,
       "watch_started_at": "2026-09-02T15:18:06-04:00",
@@ -67,7 +67,7 @@
     "BFAM": {
       "swing_high": 69.03,
       "watch_stage": "WATCHING",
-      "watch_low": 67.22,
+      "watch_low": 65.795,
       "watch_started_at": "2026-09-16T15:16:27-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
@@ -76,14 +76,14 @@
     "NFLX": {
       "swing_high": 77.28,
       "watch_stage": "WATCHING",
-      "watch_low": 75.46,
+      "watch_low": 72.035,
       "watch_started_at": "2026-09-16T15:16:27-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
       "alert_count": 0
     },
     "LRCX": {
-      "swing_high": 272.4334,
+      "swing_high": 283.26,
       "watch_stage": "WATCHING",
       "watch_low": 266.68,
       "watch_started_at": "2026-09-16T15:16:27-04:00",
@@ -92,7 +92,7 @@
       "alert_count": 0
     },
     "TER": {
-      "swing_high": 352.77,
+      "swing_high": 360.77,
       "watch_stage": "WATCHING",
       "watch_low": 338.1,
       "watch_started_at": "2026-09-16T15:16:27-04:00",
@@ -101,5 +101,5 @@
       "alert_count": 0
     }
   },
-  "last_heartbeat_date": "2026-09-17"
+  "last_heartbeat_date": "2026-09-18"
 }
