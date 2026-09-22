@@ -50,3 +50,8 @@ signal_date,ticker,price_at_signal,stage,trend_score,rs_score,extension_pct,week
 2026-09-17,NFLX,75.31,deep_base_watch,0,21.6,-39.33,9,0.695,v1.1,,,,
 2026-09-17,PENG,52.55,deep_base_watch,60,100,-35.43,25,0.469,v1.1,,,,
 2026-09-17,UCTT,67.54,deep_base_watch,40,72.6,-52.63,28,0.626,v1.1,,,,
+2026-09-18,IBM,229.55,deep_base_watch,0,30.3,-30.28,9,0.602,v1.1,,,,
+2026-09-18,ICHR,54.8,deep_base_watch,40,93.5,-51.19,28,0.677,v1.1,,,,
+2026-09-18,KLIC,83.14,deep_base_watch,60,64.4,-37.87,28,0.68,v1.1,,,,
+2026-09-18,PENG,53.3,deep_base_watch,60,100,-34.51,25,0.486,v1.1,,,,
+2026-09-21,UCTT,73.05,deep_base_watch,40,80.5,-48.77,29,0.621,v1.1,,,,
