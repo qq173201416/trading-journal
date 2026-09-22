@@ -20,7 +20,7 @@
       "alert_count": 0
     },
     "PENG": {
-      "swing_high": 55.375,
+      "swing_high": 56.37,
       "watch_stage": "WATCHING",
       "watch_low": 47.23,
       "watch_started_at": "2026-09-02T15:18:06-04:00",
@@ -29,7 +29,7 @@
       "alert_count": 0
     },
     "MRVL": {
-      "swing_high": 259.96,
+      "swing_high": 264.31,
       "watch_stage": "WATCHING",
       "watch_low": 207.26,
       "watch_started_at": "2026-09-02T15:18:06-04:00",
@@ -38,7 +38,7 @@
       "alert_count": 0
     },
     "OUST": {
-      "swing_high": 38.26,
+      "swing_high": 39.74,
       "watch_stage": "WATCHING",
       "watch_low": 33.3,
       "watch_started_at": "2026-09-02T15:18:06-04:00",
@@ -47,7 +47,7 @@
       "alert_count": 0
     },
     "POWI": {
-      "swing_high": 49.89,
+      "swing_high": 51.86,
       "watch_stage": "WATCHING",
       "watch_low": 46.9925,
       "watch_started_at": "2026-09-02T15:18:06-04:00",
@@ -56,7 +56,7 @@
       "alert_count": 0
     },
     "OLLI": {
-      "swing_high": 79.96,
+      "swing_high": 82.06,
       "watch_stage": "WATCHING",
       "watch_low": 75.21,
       "watch_started_at": "2026-09-16T15:16:27-04:00",
@@ -76,14 +76,14 @@
     "NFLX": {
       "swing_high": 77.28,
       "watch_stage": "WATCHING",
-      "watch_low": 72.035,
+      "watch_low": 71.84,
       "watch_started_at": "2026-09-16T15:16:27-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
       "alert_count": 0
     },
     "LRCX": {
-      "swing_high": 304.115,
+      "swing_high": 308.56,
       "watch_stage": "WATCHING",
       "watch_low": 266.68,
       "watch_started_at": "2026-09-16T15:16:27-04:00",
@@ -92,7 +92,7 @@
       "alert_count": 0
     },
     "TER": {
-      "swing_high": 382.78,
+      "swing_high": 396.44,
       "watch_stage": "WATCHING",
       "watch_low": 338.1,
       "watch_started_at": "2026-09-16T15:16:27-04:00",
@@ -101,5 +101,5 @@
       "alert_count": 0
     }
   },
-  "last_heartbeat_date": "2026-09-21"
+  "last_heartbeat_date": "2026-09-22"
 }
