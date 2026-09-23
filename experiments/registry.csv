@@ -55,3 +55,5 @@ signal_date,ticker,price_at_signal,stage,trend_score,rs_score,extension_pct,week
 2026-09-18,KLIC,83.14,deep_base_watch,60,64.4,-37.87,28,0.68,v1.1,,,,
 2026-09-18,PENG,53.3,deep_base_watch,60,100,-34.51,25,0.486,v1.1,,,,
 2026-09-21,UCTT,73.05,deep_base_watch,40,80.5,-48.77,29,0.621,v1.1,,,,
+2026-09-21,ICHR,56.14,deep_base_watch,40,89.4,-50.0,29,0.679,v1.1,,,,
+2026-09-21,KLIC,84.08,deep_base_watch,60,62.6,-37.16,29,0.685,v1.1,,,,
