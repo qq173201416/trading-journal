@@ -28,7 +28,7 @@
     "last_alerted_ll_event": null,
     "last_profit_sign": null
   },
-  "last_heartbeat_date": "2026-09-22",
+  "last_heartbeat_date": "2026-09-23",
   "positions": {
     "TSM": {
       "highest_alerted_profit_tier": 3,
@@ -36,8 +36,8 @@
       "highest_alerted_add_tier": 0,
       "current_stage": "TIER3",
       "last_triggered_at": "2026-09-08T12:50:41-04:00",
-      "rsi_peak": 61.7291,
-      "hourly_rsi_peak": 82.6732,
+      "rsi_peak": 64.2686,
+      "hourly_rsi_peak": 84.3354,
       "highest_price_since_buy": 451.99,
       "swing_high": 451.99,
       "dca_watch_stage": "WATCHING",
@@ -232,7 +232,7 @@
       "highest_alerted_add_tier": 0,
       "current_stage": "IDLE",
       "last_triggered_at": "2026-08-21T09:47:35-04:00",
-      "rsi_peak": 48.5878,
+      "rsi_peak": 52.752,
       "hourly_rsi_peak": null,
       "highest_price_since_buy": 77.36,
       "swing_high": 81.775,
@@ -344,7 +344,7 @@
       "highest_alerted_add_tier": 0,
       "current_stage": "IDLE",
       "last_triggered_at": "2026-08-21T09:47:35-04:00",
-      "rsi_peak": 42.0575,
+      "rsi_peak": 47.3329,
       "hourly_rsi_peak": null,
       "highest_price_since_buy": 3.425,
       "swing_high": 3.645,
@@ -356,14 +356,14 @@
       "peak_marked_swing_high": 3.525,
       "last_dca_trigger_trading_day": null,
       "last_action_category": "REDUCE_SELL",
-      "last_action_date": "2026-09-11",
+      "last_action_date": "2026-09-23",
       "last_avg_cost": 3.553,
       "last_shares": 4,
       "trailing_stop_price": 3.415,
       "trailing_stop_triggered": true,
       "last_processed_lh_event": "2026-08-27|3.6599|high",
       "atr_at_event": 0.1346,
-      "last_alerted_ll_event": "2026-08-24|3.415|low",
+      "last_alerted_ll_event": "2026-09-18|2.74|low",
       "last_profit_sign": "negative"
     },
     "GOOG": {
@@ -440,14 +440,14 @@
       "peak_marked_swing_high": 36.9,
       "last_dca_trigger_trading_day": null,
       "last_action_category": "REDUCE_SELL",
-      "last_action_date": "2026-09-16",
+      "last_action_date": "2026-09-23",
       "last_avg_cost": 37.6,
       "last_shares": 0.1,
       "trailing_stop_price": 39.0966,
       "trailing_stop_triggered": true,
       "last_processed_lh_event": "2026-08-31|39.88|high",
       "atr_at_event": 1.0871,
-      "last_alerted_ll_event": null,
+      "last_alerted_ll_event": "2026-09-21|35.35|low",
       "last_profit_sign": "negative"
     }
   }

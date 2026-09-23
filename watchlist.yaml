@@ -21,8 +21,8 @@
 #       reentry_price: 151.20
 
 AVGO:
-  status: "watching"
-  exited_at: "2026-08-21T09:47:35-04:00"
+  status: watching
+  exited_at: '2026-08-21T09:47:35-04:00'
   exit_price: 373.335
   exit_avg_cost: 370.05
   swing_high: 373.335
