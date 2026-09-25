@@ -11,10 +11,10 @@
   },
   "candidates": {
     "GLW": {
-      "swing_high": 156.24,
-      "watch_stage": "IDLE",
-      "watch_low": null,
-      "watch_started_at": null,
+      "swing_high": 156.5,
+      "watch_stage": "WATCHING",
+      "watch_low": 156.5,
+      "watch_started_at": "2026-09-25T15:17:00-04:00",
       "last_alerted_leg_high": 169.565,
       "last_alert_trading_day": "2026-09-25",
       "alert_count": 1
@@ -38,7 +38,7 @@
       "alert_count": 0
     },
     "OUST": {
-      "swing_high": 42.95,
+      "swing_high": 43.8,
       "watch_stage": "WATCHING",
       "watch_low": 33.3,
       "watch_started_at": "2026-09-02T15:18:06-04:00",
@@ -83,7 +83,7 @@
       "alert_count": 0
     },
     "LRCX": {
-      "swing_high": 314.015,
+      "swing_high": 314.7725,
       "watch_stage": "WATCHING",
       "watch_low": 266.68,
       "watch_started_at": "2026-09-16T15:16:27-04:00",
@@ -101,19 +101,19 @@
       "alert_count": 0
     },
     "VECO": {
-      "swing_high": 49.16,
-      "watch_stage": "IDLE",
-      "watch_low": null,
-      "watch_started_at": null,
+      "swing_high": 49.255,
+      "watch_stage": "WATCHING",
+      "watch_low": 49.255,
+      "watch_started_at": "2026-09-25T15:17:00-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
       "alert_count": 0
     },
     "AAUC": {
-      "swing_high": 22.27,
-      "watch_stage": "IDLE",
-      "watch_low": null,
-      "watch_started_at": null,
+      "swing_high": 22.2927,
+      "watch_stage": "WATCHING",
+      "watch_low": 22.2927,
+      "watch_started_at": "2026-09-25T15:17:00-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
       "alert_count": 0
