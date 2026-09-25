@@ -179,6 +179,25 @@ live run actually surfaced:
    > 2%, generously above the observed normal range) as an invalid quote
    requiring retry/skip — not just missing/negative/crossed values.
 
+**Round 6 (this revision, after the 2026-09-25 run):** a fully-qualified
+BUY signal fired but `cash_reserved` ($0.53) + `cash_principal` ($9.25)
+was less than the required $25 tranche — the first time this happened in
+the run's history. Root cause: `cash_principal` is a fixed, one-time pool
+seeded from the initial $100 principal; it is only ever debited by buys
+and never replenished (only `cash_reserved` gets refilled, by trim
+proceeds and dividends), while `invested_tranches < 4` only checks
+shares×avg_cost/25 and has no awareness of actual spendable cash. The
+executing agent made the right judgment call that day — it didn't force
+`cash_principal` negative and didn't invent an undefined partial-tranche
+size — but this was an ad-hoc call, not a defined rule, so it needed to
+be formalized. **Fix:** added an explicit, hard "available cash" gate
+(condition 6 on regular BUY, and the equivalent check on Recovery Buy):
+`cash_reserved + cash_principal` must cover the full tranche amount
+before a buy can execute; if not, the signal is skipped (not logged as a
+trade), and the report must state the shortfall. Recovery Buy's
+`recovery_pending` flag is deliberately **not** cleared when skipped this
+way, since the recovery was never actually executed.
+
 ---
 
 ## Routine — YMAG Intraday Signal & Paper Trade
@@ -455,6 +474,17 @@ ex_date_within_window = (estimated_next_ex_date − 今天) <= 3天 且 >= 0。
      反轉例外"
 5. market_trend == "up" 且 mag7_breadth >= 5(硬性門檻,不因為月份或深
    跌例外而放寬)
+6. 可用資金門檻(硬性,Round 6新增):available_cash = cash_reserved +
+   cash_principal(檢查當下、本次尚未做任何買賣異動前的值)必須 >= 本次
+   應買入金額(由上面第4條或深跌反轉例外決定的基礎金額,例如標準月
+   $25、非優選月$12.5、深跌例外$6.25)。若available_cash < 應買入金
+   額,即使1-5全部滿足,本次信號視為"資金不足,跳過"——不執行、不寫入
+   trade_log(沒有實際成交發生)、不消耗今天的Trade Lock額度。不允許為
+   了湊單而按available_cash的實際金額做縮水/部分成交(策略只定義了固
+   定的$25/$12.5/$6.25三檔,沒有變動金額的規則,擅自發明等於偏離已定
+   義的策略)。在報告裡清楚寫出available_cash與所需金額的差額,並註明
+   這代表初始本金池已經耗盡或接近耗盡,需要人工評估是否追加本金、或改
+   變倉位規則。
 
 深跌反轉例外(僅限month in [2,3,4]時使用,在第4條基礎上再減半,即
 $6.25):
@@ -477,10 +507,16 @@ recovery_pending_since、且不晚於昨天(T-1)的交易日筆數(用實際交�
 cooldown_trading_days >= 2(即距離觸發那次TRIM_MAG7_BREADTH或
 TRIM_MARKET_TREND至少已經過了2個完整交易日,避免震盪行情下才剛砍倉又
 馬上回補)。
-全部條件(含冷卻期)都成立才按標準月份規則基礎金額買入一檔,
+全部條件(含冷卻期)都成立,且同樣通過上面買入條件第6條的可用資金門檻
+(available_cash = cash_reserved + cash_principal >=
+本次按標準月份規則決定的基礎金額)之後,才按該基礎金額買入一檔,
 action="RECOVERY_BUY",並把recovery_pending重置為false、
 recovery_pending_since清空。若recovery_pending=true但冷卻期還沒到,本
-次不觸發Recovery Buy,不算錯誤,等下次執行再檢查。
+次不觸發Recovery Buy,不算錯誤,等下次執行再檢查。若冷卻期等條件都滿
+足但可用資金不足,處理方式與常規買入第6條相同(不執行、不記錄、不消耗
+Trade Lock、報告中註明資金不足),但recovery_pending/
+recovery_pending_since**保留不清空**,因為Recovery Buy並未真正執行,
+等資金充足時仍應補上這次回補。
 
 【買入前的跳空閘門,修正點(已改為單向),買入方向專用(含Recovery
 Buy),不適用於賣出】不管是常規買入條件還是Recovery Buy,只要判定"今天
@@ -534,6 +570,9 @@ get_equity_quotes。
   Lock是否因此鎖住了另一個方向);若未命中任何條件,註明"今日無操作"
 - 若本次因跳空閘門擋下買入,註明gap_pct數值和方向
 - 若本次因重試多次仍未取得實時報價而跳過買賣判斷,註明原因
+- 若本次因可用資金門檻(第五層買入條件第6條)擋下買入或Recovery
+  Buy,註明available_cash與所需金額的差額,並註明recovery_pending是
+  否因此保留
 - 分紅檢測結果
 - 若本次發生了cash_uninvested釋放(RELEASE_UNINVESTED):註明釋放金額
   和轉入後的cash_reserved餘額
