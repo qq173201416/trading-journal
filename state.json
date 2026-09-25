@@ -1,5 +1,5 @@
 {
-  "_schema_note": "candidates.<TICKER> fields, all routine-derived cache -- candidates.yaml is the only human-maintained source of which tickers to watch; a ticker present in state.json but removed from candidates.yaml is simply skipped (not evaluated, not deleted -- preserved in case it's re-added later, same 'never delete history' convention as the take-profit routine's watchlist.yaml). swing_high: the pullback-calc reference, ratchets up each run (max of prior value -- null treated as this run's current price on first sight -- and current price), and resets DOWN to the trigger price after a successful candidate alert (so the next evaluation measures a fresh pullback from that point, not the old already-alerted peak) -- identical convention to the take-profit routine's own swing_high field for its add-on judgment. watch_stage/watch_low/watch_started_at: the IDLE->WATCHING state machine tracking an in-progress pullback (mirrors the take-profit routine's dca_watch_stage/low/started_at). last_alerted_leg_high: dedup guard -- a candidate alert only fires again once swing_high has made a new leg high since the last alert (same pattern as watchlist.yaml's last_alerted_leg_high for reentry alerts). last_alert_trading_day: cooldown reference against alert_cooldown_trading_days. alert_count: informational count of how many candidate alerts have been sent for this ticker, never gates anything by itself. There is no avg_cost/exit_price concept here at all -- these tickers have never been held, so there is nothing to protect and no percentage profit/stop tiers, Trailing Stop, or Action Lock; this state exists purely to support the mechanical trend/pullback/confirmation gate, one-way (never suggests selling, only ever surfaces a candidate entry point). swing_high(v2\u8d77\u8bed\u4e49\u53d8\u66f4): \u8fd9\u884c\u68d8\u8f6e\u66f4\u65b0\u539f\u672c\u5199\u5728i\u6b65\u5185\u90e8(pullback_pct\u8ba1\u7b97\u7684 \u524d\u4e00\u53e5),\u4f46i\u6b65\u672c\u8eab\u5728d-h\u4efb\u4e00\u95e8\u69db\u6ca1\u901a\u8fc7\u65f6\u4f1a\u88ab\u77ed\u8def\u8df3\u8fc7(\u547d\u4e2d\u5c31\u505c,\u540e\u9762\u4e0d\u518d\u68c0\u67e5), \u5bfc\u81f4\u957f\u671f\u88abd\u6b65WAIT_TREND\u7b49\u66f4\u65e9\u95e8\u69db\u62e6\u4f4f\u7684candidate,\u5373\u4f7f\u671f\u95f4\u4ef7\u683c\u6301\u7eed\u521b\u65b0\u9ad8, swing_high\u4e5f\u5b8c\u5168\u4e0d\u4f1a\u66f4\u65b0\u2014\u2014GLW\u5c31\u662f\u5b9e\u4f8b:2026-09-01\u52a0\u5165\u89c2\u5bdf\u540d\u5355\u65f6\u4ef7\u683c144.08, \u52302026-09-10\u671f\u95f4\u4ef7\u683c\u6700\u9ad8\u6478\u5230169.565(+17.7%),\u4f46swing_high\u5341\u5929\u4e03\u6b21\u8fd0\u884c \u5168\u90e8\u505c\u7559\u5728144.08,\u4e00\u6b21\u6ca1\u52a8\u8fc7\u3002\u4fee\u590d\u540e\u8fd9\u884c\u68d8\u8f6e\u66f4\u65b0\u79fb\u5230c\u6b65(\u9996\u6b21init)\u4e4b\u540e\u3001 d\u6b65(\u8d8b\u52bf\u8fc7\u6ee4\u5668)\u4e4b\u524d\u72ec\u7acb\u6267\u884c,\u5bf9\u6bcf\u4e2a\u6b63\u5e38\u8bc4\u4f30\u7684candidate\u65e0\u6761\u4ef6\u5237\u65b0\u4e3a max(\u539f\u503c,\u73b0\u4ef7),\u4e0d\u518d\u4f9d\u8d56\u540e\u9762\u80fd\u4e0d\u80fd\u901a\u8fc7\u8d8b\u52bf/\u56de\u8c03/\u786e\u8ba4\u8fd9\u4e9b\u95e8\u69db;d-k\u6b65\u5185\u90e8 \u53ea\u8bfb\u53d6\u5b83\u505a\u56de\u8c03\u767e\u5206\u6bd4\u8ba1\u7b97,\u4e0d\u518d\u91cd\u590d\u7ef4\u62a4\u8fd9\u884c\u66f4\u65b0\u30022026-09-11\u6309run_log\u5386\u53f2 current_price\u5b57\u6bb5\u505a\u8fc7\u4e00\u6b21\u6027\u56de\u586b\u4fee\u6b63(144.08->169.565),\u4e0d\u5f71\u54cd\u540e\u7eed\u5b9e\u65f6\u3002",
+  "_schema_note": "candidates.<TICKER> fields, all routine-derived cache -- candidates.yaml is the only human-maintained source of which tickers to watch; a ticker present in state.json but removed from candidates.yaml is simply skipped (not evaluated, not deleted -- preserved in case it's re-added later, same 'never delete history' convention as the take-profit routine's watchlist.yaml). swing_high: the pullback-calc reference, ratchets up each run (max of prior value -- null treated as this run's current price on first sight -- and current price), and resets DOWN to the trigger price after a successful candidate alert (so the next evaluation measures a fresh pullback from that point, not the old already-alerted peak) -- identical convention to the take-profit routine's own swing_high field for its add-on judgment. watch_stage/watch_low/watch_started_at: the IDLE->WATCHING state machine tracking an in-progress pullback (mirrors the take-profit routine's dca_watch_stage/low/started_at). last_alerted_leg_high: dedup guard -- a candidate alert only fires again once swing_high has made a new leg high since the last alert (same pattern as watchlist.yaml's last_alerted_leg_high for reentry alerts). last_alert_trading_day: cooldown reference against alert_cooldown_trading_days. alert_count: informational count of how many candidate alerts have been sent for this ticker, never gates anything by itself. There is no avg_cost/exit_price concept here at all -- these tickers have never been held, so there is nothing to protect and no percentage profit/stop tiers, Trailing Stop, or Action Lock; this state exists purely to support the mechanical trend/pullback/confirmation gate, one-way (never suggests selling, only ever surfaces a candidate entry point). swing_high(v2起语义变更): 这行棘轮更新原本写在i步内部(pullback_pct计算的 前一句),但i步本身在d-h任一门槛没通过时会被短路跳过(命中就停,后面不再检查), 导致长期被d步WAIT_TREND等更早门槛拦住的candidate,即使期间价格持续创新高, swing_high也完全不会更新——GLW就是实例:2026-09-01加入观察名单时价格144.08, 到2026-09-10期间价格最高摸到169.565(+17.7%),但swing_high十天七次运行 全部停留在144.08,一次没动过。修复后这行棘轮更新移到c步(首次init)之后、 d步(趋势过滤器)之前独立执行,对每个正常评估的candidate无条件刷新为 max(原值,现价),不再依赖后面能不能通过趋势/回调/确认这些门槛;d-k步内部 只读取它做回调百分比计算,不再重复维护这行更新。2026-09-11按run_log历史 current_price字段做过一次性回填修正(144.08->169.565),不影响后续实时。",
   "_default_new_ticker_record": {
     "swing_high": null,
     "watch_stage": "IDLE",
@@ -11,13 +11,13 @@
   },
   "candidates": {
     "GLW": {
-      "swing_high": 169.565,
-      "watch_stage": "WATCHING",
-      "watch_low": 143.23,
-      "watch_started_at": "2026-09-01T15:18:33-04:00",
-      "last_alerted_leg_high": null,
-      "last_alert_trading_day": null,
-      "alert_count": 0
+      "swing_high": 156.24,
+      "watch_stage": "IDLE",
+      "watch_low": null,
+      "watch_started_at": null,
+      "last_alerted_leg_high": 169.565,
+      "last_alert_trading_day": "2026-09-25",
+      "alert_count": 1
     },
     "PENG": {
       "swing_high": 56.37,
@@ -29,7 +29,7 @@
       "alert_count": 0
     },
     "MRVL": {
-      "swing_high": 264.31,
+      "swing_high": 265.15,
       "watch_stage": "WATCHING",
       "watch_low": 207.26,
       "watch_started_at": "2026-09-02T15:18:06-04:00",
@@ -38,7 +38,7 @@
       "alert_count": 0
     },
     "OUST": {
-      "swing_high": 41.24,
+      "swing_high": 42.95,
       "watch_stage": "WATCHING",
       "watch_low": 33.3,
       "watch_started_at": "2026-09-02T15:18:06-04:00",
@@ -47,7 +47,7 @@
       "alert_count": 0
     },
     "POWI": {
-      "swing_high": 51.86,
+      "swing_high": 52.0,
       "watch_stage": "WATCHING",
       "watch_low": 46.9925,
       "watch_started_at": "2026-09-02T15:18:06-04:00",
@@ -56,7 +56,7 @@
       "alert_count": 0
     },
     "OLLI": {
-      "swing_high": 84.875,
+      "swing_high": 84.99,
       "watch_stage": "WATCHING",
       "watch_low": 75.21,
       "watch_started_at": "2026-09-16T15:16:27-04:00",
@@ -76,14 +76,14 @@
     "NFLX": {
       "swing_high": 77.28,
       "watch_stage": "WATCHING",
-      "watch_low": 71.615,
+      "watch_low": 71.115,
       "watch_started_at": "2026-09-16T15:16:27-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
       "alert_count": 0
     },
     "LRCX": {
-      "swing_high": 308.56,
+      "swing_high": 314.015,
       "watch_stage": "WATCHING",
       "watch_low": 266.68,
       "watch_started_at": "2026-09-16T15:16:27-04:00",
@@ -92,14 +92,32 @@
       "alert_count": 0
     },
     "TER": {
-      "swing_high": 396.44,
+      "swing_high": 399.44,
       "watch_stage": "WATCHING",
       "watch_low": 338.1,
       "watch_started_at": "2026-09-16T15:16:27-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
       "alert_count": 0
+    },
+    "VECO": {
+      "swing_high": 49.16,
+      "watch_stage": "IDLE",
+      "watch_low": null,
+      "watch_started_at": null,
+      "last_alerted_leg_high": null,
+      "last_alert_trading_day": null,
+      "alert_count": 0
+    },
+    "AAUC": {
+      "swing_high": 22.27,
+      "watch_stage": "IDLE",
+      "watch_low": null,
+      "watch_started_at": null,
+      "last_alerted_leg_high": null,
+      "last_alert_trading_day": null,
+      "alert_count": 0
     }
   },
-  "last_heartbeat_date": "2026-09-24"
+  "last_heartbeat_date": "2026-09-25"
 }
