@@ -28,7 +28,7 @@
     "last_alerted_ll_event": null,
     "last_profit_sign": null
   },
-  "last_heartbeat_date": "2026-09-24",
+  "last_heartbeat_date": "2026-09-25",
   "positions": {
     "TSM": {
       "highest_alerted_profit_tier": 3,
@@ -107,12 +107,12 @@
       "last_action_date": "2026-09-18",
       "last_avg_cost": 143.12,
       "last_shares": 2,
-      "trailing_stop_price": null,
+      "trailing_stop_price": 139.0,
       "trailing_stop_triggered": false,
-      "last_processed_lh_event": null,
-      "atr_at_event": null,
+      "last_processed_lh_event": "2026-09-22|153.6|high",
+      "atr_at_event": 7.3954195966915055,
       "last_alerted_ll_event": "2026-09-16|139.0|low",
-      "last_profit_sign": "positive"
+      "last_profit_sign": "negative"
     },
     "NVDA": {
       "highest_alerted_profit_tier": 0,
@@ -123,7 +123,7 @@
       "rsi_peak": 63.19,
       "hourly_rsi_peak": 83.7457,
       "highest_price_since_buy": 233.9626,
-      "swing_high": 224.02,
+      "swing_high": 225.125,
       "dca_watch_stage": "WATCHING",
       "dca_watch_low": 210.355,
       "dca_watch_started_at": "2026-08-27T15:42:15-04:00",
@@ -177,7 +177,7 @@
       "current_stage": "TIER1",
       "last_triggered_at": "2026-08-15T06:13:35Z",
       "rsi_peak": 73.0674,
-      "hourly_rsi_peak": 74.4747,
+      "hourly_rsi_peak": 74.7568099057452,
       "highest_price_since_buy": 517.07,
       "swing_high": 517.07,
       "dca_watch_stage": "WATCHING",
@@ -193,8 +193,8 @@
       "last_shares": 0.3,
       "trailing_stop_price": 493.81,
       "trailing_stop_triggered": true,
-      "last_processed_lh_event": "2026-09-14|509.95|high",
-      "atr_at_event": 11.2864,
+      "last_processed_lh_event": "2026-09-23|509.44|high",
+      "atr_at_event": 11.270746649532152,
       "last_alerted_ll_event": "2026-09-10|486.0|low",
       "last_profit_sign": "positive"
     },
@@ -263,7 +263,7 @@
       "rsi_peak": 69.3008,
       "hourly_rsi_peak": 86.4941,
       "highest_price_since_buy": 283.08,
-      "swing_high": 266.855,
+      "swing_high": 275.73,
       "dca_watch_stage": "WATCHING",
       "dca_watch_low": 204.395,
       "dca_watch_started_at": "2026-08-25T11:42:47-04:00",
@@ -290,8 +290,8 @@
       "last_triggered_at": null,
       "rsi_peak": 69.4935,
       "hourly_rsi_peak": 81.2617,
-      "highest_price_since_buy": 197.77,
-      "swing_high": 197.77,
+      "highest_price_since_buy": 199.45,
+      "swing_high": 199.45,
       "dca_watch_stage": "WATCHING",
       "dca_watch_low": 178.27,
       "dca_watch_started_at": "2026-09-14T10:45:00-04:00",
@@ -392,7 +392,7 @@
       "last_processed_lh_event": "2026-09-22|359.98|high",
       "atr_at_event": 8.9254,
       "last_alerted_ll_event": null,
-      "last_profit_sign": "negative"
+      "last_profit_sign": "positive"
     },
     "SPCX": {
       "highest_alerted_profit_tier": 0,
