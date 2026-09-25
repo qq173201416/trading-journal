@@ -52,3 +52,6 @@ candidates:
   - ticker: VECO
     added_at: "2026-09-25"
     note: ""
+  - ticker: AAUC
+    added_at: "2026-09-25"
+    note: ""
