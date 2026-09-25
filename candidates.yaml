@@ -49,3 +49,6 @@ candidates:
   - ticker: TER
     added_at: "2026-09-11"
     note: ""
+  - ticker: VECO
+    added_at: "2026-09-25"
+    note: ""
