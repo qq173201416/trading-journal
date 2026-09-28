@@ -65,3 +65,5 @@ signal_date,ticker,price_at_signal,stage,trend_score,rs_score,extension_pct,week
 2026-09-24,AAUC,22.05,deep_base_watch,20,36.1,-31.12,8,0.662,v1.1,,,,
 2026-09-24,PENG,53.08,deep_base_watch,60,100,-34.78,26,0.507,v1.1,,,,
 2026-09-24,UCTT,76.52,deep_base_watch,60,84.7,-46.34,29,0.683,v1.1,,,,
+2026-09-25,AAUC,22.29,deep_base_watch,20,35.9,-30.37,8,0.653,v1.1,,,,
+2026-09-25,UCTT,77.69,deep_base_watch,60,86.5,-45.52,29,0.694,v1.1,,,,
