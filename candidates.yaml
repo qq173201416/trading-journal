@@ -55,3 +55,14 @@ candidates:
   - ticker: AAUC
     added_at: "2026-09-25"
     note: ""
+  - ticker: HESAY
+    added_at: "2026-09-30"
+    note: "OTC/非主板上市(Robinhood报价state=unlisted,Hesai Group美股ADR),日线
+           历史数据完整、有真实成交量,机械判据能正常评估——但OTC票流动性/买卖价差
+           通常比主板股票差,真触发建仓提醒时自己多留意一下实际可成交的价格"
+  - ticker: RACE
+    added_at: "2026-09-30"
+    note: ""
+  - ticker: COST
+    added_at: "2026-09-30"
+    note: ""
