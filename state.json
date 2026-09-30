@@ -29,7 +29,7 @@
       "alert_count": 0
     },
     "MRVL": {
-      "swing_high": 263.14,
+      "swing_high": 263.32,
       "watch_stage": "WATCHING",
       "watch_low": 263.14,
       "watch_started_at": "2026-09-29T15:17:10-04:00",
@@ -83,7 +83,7 @@
       "alert_count": 0
     },
     "LRCX": {
-      "swing_high": 322.42,
+      "swing_high": 329.39,
       "watch_stage": "WATCHING",
       "watch_low": 266.68,
       "watch_started_at": "2026-09-16T15:16:27-04:00",
@@ -101,7 +101,7 @@
       "alert_count": 0
     },
     "VECO": {
-      "swing_high": 51.36,
+      "swing_high": 52.19,
       "watch_stage": "WATCHING",
       "watch_low": 48.875,
       "watch_started_at": "2026-09-25T15:17:00-04:00",
@@ -112,12 +112,39 @@
     "AAUC": {
       "swing_high": 22.2927,
       "watch_stage": "WATCHING",
-      "watch_low": 21.19,
+      "watch_low": 20.98,
       "watch_started_at": "2026-09-25T15:17:00-04:00",
+      "last_alerted_leg_high": null,
+      "last_alert_trading_day": null,
+      "alert_count": 0
+    },
+    "HESAY": {
+      "swing_high": 150.845,
+      "watch_stage": "IDLE",
+      "watch_low": null,
+      "watch_started_at": null,
+      "last_alerted_leg_high": null,
+      "last_alert_trading_day": null,
+      "alert_count": 0
+    },
+    "RACE": {
+      "swing_high": 393.32,
+      "watch_stage": "IDLE",
+      "watch_low": null,
+      "watch_started_at": null,
+      "last_alerted_leg_high": null,
+      "last_alert_trading_day": null,
+      "alert_count": 0
+    },
+    "COST": {
+      "swing_high": 914.99,
+      "watch_stage": "IDLE",
+      "watch_low": null,
+      "watch_started_at": null,
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
       "alert_count": 0
     }
   },
-  "last_heartbeat_date": "2026-09-29"
+  "last_heartbeat_date": "2026-09-30"
 }
