@@ -11,7 +11,7 @@
   },
   "candidates": {
     "GLW": {
-      "swing_high": 158.6049,
+      "swing_high": 160.3699,
       "watch_stage": "WATCHING",
       "watch_low": 151.685,
       "watch_started_at": "2026-09-25T15:17:00-04:00",
@@ -29,7 +29,7 @@
       "alert_count": 0
     },
     "MRVL": {
-      "swing_high": 263.32,
+      "swing_high": 266.485,
       "watch_stage": "WATCHING",
       "watch_low": 263.14,
       "watch_started_at": "2026-09-29T15:17:10-04:00",
@@ -56,7 +56,7 @@
       "alert_count": 0
     },
     "OLLI": {
-      "swing_high": 86.78,
+      "swing_high": 87.53,
       "watch_stage": "WATCHING",
       "watch_low": 75.21,
       "watch_started_at": "2026-09-16T15:16:27-04:00",
@@ -76,14 +76,14 @@
     "NFLX": {
       "swing_high": 77.28,
       "watch_stage": "WATCHING",
-      "watch_low": 69.085,
+      "watch_low": 68.235,
       "watch_started_at": "2026-09-16T15:16:27-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
       "alert_count": 0
     },
     "LRCX": {
-      "swing_high": 329.39,
+      "swing_high": 338.55,
       "watch_stage": "WATCHING",
       "watch_low": 266.68,
       "watch_started_at": "2026-09-16T15:16:27-04:00",
@@ -92,7 +92,7 @@
       "alert_count": 0
     },
     "TER": {
-      "swing_high": 401.72,
+      "swing_high": 414.07,
       "watch_stage": "WATCHING",
       "watch_low": 338.1,
       "watch_started_at": "2026-09-16T15:16:27-04:00",
@@ -101,7 +101,7 @@
       "alert_count": 0
     },
     "VECO": {
-      "swing_high": 52.19,
+      "swing_high": 52.645,
       "watch_stage": "WATCHING",
       "watch_low": 48.875,
       "watch_started_at": "2026-09-25T15:17:00-04:00",
@@ -112,7 +112,7 @@
     "AAUC": {
       "swing_high": 22.2927,
       "watch_stage": "WATCHING",
-      "watch_low": 20.98,
+      "watch_low": 20.45,
       "watch_started_at": "2026-09-25T15:17:00-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
@@ -120,31 +120,31 @@
     },
     "HESAY": {
       "swing_high": 150.845,
-      "watch_stage": "IDLE",
-      "watch_low": null,
-      "watch_started_at": null,
+      "watch_stage": "WATCHING",
+      "watch_low": 143.89,
+      "watch_started_at": "2026-10-01T15:20:00-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
       "alert_count": 0
     },
     "RACE": {
       "swing_high": 393.32,
-      "watch_stage": "IDLE",
-      "watch_low": null,
-      "watch_started_at": null,
+      "watch_stage": "WATCHING",
+      "watch_low": 385.02,
+      "watch_started_at": "2026-10-01T15:20:00-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
       "alert_count": 0
     },
     "COST": {
-      "swing_high": 914.99,
-      "watch_stage": "IDLE",
-      "watch_low": null,
-      "watch_started_at": null,
+      "swing_high": 916.22,
+      "watch_stage": "WATCHING",
+      "watch_low": 916.22,
+      "watch_started_at": "2026-10-01T15:20:00-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
       "alert_count": 0
     }
   },
-  "last_heartbeat_date": "2026-09-30"
+  "last_heartbeat_date": "2026-10-01"
 }
