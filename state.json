@@ -20,7 +20,7 @@
       "alert_count": 1
     },
     "PENG": {
-      "swing_high": 61.24,
+      "swing_high": 61.54,
       "watch_stage": "WATCHING",
       "watch_low": 47.23,
       "watch_started_at": "2026-09-02T15:18:06-04:00",
@@ -38,7 +38,7 @@
       "alert_count": 1
     },
     "OUST": {
-      "swing_high": 43.8,
+      "swing_high": 43.94,
       "watch_stage": "WATCHING",
       "watch_low": 33.3,
       "watch_started_at": "2026-09-02T15:18:06-04:00",
@@ -112,7 +112,7 @@
     "AAUC": {
       "swing_high": 22.2927,
       "watch_stage": "WATCHING",
-      "watch_low": 20.14,
+      "watch_low": 19.81,
       "watch_started_at": "2026-09-25T15:17:00-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
@@ -130,14 +130,14 @@
     "RACE": {
       "swing_high": 393.32,
       "watch_stage": "WATCHING",
-      "watch_low": 385.02,
+      "watch_low": 384.2927,
       "watch_started_at": "2026-10-01T15:20:00-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
       "alert_count": 0
     },
     "COST": {
-      "swing_high": 918.51,
+      "swing_high": 920.44,
       "watch_stage": "WATCHING",
       "watch_low": 916.22,
       "watch_started_at": "2026-10-01T15:20:00-04:00",
@@ -146,5 +146,5 @@
       "alert_count": 0
     }
   },
-  "last_heartbeat_date": "2026-10-02"
+  "last_heartbeat_date": "2026-10-05"
 }
