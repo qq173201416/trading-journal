@@ -11,7 +11,7 @@
   },
   "candidates": {
     "GLW": {
-      "swing_high": 164.3,
+      "swing_high": 169.46,
       "watch_stage": "WATCHING",
       "watch_low": 151.685,
       "watch_started_at": "2026-09-25T15:17:00-04:00",
@@ -20,7 +20,7 @@
       "alert_count": 1
     },
     "PENG": {
-      "swing_high": 61.54,
+      "swing_high": 61.865,
       "watch_stage": "WATCHING",
       "watch_low": 47.23,
       "watch_started_at": "2026-09-02T15:18:06-04:00",
@@ -29,7 +29,7 @@
       "alert_count": 0
     },
     "MRVL": {
-      "swing_high": 273.59,
+      "swing_high": 291.6605,
       "watch_stage": "WATCHING",
       "watch_low": 263.14,
       "watch_started_at": "2026-09-29T15:17:10-04:00",
@@ -38,7 +38,7 @@
       "alert_count": 1
     },
     "OUST": {
-      "swing_high": 43.94,
+      "swing_high": 45.295,
       "watch_stage": "WATCHING",
       "watch_low": 33.3,
       "watch_started_at": "2026-09-02T15:18:06-04:00",
@@ -121,7 +121,7 @@
     "HESAY": {
       "swing_high": 150.845,
       "watch_stage": "WATCHING",
-      "watch_low": 143.89,
+      "watch_low": 143.32,
       "watch_started_at": "2026-10-01T15:20:00-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
@@ -137,7 +137,7 @@
       "alert_count": 0
     },
     "COST": {
-      "swing_high": 920.44,
+      "swing_high": 934.3033,
       "watch_stage": "WATCHING",
       "watch_low": 916.22,
       "watch_started_at": "2026-10-01T15:20:00-04:00",
@@ -146,5 +146,5 @@
       "alert_count": 0
     }
   },
-  "last_heartbeat_date": "2026-10-05"
+  "last_heartbeat_date": "2026-10-06"
 }
