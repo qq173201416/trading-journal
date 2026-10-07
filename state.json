@@ -20,7 +20,7 @@
       "alert_count": 1
     },
     "PENG": {
-      "swing_high": 61.865,
+      "swing_high": 72.57,
       "watch_stage": "WATCHING",
       "watch_low": 47.23,
       "watch_started_at": "2026-09-02T15:18:06-04:00",
@@ -84,21 +84,21 @@
     },
     "LRCX": {
       "swing_high": 348.22,
-      "watch_stage": "WATCHING",
-      "watch_low": 266.68,
-      "watch_started_at": "2026-09-16T15:16:27-04:00",
-      "last_alerted_leg_high": null,
-      "last_alert_trading_day": null,
-      "alert_count": 0
+      "watch_stage": "IDLE",
+      "watch_low": null,
+      "watch_started_at": null,
+      "last_alerted_leg_high": "LRCX",
+      "last_alert_trading_day": "2026-10-07",
+      "alert_count": 1
     },
     "TER": {
       "swing_high": 449.62,
-      "watch_stage": "WATCHING",
-      "watch_low": 338.1,
-      "watch_started_at": "2026-09-16T15:16:27-04:00",
-      "last_alerted_leg_high": null,
-      "last_alert_trading_day": null,
-      "alert_count": 0
+      "watch_stage": "IDLE",
+      "watch_low": null,
+      "watch_started_at": null,
+      "last_alerted_leg_high": "TER",
+      "last_alert_trading_day": "2026-10-07",
+      "alert_count": 1
     },
     "VECO": {
       "swing_high": 57.46,
@@ -112,7 +112,7 @@
     "AAUC": {
       "swing_high": 22.2927,
       "watch_stage": "WATCHING",
-      "watch_low": 19.81,
+      "watch_low": 19.44,
       "watch_started_at": "2026-09-25T15:17:00-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
@@ -137,7 +137,7 @@
       "alert_count": 0
     },
     "COST": {
-      "swing_high": 934.3033,
+      "swing_high": 943.54,
       "watch_stage": "WATCHING",
       "watch_low": 916.22,
       "watch_started_at": "2026-10-01T15:20:00-04:00",
@@ -146,5 +146,5 @@
       "alert_count": 0
     }
   },
-  "last_heartbeat_date": "2026-10-06"
+  "last_heartbeat_date": "2026-10-07"
 }
