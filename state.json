@@ -29,13 +29,13 @@
       "alert_count": 0
     },
     "MRVL": {
-      "swing_high": 291.6605,
-      "watch_stage": "WATCHING",
-      "watch_low": 263.14,
-      "watch_started_at": "2026-09-29T15:17:10-04:00",
-      "last_alerted_leg_high": 265.15,
-      "last_alert_trading_day": "2026-09-28",
-      "alert_count": 1
+      "swing_high": 270.4348,
+      "watch_stage": "IDLE",
+      "watch_low": null,
+      "watch_started_at": null,
+      "last_alerted_leg_high": 291.6605,
+      "last_alert_trading_day": "2026-10-08",
+      "alert_count": 2
     },
     "OUST": {
       "swing_high": 45.295,
@@ -65,7 +65,7 @@
       "alert_count": 0
     },
     "BFAM": {
-      "swing_high": 69.03,
+      "swing_high": 69.76,
       "watch_stage": "WATCHING",
       "watch_low": 63.47,
       "watch_started_at": "2026-09-16T15:16:27-04:00",
@@ -83,20 +83,20 @@
       "alert_count": 0
     },
     "LRCX": {
-      "swing_high": 348.22,
-      "watch_stage": "IDLE",
-      "watch_low": null,
-      "watch_started_at": null,
-      "last_alerted_leg_high": "LRCX",
+      "swing_high": 317.46,
+      "watch_stage": "WATCHING",
+      "watch_low": 317.46,
+      "watch_started_at": "2026-10-08T15:20:00-04:00",
+      "last_alerted_leg_high": 348.22,
       "last_alert_trading_day": "2026-10-07",
       "alert_count": 1
     },
     "TER": {
-      "swing_high": 449.62,
-      "watch_stage": "IDLE",
-      "watch_low": null,
-      "watch_started_at": null,
-      "last_alerted_leg_high": "TER",
+      "swing_high": 393.915,
+      "watch_stage": "WATCHING",
+      "watch_low": 393.915,
+      "watch_started_at": "2026-10-08T15:20:00-04:00",
+      "last_alerted_leg_high": 449.62,
       "last_alert_trading_day": "2026-10-07",
       "alert_count": 1
     },
@@ -121,7 +121,7 @@
     "HESAY": {
       "swing_high": 150.845,
       "watch_stage": "WATCHING",
-      "watch_low": 143.32,
+      "watch_low": 142.724,
       "watch_started_at": "2026-10-01T15:20:00-04:00",
       "last_alerted_leg_high": null,
       "last_alert_trading_day": null,
@@ -137,7 +137,7 @@
       "alert_count": 0
     },
     "COST": {
-      "swing_high": 943.54,
+      "swing_high": 952.01,
       "watch_stage": "WATCHING",
       "watch_low": 916.22,
       "watch_started_at": "2026-10-01T15:20:00-04:00",
@@ -146,5 +146,5 @@
       "alert_count": 0
     }
   },
-  "last_heartbeat_date": "2026-10-07"
+  "last_heartbeat_date": "2026-10-08"
 }
