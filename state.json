@@ -31,7 +31,7 @@
   "MRVL": {
    "swing_high": 274.06,
    "watch_stage": "WATCHING",
-   "watch_low": 266.475,
+   "watch_low": 265.9076,
    "watch_started_at": "2026-10-09T15:20:00-04:00",
    "last_alerted_leg_high": 291.6605,
    "last_alert_trading_day": "2026-10-08",
@@ -49,14 +49,14 @@
   "POWI": {
    "swing_high": 54.885,
    "watch_stage": "WATCHING",
-   "watch_low": 46.9925,
+   "watch_low": 46.86,
    "watch_started_at": "2026-09-02T15:18:06-04:00",
    "last_alerted_leg_high": null,
    "last_alert_trading_day": null,
    "alert_count": 0
   },
   "OLLI": {
-   "swing_high": 88.1,
+   "swing_high": 88.88,
    "watch_stage": "WATCHING",
    "watch_low": 75.21,
    "watch_started_at": "2026-09-16T15:16:27-04:00",
@@ -85,7 +85,7 @@
   "LRCX": {
    "swing_high": 320.27,
    "watch_stage": "WATCHING",
-   "watch_low": 309.935,
+   "watch_low": 297.53,
    "watch_started_at": "2026-10-08T15:20:00-04:00",
    "last_alerted_leg_high": 348.22,
    "last_alert_trading_day": "2026-10-07",
@@ -94,7 +94,7 @@
   "TER": {
    "swing_high": 403.84,
    "watch_stage": "WATCHING",
-   "watch_low": 382.665,
+   "watch_low": 375.41,
    "watch_started_at": "2026-10-08T15:20:00-04:00",
    "last_alerted_leg_high": 449.62,
    "last_alert_trading_day": "2026-10-07",
@@ -102,9 +102,9 @@
   },
   "VECO": {
    "swing_high": 49.11,
-   "watch_stage": "IDLE",
-   "watch_low": null,
-   "watch_started_at": null,
+   "watch_stage": "WATCHING",
+   "watch_low": 47.93,
+   "watch_started_at": "2026-10-13T15:20:00-04:00",
    "last_alerted_leg_high": 57.46,
    "last_alert_trading_day": "2026-10-12",
    "alert_count": 1
@@ -146,5 +146,5 @@
    "alert_count": 0
   }
  },
- "last_heartbeat_date": "2026-10-12"
+ "last_heartbeat_date": "2026-10-13"
 }
