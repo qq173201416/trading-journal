@@ -228,10 +228,10 @@
   },
   "ACMR": {
    "highest_alerted_profit_tier": 0,
-   "highest_alerted_stop_tier": 1,
+   "highest_alerted_stop_tier": 2,
    "highest_alerted_add_tier": 0,
    "current_stage": "IDLE",
-   "last_triggered_at": "2026-08-21T09:47:35-04:00",
+   "last_triggered_at": "2026-10-13T11:41:44-04:00",
    "rsi_peak": 60.8353399996819,
    "hourly_rsi_peak": null,
    "highest_price_since_buy": 85.545,
