@@ -13,7 +13,7 @@
   "GLW": {
    "swing_high": 169.46,
    "watch_stage": "WATCHING",
-   "watch_low": 145.86,
+   "watch_low": 140.03,
    "watch_started_at": "2026-09-25T15:17:00-04:00",
    "last_alerted_leg_high": 169.565,
    "last_alert_trading_day": "2026-09-25",
@@ -31,7 +31,7 @@
   "MRVL": {
    "swing_high": 274.06,
    "watch_stage": "WATCHING",
-   "watch_low": 265.9076,
+   "watch_low": 248.205,
    "watch_started_at": "2026-10-09T15:20:00-04:00",
    "last_alerted_leg_high": 291.6605,
    "last_alert_trading_day": "2026-10-08",
@@ -40,7 +40,7 @@
   "OUST": {
    "swing_high": 45.295,
    "watch_stage": "WATCHING",
-   "watch_low": 33.3,
+   "watch_low": 31.765,
    "watch_started_at": "2026-09-02T15:18:06-04:00",
    "last_alerted_leg_high": null,
    "last_alert_trading_day": null,
@@ -49,14 +49,14 @@
   "POWI": {
    "swing_high": 54.885,
    "watch_stage": "WATCHING",
-   "watch_low": 46.86,
+   "watch_low": 44.43,
    "watch_started_at": "2026-09-02T15:18:06-04:00",
    "last_alerted_leg_high": null,
    "last_alert_trading_day": null,
    "alert_count": 0
   },
   "OLLI": {
-   "swing_high": 88.88,
+   "swing_high": 91.905,
    "watch_stage": "WATCHING",
    "watch_low": 75.21,
    "watch_started_at": "2026-09-16T15:16:27-04:00",
@@ -85,7 +85,7 @@
   "LRCX": {
    "swing_high": 320.27,
    "watch_stage": "WATCHING",
-   "watch_low": 297.53,
+   "watch_low": 285.07,
    "watch_started_at": "2026-10-08T15:20:00-04:00",
    "last_alerted_leg_high": 348.22,
    "last_alert_trading_day": "2026-10-07",
@@ -94,7 +94,7 @@
   "TER": {
    "swing_high": 403.84,
    "watch_stage": "WATCHING",
-   "watch_low": 375.41,
+   "watch_low": 356.38,
    "watch_started_at": "2026-10-08T15:20:00-04:00",
    "last_alerted_leg_high": 449.62,
    "last_alert_trading_day": "2026-10-07",
@@ -103,7 +103,7 @@
   "VECO": {
    "swing_high": 49.11,
    "watch_stage": "WATCHING",
-   "watch_low": 47.93,
+   "watch_low": 46.335,
    "watch_started_at": "2026-10-13T15:20:00-04:00",
    "last_alerted_leg_high": 57.46,
    "last_alert_trading_day": "2026-10-12",
@@ -112,7 +112,7 @@
   "AAUC": {
    "swing_high": 22.2927,
    "watch_stage": "WATCHING",
-   "watch_low": 19.44,
+   "watch_low": 19.245,
    "watch_started_at": "2026-09-25T15:17:00-04:00",
    "last_alerted_leg_high": null,
    "last_alert_trading_day": null,
@@ -137,7 +137,7 @@
    "alert_count": 0
   },
   "COST": {
-   "swing_high": 959.21,
+   "swing_high": 975.58,
    "watch_stage": "WATCHING",
    "watch_low": 916.22,
    "watch_started_at": "2026-10-01T15:20:00-04:00",
@@ -146,5 +146,5 @@
    "alert_count": 0
   }
  },
- "last_heartbeat_date": "2026-10-13"
+ "last_heartbeat_date": "2026-10-14"
 }
