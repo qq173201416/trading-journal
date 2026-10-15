@@ -79,10 +79,10 @@
       "last_action_date": "2026-10-14",
       "last_avg_cost": 158.439,
       "last_shares": 1.5,
-      "trailing_stop_price": 180.04858,
+      "trailing_stop_price": 180.35386999999997,
       "trailing_stop_triggered": true,
-      "last_processed_lh_event": "2026-10-05|195.97|high",
-      "atr_at_event": 7.960710000000001,
+      "last_processed_lh_event": "2026-09-22|196.4799|high",
+      "atr_at_event": 8.063015,
       "last_alerted_ll_event": "2026-08-24|151.5|low",
       "last_profit_sign": "negative"
     },
