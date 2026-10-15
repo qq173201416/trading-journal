@@ -28,7 +28,7 @@
     "last_alerted_ll_event": null,
     "last_profit_sign": null
   },
-  "last_heartbeat_date": "2026-10-14",
+  "last_heartbeat_date": "2026-10-15",
   "positions": {
     "TSM": {
       "highest_alerted_profit_tier": 3,
@@ -104,15 +104,15 @@
       "peak_marked_swing_high": 163.14,
       "last_dca_trigger_trading_day": "2026-09-14",
       "last_action_category": "REDUCE_SELL",
-      "last_action_date": "2026-10-14",
+      "last_action_date": "2026-10-15",
       "last_avg_cost": 143.12,
       "last_shares": 2,
-      "trailing_stop_price": 134.3092,
+      "trailing_stop_price": 134.3555,
       "trailing_stop_triggered": true,
       "last_processed_lh_event": "2026-10-06|146.94|high",
-      "atr_at_event": 6.315375000000001,
+      "atr_at_event": 6.292250000000001,
       "last_alerted_ll_event": "2026-09-28|131.58|low",
-      "last_profit_sign": "positive"
+      "last_profit_sign": "negative"
     },
     "NVDA": {
       "highest_alerted_profit_tier": 1,
@@ -199,10 +199,10 @@
       "last_profit_sign": "positive"
     },
     "INFQ": {
-      "highest_alerted_profit_tier": 3,
+      "highest_alerted_profit_tier": 0,
       "highest_alerted_stop_tier": 1,
       "highest_alerted_add_tier": 1,
-      "current_stage": "TIER3",
+      "current_stage": "IDLE",
       "last_triggered_at": "2026-10-14T12:41:10-04:00",
       "rsi_peak": 65.5527,
       "hourly_rsi_peak": 73.3488,
@@ -219,12 +219,12 @@
       "last_action_date": "2026-10-07",
       "last_avg_cost": 9.687,
       "last_shares": 4,
-      "trailing_stop_price": 12.5328,
-      "trailing_stop_triggered": true,
-      "last_processed_lh_event": "2026-09-17|14.1299|high",
-      "atr_at_event": 0.9624,
+      "trailing_stop_price": null,
+      "trailing_stop_triggered": false,
+      "last_processed_lh_event": null,
+      "atr_at_event": null,
       "last_alerted_ll_event": null,
-      "last_profit_sign": "positive"
+      "last_profit_sign": "negative"
     },
     "ACMR": {
       "highest_alerted_profit_tier": 0,
