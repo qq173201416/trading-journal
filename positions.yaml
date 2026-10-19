@@ -15,26 +15,26 @@
 
 positions:
   - ticker: TSM
-    avg_cost: 344.25
-    shares: 0.2
+    avg_cost: 398.917
+    shares: 0.3
   - ticker: SKHY
-    avg_cost: 158.439
+    avg_cost: 156.627
     shares: 1.5
   - ticker: ORCL
     avg_cost: 143.12
     shares: 2
   - ticker: NVDA
-    avg_cost: 195.256
+    avg_cost: 206.778
     shares: 0.4
   - ticker: NOW
     avg_cost: 110.60
-    shares: 0.4
-  - ticker: MSFT
-    avg_cost: 396.86
     shares: 0.3
+  - ticker: MSFT
+    avg_cost: 451.356
+    shares: 0.5
   - ticker: INFQ
     avg_cost: 9.687
-    shares: 4
+    shares: 1
   - ticker: ACMR
     avg_cost: 84.31
     shares: 0.2
@@ -42,20 +42,23 @@ positions:
     avg_cost: 204.10
     shares: 0.1
   - ticker: QCOM
-    avg_cost: 166.92
-    shares: 0.5
+    avg_cost: 169.943
+    shares: 0.7
   - ticker: VST
-    avg_cost: 136.40
-    shares: 0.2
+    avg_cost: 137.275
+    shares: 0.4
   - ticker: GRAB
     avg_cost: 3.553
     shares: 4
   - ticker: GOOG
-    avg_cost: 335.10
-    shares: 0.7
-  - ticker: SPCX
-    avg_cost: 148.60
-    shares: 0.1
+    avg_cost: 337.425
+    shares: 0.8
   - ticker: NKE
-    avg_cost: 37.60
+    avg_cost: 35.873
+    shares: 1.1
+  - ticker: WULF
+    avg_cost: 15.53
+    shares: 1
+  - ticker: CCJ
+    avg_cost: 85.50
     shares: 0.1
