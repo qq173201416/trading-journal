@@ -198,6 +198,42 @@ trade), and the report must state the shortfall. Recovery Buy's
 `recovery_pending` flag is deliberately **not** cleared when skipped this
 way, since the recovery was never actually executed.
 
+**Round 7 (this revision, after a status check on 2026-10-19):** found
+that the 2026-09-30 weekly ex-dividend event was silently never logged.
+Tracing back through the daily reports: on 2026-09-29/09-30/10-01,
+Robinhood's fundamentals endpoint was still showing the *previous*
+ex-date (2026-09-23, already logged); by 2026-10-02 it had already moved
+on to the *next* one (2026-10-07). The 09-30 value was never observed on
+any day the routine actually ran — the dedup logic (compare today's
+candidate against the last logged date) has no way to catch a cycle that
+the underlying data source's "current" field skips over entirely between
+two daily checks. Estimated impact if this was a real missed
+distribution: ~7.96 shares × ~$0.07-0.08/share ≈ $0.55-0.64 — immaterial
+in dollar terms, but the detection gap itself is real and already
+happened once in 10 weeks. **Fix (two parts, deliberately not a
+backfill):**
+1. **Daily raw snapshot log.** Every run now appends
+   `candidate_ex_date`/`candidate_amount`/`record_date`/`payable_date` to
+   a new `state/ymag_dividend_snapshot_log.csv`, regardless of whether
+   today's value is "new." This creates a complete day-by-day audit
+   trail, so if a similar gap happens again, there's a full record of
+   exactly what Robinhood reported every day, instead of only being able
+   to infer a gap after the fact from the spacing between logged events.
+2. **Explicit gap flag.** When a new dividend is detected, the routine
+   now computes `gap_days` since the last logged event against the
+   trailing interval (default 7 days) and flags `expected_cycles >= 2` as
+   a likely skipped cycle, writing a prominent `⚠️ 疑似漏檢` note into
+   `ymag_dividend_log.csv` and the day's report.
+
+Deliberately **not** doing: inventing a backfilled amount for the missed
+cycle. Robinhood never exposed that cycle's `ex_dividend_date` or
+`dividend_per_share` on any day checked, and there's no history endpoint
+to query it after the fact — fabricating a plausible-looking number would
+misrepresent an actual observation as real data, which breaks the same
+principle Round 6 already established for buy amounts. The fix makes the
+gap visible and auditable; it does not pretend to recover data that was
+never captured.
+
 ---
 
 ## Routine — YMAG Intraday Signal & Paper Trade
@@ -365,13 +401,45 @@ Robinhood單一權威來源,不必每天浪費3次注定失敗的web_fetch呼叫
 1. 調用 get_equity_fundamentals(symbols=["YMAG"]),取得
    dividend_per_share、ex_dividend_date、record_date、payable_date,記為
    candidate_ex_date、candidate_amount。
-2. 去重判斷:讀取 state/ymag_dividend_log.csv 最後一行記錄的
-   ex_dividend_date。
-   - 若 candidate_ex_date 與已記錄的最後一次相同或更早:說明沒有新分
-     紅,跳過
+
+2. 【每日快照稽核記錄,Round 7新增,不管今天是否判定為新分紅都要做】把
+   本次取得的candidate_ex_date、candidate_amount、record_date、
+   payable_date,連同今天日期,追加一行到
+   state/ymag_dividend_snapshot_log.csv(字段:
+   date,candidate_ex_date,candidate_amount,record_date,payable_date)。
+   這個文件純粹是Robinhood每天回報值的原始存檔,不做任何去重或入賬判
+   斷,只是留一份完整的逐日快照——目的是萬一未來又發生類似"中間某一期
+   的ex_date從未被觀測到就直接跳到下一期"的情況,至少能回頭查到每一天
+   Robinhood实际显示的是什么值,而不是像這次一樣只能从已经入账的記錄反
+   推、永遠查不到中間那天的原始數據。
+
+3. 去重判斷:讀取 state/ymag_dividend_log.csv 最後一行"logged"類型(即
+   source_used不為空、代表真正入賬過的分紅事件)的ex_dividend_date,記
+   為last_logged_ex_date。
+   - 若 candidate_ex_date 與last_logged_ex_date相同或更早:說明沒有新
+     分紅,跳過(第4、5步不執行)
    - 若 candidate_ex_date 更新(出現了新日期):視為一次新分紅,繼續下
      一步
-3. 入賬(僅在步驟2判定為"新分紅"時執行):
+
+4. 【漏檢缺口檢測,Round 7新增,僅在步驟3判定為"新分紅"時執行,且必須
+   在步驟5入賬之前做】這一步的目的是讓"中間漏掉一整期分紅"這種情況被
+   明確看見,而不是像2026-09-30那次一樣悄悄滑過、只能事後從日誌間隔推
+   測出來:
+   - interval_days:取state/ymag_dividend_log.csv裡最近兩筆"logged"記
+     錄(不含本次候選)的ex_dividend_date之間的天數差;若不足兩筆,預
+     設7天。
+   - gap_days = candidate_ex_date − last_logged_ex_date(自然日天數)。
+   - expected_cycles = round(gap_days / interval_days)。
+   - 若 expected_cycles >= 2:視為"疑似漏檢",missed_cycles =
+     expected_cycles − 1(即中間大概漏掉了幾期)。這種情況下**仍然只對
+     candidate_ex_date這一筆實際入賬**——因為Robinhood從未在任何一天
+     展示過中間那一期的ex_date或金額(步驟2的快照記錄裡也查不到),沒
+     有任何依據可以倒推出一個從未被觀測到的數字;憑空估一個金額計入現
+     金,等於用看似精確的數字掩蓋"其實是編的"這個事實,不符合這個策略
+     一貫"不發明未定義規則"的原則(參見Round 6對買入金額的同樣立場)。
+   - 若 expected_cycles < 2:正常情況,不觸發此警告。
+
+5. 入賬(僅在步驟3判定為"新分紅"時執行):
    - 除息資格的持股數,明確定義為candidate_ex_date前一個交易日收盤時的
      持倉股數(即除息日當天開盤前已經持有、不含除息日當天或之後新買入
      的部分),記為shares_before_ex_date。這個數字只能從
@@ -390,8 +458,14 @@ Robinhood單一權威來源,不必每天浪費3次注定失敗的web_fetch呼叫
    - 寫入 state/ymag_dividend_log.csv 一行:date(執行日),ex_dividend_date,
      source_used("robinhood"),rh_amount(=candidate_amount),sa_amount
      (留空——不再要求嘗試網頁備援,欄位保留只是為了不打亂既有7週資料的
-     schema),shares_before_ex_date,dividend_income,routed_to
-4. 釋放擱置資金(目標是"今天實際會用到的建倉金額",不是寫死的$25):若
+     schema),shares_before_ex_date,dividend_income,routed_to。若步驟4
+     判定為疑似漏檢,notes欄位開頭必須加上"⚠️ 疑似漏檢
+     {missed_cycles}期除息(gap_days={gap_days}天,預期週期約
+     {interval_days}天),Robinhood在此期間從未展示過中間的
+     ex_dividend_date,無法回溯金額,未入賬,僅記錄供人工覆核",再接上
+     原本就要寫的其他說明文字。
+
+6. 釋放擱置資金(目標是"今天實際會用到的建倉金額",不是寫死的$25):若
    當前(用T-1技術指標判斷)同時滿足"站上20日均線 且
    range_pct_4w<5%",且 cash_uninvested > 0:先按第五層的月份/深跌例外
    規則算出"如果今天要買入,基礎金額會是多少"(標準月$25、非優選月
@@ -402,7 +476,8 @@ Robinhood單一權威來源,不必每天浪費3次注定失敗的web_fetch呼叫
    (action="RELEASE_UNINVESTED",amount=release_amount)。若
    release_amount為0(cash_reserved已經達到next_tranche_target),本次
    不釋放,cash_uninvested留待下次機會。
-5. 本層只處理分紅入賬與資金池調度,不觸發任何買入/賣出判斷。
+
+7. 本層只處理分紅入賬與資金池調度,不觸發任何買入/賣出判斷。
 
 【第五層:決策引擎(不下真實訂單,只寫入模擬決策;判斷基準是T-1,成交
 價是live_ask/live_bid)】
@@ -573,7 +648,9 @@ get_equity_quotes。
 - 若本次因可用資金門檻(第五層買入條件第6條)擋下買入或Recovery
   Buy,註明available_cash與所需金額的差額,並註明recovery_pending是
   否因此保留
-- 分紅檢測結果
+- 分紅檢測結果;若本次(第四層步驟4)偵測到疑似漏檢,清楚寫出漏檢期
+  數、gap_days、interval_days,並註明"Robinhood未展示中間值,無法回溯
+  金額,未入賬,僅供人工覆核"
 - 若本次發生了cash_uninvested釋放(RELEASE_UNINVESTED):註明釋放金額
   和轉入後的cash_reserved餘額
 - 當前倉位狀態(shares、avg_cost、用live_last計算的浮動盈虧%、
@@ -623,12 +700,14 @@ get_equity_quotes。
   不一致視為邏輯錯誤,不commit
 - 若本次判定為新一筆分紅並已入賬,state/ymag_dividend_log.csv 必須新增
   對應行,且dividend_income不可為負數,source_used字段不可為空
+- state/ymag_dividend_snapshot_log.csv 必須新增一行且date=今天(Round
+  7新增,每次執行都要寫,不管是否有新分紅)
 - mag7_breadth 必須是0到7之間的整數,超出範圍視為計算錯誤,本次不commit
 - 若任何一項驗證失敗:不commit,保留現有文件不變,在最後回復裡說明失敗
   原因
 
 驗證通過:
-git add data/prices/ state/ymag_position.csv state/ymag_trade_log.csv state/ymag_dividend_log.csv reports/ymag-intraday/
+git add data/prices/ state/ymag_position.csv state/ymag_trade_log.csv state/ymag_dividend_log.csv state/ymag_dividend_snapshot_log.csv reports/ymag-intraday/
 git commit -m "ymag intraday paper trading YYYY-MM-DD"
 git push origin claude/ymag-paper-state-intraday
 
