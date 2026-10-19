@@ -5,8 +5,8 @@ trading journal AI
 
 存放持仓日报/周报任务的输出,以及持仓论点:
 
-- `thesis.yaml` — 每个持仓的买入理由与论点失效条件(人工维护)
-- `logs/` — 日报任务运行日志(`daily_log.jsonl`)
+- `thesis.yaml` — 每个持仓的风险因子(factor)、买入理由与论点失效条件(人工维护)
+- `logs/` — `daily_log.jsonl`(日报,每日)、`weekly_log.jsonl`(周报分级,每周)
 - `reports/daily/` — 每日盘前持仓日报,`YYYY-MM-DD.md`
 - `reports/weekly/` — 每周持仓周报,`YYYY-MM-DD.md`
 

@@ -1,9 +1,11 @@
 # 持仓论点 — 买入理由(buy_reason)与论点失效条件(invalidation)
-# 人工维护,routine 只读。invalidation 只写可客观核对的事实条件,不含价格预测。
+# 人工维护,routine 只读。factor 为固定风险因子枚举:AI_SEMI / AI_CLOUD / AI_POWER / CONSUMER / QUANTUM,周报按它算集中度。
+# invalidation 只写可客观核对的事实条件,不含价格预测。
 # TSM / SKHY 为用户原文;其余为草稿(合并两版起草稿),待用户复核。
 # 持仓清单与 claude/takeprofit-monitor-state 的 positions.yaml 保持一致。
 
 TSM:
+  factor: AI_SEMI
   buy_reason: "AI 先进制程代工垄断,2nm 量产领先"
   invalidation:
     - "3nm/2nm 良率或客户份额出现失守信号"
@@ -11,12 +13,14 @@ TSM:
     - "季度毛利率连续两季下滑超 2pp"
 
 SKHY:
+  factor: AI_SEMI
   buy_reason: "HBM 龙头,存储周期底部建仓"
   invalidation:
     - "HBM 份额被竞争对手明显蚕食"
     - "DRAM 价格连续两个月下跌"
 
 ORCL:
+  factor: AI_CLOUD
   buy_reason: "AI 云基础设施(OCI)订单积压大,基本面在位,判断处于筑底"
   invalidation:
     - "RPO(剩余履约义务)环比下降,或主要 AI 客户合同被披露取消、缩减或延期"
@@ -24,6 +28,7 @@ ORCL:
     - "信用评级被下调,或公司债利差较上季末明显走阔"
 
 NVDA:
+  factor: AI_SEMI
   buy_reason: "AI 加速计算龙头,CUDA 生态主导,数据中心需求持续"
   invalidation:
     - "数据中心收入环比下降,或下季收入指引低于市场共识"
@@ -32,6 +37,7 @@ NVDA:
     - "对华出口管制出现新的实质性收紧"
 
 NOW:
+  factor: AI_CLOUD
   buy_reason: "企业工作流平台,AI Agent 产品推动订阅收入稳定增长"
   invalidation:
     - "订阅收入同比增速连续两季放缓"
@@ -39,6 +45,7 @@ NOW:
     - "下调全年订阅收入或营业利润率指引"
 
 MSFT:
+  factor: AI_CLOUD
   buy_reason: "Azure + Copilot 双轮驱动 AI 变现,企业级现金流稳健"
   invalidation:
     - "Azure 恒定汇率同比增速连续两季放缓,且低于公司指引"
@@ -46,6 +53,7 @@ MSFT:
     - "下调业绩指引,或与 OpenAI 的合作条款出现公告的不利变化"
 
 INFQ:
+  factor: QUANTUM
   buy_reason: "Infleqtion 中性原子量子计算/传感,早期主题性仓位"
   invalidation:
     - "现金及等价物不足覆盖未来 4 个季度经营现金流出,且未完成新融资"
@@ -53,6 +61,7 @@ INFQ:
     - "关键政府或商业合同被取消或大幅缩减"
 
 ACMR:
+  factor: AI_SEMI
   buy_reason: "半导体清洗/电镀设备,受益国产替代与先进封装需求"
   invalidation:
     - "新增出口管制或实体清单直接限制公司销售或零部件供应"
@@ -60,6 +69,7 @@ ACMR:
     - "季度毛利率连续两季下滑"
 
 BE:
+  factor: AI_POWER
   buy_reason: "固体氧化物燃料电池为数据中心现场发电,AI 电力瓶颈受益者"
   invalidation:
     - "数据中心/超大规模客户订单被取消,或交付公告推迟"
@@ -67,6 +77,7 @@ BE:
     - "增发股票或发行可转债导致股本稀释超 5%"
 
 QCOM:
+  factor: AI_SEMI
   buy_reason: "手机 SoC 现金牛,向 AI PC/汽车/数据中心扩张"
   invalidation:
     - "苹果调制解调器订单流失速度快于公司已披露指引"
@@ -74,6 +85,7 @@ QCOM:
     - "下调全年业绩指引"
 
 VST:
+  factor: AI_POWER
   buy_reason: "核电与燃气发电资产,受益 AI 数据中心长期购电合约"
   invalidation:
     - "数据中心长期购电合约(PPA)被取消或条款公告恶化"
@@ -81,6 +93,7 @@ VST:
     - "管理层下调年度调整后 EBITDA 指引"
 
 GRAB:
+  factor: CONSUMER
   buy_reason: "东南亚出行 + 外卖 + 金融服务超级应用,基本面稳定,长期横盘中潜伏"
   invalidation:
     - "调整后 EBITDA 同比下滑或转负"
@@ -88,6 +101,7 @@ GRAB:
     - "金融服务贷款不良率连续两季上升,或下调全年指引"
 
 GOOG:
+  factor: AI_CLOUD
   buy_reason: "搜索现金牛 + Google Cloud + Gemini 全栈 AI,估值相对合理"
   invalidation:
     - "Google 搜索收入同比增速连续两季放缓"
@@ -95,6 +109,7 @@ GOOG:
     - "反垄断判决强制剥离 Chrome/Android 或禁止默认搜索付费协议"
 
 NKE:
+  factor: CONSUMER
   buy_reason: "品牌龙头,困境反转布局,小仓位"
   invalidation:
     - "营收连续两季同比负增长,且毛利率继续同比下滑"
@@ -102,6 +117,7 @@ NKE:
     - "下调全年指引,或 CEO/CFO 再次变动"
 
 WULF:
+  factor: AI_POWER
   buy_reason: "TeraWulf:比特币矿场转型 AI/HPC 算力托管,长期租约锁定收入"
   invalidation:
     - "HPC/AI 托管租约被取消、缩减或交付期公告推迟"
@@ -109,6 +125,7 @@ WULF:
     - "增发股票或发行可转债导致股本稀释超 10%"
 
 CCJ:
+  factor: AI_POWER
   buy_reason: "Cameco:铀矿龙头 + Westinghouse 核电服务,受益核电复兴与长期合约"
   invalidation:
     - "下调年度铀产量或交付指引"
