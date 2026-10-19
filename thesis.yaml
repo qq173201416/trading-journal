@@ -1,0 +1,107 @@
+# 持仓论点 — 买入理由与论点失效条件
+# 人工维护。invalidation 只写可客观核对的事实条件,不含价格预测。
+# TSM / SKHY 为原文,其余为草稿,待人工审阅。
+
+TSM:
+  buy_reason: "AI 先进制程代工垄断,2nm 量产领先"
+  invalidation:
+    - "3nm/2nm 良率或客户份额出现失守信号"
+    - "台海或出口管制出现实质性不利变化"
+    - "季度毛利率连续两季下滑超 2pp"
+
+SKHY:
+  buy_reason: "HBM 龙头,存储周期底部建仓"
+  invalidation:
+    - "HBM 份额被竞争对手明显蚕食"
+    - "DRAM 价格连续两个月下跌"
+
+ORCL:
+  buy_reason: "OCI 承接大规模 AI 训练/推理合同,RPO 剩余履约义务高速增长"
+  invalidation:
+    - "RPO 环比连续两季下降"
+    - "OCI 收入同比增速连续两季低于 40%"
+    - "主要 AI 客户合同被披露取消、缩减或延期"
+
+NVDA:
+  buy_reason: "AI 加速卡与 CUDA 生态主导,数据中心需求持续"
+  invalidation:
+    - "数据中心收入环比连续两季下滑"
+    - "季度毛利率连续两季下滑超 2pp"
+    - "前四大云厂商中至少两家公告下调年度资本开支指引"
+
+NOW:
+  buy_reason: "企业工作流 SaaS 龙头,AI Agent 产品推动订阅增长"
+  invalidation:
+    - "订阅收入同比增速连续两季低于 18%"
+    - "cRPO 同比增速连续两季下降"
+    - "全年订阅收入指引被下调"
+
+MSFT:
+  buy_reason: "Azure + Copilot 双轮驱动 AI 变现,企业客户粘性强"
+  invalidation:
+    - "Azure 恒定汇率同比增速连续两季下降超 3pp"
+    - "管理层下调 Azure 下季度增速指引"
+    - "Microsoft Cloud 毛利率连续两季下滑超 2pp"
+
+INFQ:
+  buy_reason: "Infleqtion 中性原子量子计算,硬件与量子传感双线商业化"
+  invalidation:
+    - "公布的技术路线图里程碑(量子比特数/逻辑比特/保真度)延期超过两个季度"
+    - "现金及等价物不足覆盖 4 个季度经营现金流出,且未完成新融资"
+    - "政府/国防合同收入同比下滑或主要合同被取消"
+
+ACMR:
+  buy_reason: "半导体清洗/电镀设备国产替代受益者,中国晶圆厂扩产"
+  invalidation:
+    - "新增出口管制或实体清单直接限制公司销售或零部件供应"
+    - "全年收入指引被下调"
+    - "季度毛利率跌破 42%"
+
+BE:
+  buy_reason: "固体氧化物燃料电池为 AI 数据中心提供现场供电"
+  invalidation:
+    - "数据中心/超大规模客户订单被取消或公告延期"
+    - "季度毛利率连续两季下滑超 2pp"
+    - "全年收入指引被下调"
+
+QCOM:
+  buy_reason: "手机 SoC 现金牛,汽车与 AI PC 芯片打开第二增长曲线"
+  invalidation:
+    - "苹果调制解调器订单流失速度快于公司已披露指引"
+    - "汽车业务收入同比增速连续两季低于 15%"
+    - "QCT 业务利润率连续两季下滑超 2pp"
+
+VST:
+  buy_reason: "核电 + 燃气发电组合,受益数据中心电力需求与长期购电协议"
+  invalidation:
+    - "与数据中心客户的购电协议被取消,或监管否决电厂直连供电安排"
+    - "管理层下调年度调整后 EBITDA 指引"
+    - "旗下核电机组出现计划外长期停运(超过一个季度)"
+
+GRAB:
+  buy_reason: "东南亚出行 + 外卖 + 金融科技超级应用,盈利拐点"
+  invalidation:
+    - "调整后 EBITDA 同比下滑或转负"
+    - "按需 GMV 同比增速连续两季低于 10%"
+    - "金融服务贷款不良率连续两季上升"
+
+GOOG:
+  buy_reason: "搜索现金流 + Google Cloud + Gemini 全栈 AI 布局"
+  invalidation:
+    - "Google 搜索收入同比增速连续两季低于 5%"
+    - "Google Cloud 收入同比增速连续两季下降"
+    - "反垄断裁决强制剥离 Chrome/Android 或禁止默认搜索付费协议"
+
+SPCX:
+  buy_reason: "SpaceX 可回收火箭发射垄断 + Starlink 卫星互联网高速扩张"
+  invalidation:
+    - "Starlink 订阅用户数增速连续两季放缓"
+    - "Starship 发生导致 FAA 停飞超过 6 个月的事故"
+    - "政府发射或国防合同份额明显流向竞争对手"
+
+NKE:
+  buy_reason: "品牌龙头困境反转,新管理层重建批发渠道与产品创新"
+  invalidation:
+    - "季度收入同比继续下滑,且管理层未给出恢复增长时间表"
+    - "季度毛利率继续同比下滑超 1pp"
+    - "库存同比增速高于收入同比增速连续两季"
