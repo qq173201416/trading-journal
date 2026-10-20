@@ -22,7 +22,7 @@
   "PENG": {
    "swing_high": 60.97,
    "watch_stage": "WATCHING",
-   "watch_low": 56.975,
+   "watch_low": 56.5187,
    "watch_started_at": "2026-10-16T15:20:00-04:00",
    "last_alerted_leg_high": 79.45,
    "last_alert_trading_day": "2026-10-15",
@@ -128,7 +128,7 @@
    "alert_count": 0
   },
   "RACE": {
-   "swing_high": 398.06,
+   "swing_high": 400.25,
    "watch_stage": "WATCHING",
    "watch_low": 384.2927,
    "watch_started_at": "2026-10-01T15:20:00-04:00",
@@ -146,5 +146,5 @@
    "alert_count": 0
   }
  },
- "last_heartbeat_date": "2026-10-19"
+ "last_heartbeat_date": "2026-10-20"
 }
