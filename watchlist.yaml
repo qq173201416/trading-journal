@@ -13,7 +13,7 @@ SPCX:
   exited_at: '2026-10-19T13:55:00-04:00'
   exit_price: 147.35
   exit_avg_cost: 148.6
-  swing_high: 148.4246
+  swing_high: 163.0999
   reentry_alert_count: 0
   last_alerted_leg_high: null
   last_dca_trigger_trading_day: null
