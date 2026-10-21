@@ -76,7 +76,7 @@
   "NFLX": {
    "swing_high": 77.28,
    "watch_stage": "WATCHING",
-   "watch_low": 67.115,
+   "watch_low": 65.225,
    "watch_started_at": "2026-09-16T15:16:27-04:00",
    "last_alerted_leg_high": null,
    "last_alert_trading_day": null,
@@ -85,7 +85,7 @@
   "LRCX": {
    "swing_high": 320.27,
    "watch_stage": "WATCHING",
-   "watch_low": 265.12,
+   "watch_low": 259.815,
    "watch_started_at": "2026-10-08T15:20:00-04:00",
    "last_alerted_leg_high": 348.22,
    "last_alert_trading_day": "2026-10-07",
@@ -119,7 +119,7 @@
    "alert_count": 0
   },
   "HESAY": {
-   "swing_high": 150.845,
+   "swing_high": 153.05,
    "watch_stage": "WATCHING",
    "watch_low": 142.724,
    "watch_started_at": "2026-10-01T15:20:00-04:00",
@@ -137,7 +137,7 @@
    "alert_count": 0
   },
   "COST": {
-   "swing_high": 995.87,
+   "swing_high": 997.33,
    "watch_stage": "WATCHING",
    "watch_low": 916.22,
    "watch_started_at": "2026-10-01T15:20:00-04:00",
@@ -146,5 +146,5 @@
    "alert_count": 0
   }
  },
- "last_heartbeat_date": "2026-10-20"
+ "last_heartbeat_date": "2026-10-21"
 }
