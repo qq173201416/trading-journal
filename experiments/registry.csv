@@ -74,3 +74,5 @@ signal_date,ticker,price_at_signal,stage,trend_score,rs_score,extension_pct,week
 2026-10-16,FIG,21.49,deep_base_watch,0,26.5,-62.81,25,0.647,v1.1,,,,
 2026-10-19,RDDT,155.14,deep_base_watch,0,31.7,-40.08,29,0.689,v1.1,,,,
 2026-10-19,FIG,21.54,deep_base_watch,0,27.7,-62.1,26,0.638,v1.1,,,,
+2026-10-20,RDDT,155.65,deep_base_watch,0,29.9,-39.89,29,0.681,v1.1,,,,
+2026-10-20,FIG,22.71,deep_base_watch,0,34.7,-59.24,26,0.627,v1.1,,,,
