@@ -13,6 +13,9 @@ Telegram 新闻群 → 市场影响分析 routine 的数据层（只负责收发
 
 fetch 和 ack 分开：getUpdates 未确认的消息 Telegram 保留 24h，routine 中途失败
 下次还能重新拿到，不会丢。所以 routine 间隔必须 < 24h。
+
+"读到哪了"由 Telegram 服务端记录（ack 时用 offset 确认），本地不存 state，
+所以 routine 不需要 git push 权限，每次全新 clone 也能正确续上。
 """
 
 import json
@@ -24,7 +27,6 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-STATE_PATH = HERE / "tg_state.json"
 PENDING_PATH = HERE / "pending.json"
 TG_MAX_LEN = 4000  # Telegram 单条上限 4096，留余量
 
@@ -37,12 +39,6 @@ def _api(token: str, method: str, params: dict) -> dict:
     if not body.get("ok"):
         raise RuntimeError(f"{method} failed: {body}")
     return body["result"]
-
-
-def _load_state() -> dict:
-    if STATE_PATH.exists():
-        return json.loads(STATE_PATH.read_text())
-    return {"last_update_id": None, "last_run": None}
 
 
 def _save_json(path: Path, obj) -> None:
@@ -73,10 +69,8 @@ def _extract(update: dict, group_id: int):
 def fetch() -> None:
     token = os.environ["TG_GETNEWS_BOT_TOKEN"]
     group_id = int(os.environ["TG_GETNEWS_GROUP_ID"])
-    state = _load_state()
-
-    offset = state["last_update_id"] + 1 if state["last_update_id"] is not None else None
-    updates, max_id = [], state["last_update_id"]
+    # 不传 offset 时 getUpdates 只返回服务端尚未确认的 update
+    offset, updates, max_id = None, [], None
     while True:
         params = {"limit": 100, "timeout": 0,
                   "allowed_updates": json.dumps(["message", "channel_post", "edited_message"])}
@@ -101,15 +95,11 @@ def ack() -> None:
         print("nothing pending")
         return
     pending = json.loads(PENDING_PATH.read_text())
-    state = _load_state()
     max_id = pending["max_update_id"]
     if max_id is not None:
         # 用 offset=max+1 调一次 getUpdates，Telegram 端才真正丢弃这些 update
         _api(os.environ["TG_GETNEWS_BOT_TOKEN"], "getUpdates",
              {"offset": max_id + 1, "limit": 1, "timeout": 0})
-        state["last_update_id"] = max_id
-    state["last_run"] = datetime.now(timezone.utc).isoformat()
-    _save_json(STATE_PATH, state)
     PENDING_PATH.unlink()
     print(f"acked through update_id={max_id}")
 
