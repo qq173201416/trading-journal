@@ -1,0 +1,56 @@
+{
+  "region": "US",
+  "condition": "new only (no used / refurbished / open-box / renewed)",
+  "trusted_sellers": [
+    "Amazon.com (shipped & sold by Amazon only, not 3rd-party marketplace)",
+    "Newegg (sold & shipped by Newegg only)",
+    "Best Buy",
+    "Micro Center",
+    "B&H Photo",
+    "Adorama",
+    "Walmart.com (sold & shipped by Walmart only)",
+    "Costco",
+    "Target",
+    "Manufacturer official stores: Samsung.com, Intel, MSI store, Corsair.com"
+  ],
+  "alert_rules": {
+    "big_discount_pct": 15,
+    "big_discount_vs": "MSRP or the 30-day median from history.jsonl, whichever is lower",
+    "near_historical_low_pct": 3,
+    "note": "Alert when price <= known all-time low * (1 + near_historical_low_pct/100), or a new all-time low, or discount >= big_discount_pct."
+  },
+  "items": [
+    {
+      "id": "mobo",
+      "name": "MSI PRO Z890-S WIFI PZ",
+      "match": "Must be the PZ (back-connector) version. Not the plain PRO Z890-S WIFI / WHITE.",
+      "msrp": 249.99,
+      "known_low": null,
+      "known_low_note": "no confirmed US low yet; SHI listed $256-271"
+    },
+    {
+      "id": "cpu",
+      "name": "Intel Core Ultra 7 270K Plus",
+      "match": "Boxed retail 270K Plus (not 265K / 270K non-Plus / tray).",
+      "msrp": 299.00,
+      "known_low": 265.00,
+      "known_low_note": "Amazon Prime Day July 2026; Intel later raised RCP to $339-349"
+    },
+    {
+      "id": "ssd",
+      "name": "Samsung 990 PRO 2TB",
+      "match": "MZ-V9P2T0B/AM (no heatsink). Heatsink version MZ-V9P2T0CW only counts if cheaper.",
+      "msrp": 289.99,
+      "known_low": 134.00,
+      "known_low_note": "Amazon/B&H/Best Buy, per Tom's Hardware & camelcamelcamel"
+    },
+    {
+      "id": "aio",
+      "name": "Corsair iCUE LINK TITAN II 360 RX RGB (White)",
+      "match": "White, SKU CW-9061038-WW. Not the original TITAN (non-II) 360 RX CW-9061021-WW.",
+      "msrp": null,
+      "known_low": null,
+      "known_low_note": "no confirmed US price yet; EU ~EUR 170"
+    }
+  ]
+}
