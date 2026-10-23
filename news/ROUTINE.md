@@ -5,7 +5,10 @@
 ## 步骤
 
 1. `git clone -b tg-news https://github.com/qq173201416/trading-journal.git && cd trading-journal`（已有仓库则 `git fetch origin tg-news && git checkout tg-news && git pull origin tg-news`）
-2. `python3 news/tg_news.py fetch` —— 拿到本次 Telegram 新消息（JSON）。没有新消息也继续往下做，报告只用网络来源。
+2. 拉 Telegram 消息，两个来源都要跑：
+   - `python3 news/tg_news.py channel` —— 公开新闻频道（默认 `LianDaShiNews`）上一个定时点以来的帖子，**主要新闻源**。
+   - `python3 news/tg_news.py fetch` —— bot 所在群/频道里的新消息（你自己转发的等）。
+   两边内容可能重复，合并去重。任一来源失败（比如 t.me 访问被拒）就在报告开头注明，继续用其余来源；全都没有就只用网络来源。
 3. **主动上网搜财经新闻**（见下方「网络搜索」），和 Telegram 消息合在一起。
 4. 按下方规范写一份汇总报告到本地临时文件，例如 `/tmp/tg_report.md`。
 5. `python3 news/tg_news.py send /tmp/tg_report.md` 推送到个人 Telegram。
