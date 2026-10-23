@@ -15,7 +15,7 @@ Telegram 新闻群 → 市场影响分析 routine 的数据层（只负责收发
     TG_PUBLIC_CHANNELS                           公开频道用户名，逗号分隔（默认 LianDaShiNews）
 
 公开频道不需要 bot：直接读 t.me/s/<name> 网页（需网络放行 t.me）。不存 state，
-按时间窗口取"上一个定时点（07:45 / 16:45 ET）以来"的帖子，手动多跑一次只会重复不会漏。
+按时间窗口取"上一档定时运行（07:45 / 16:45 ET）以来"的帖子，手动多跑一次只会重复不会漏。
 
 fetch 和 ack 分开：getUpdates 未确认的消息 Telegram 保留 24h，routine 中途失败
 下次还能重新拿到，不会丢。所以 routine 间隔必须 < 24h。
@@ -137,15 +137,23 @@ def send(report_path: str) -> None:
 
 
 def _previous_slot(now: datetime) -> datetime:
-    """上一个定时点；留 30 分钟余量，避免定时运行把自己这一档当成起点。"""
-    ref = now.astimezone(ET) - timedelta(minutes=30)
-    for days_back in range(0, 3):
-        day = (ref - timedelta(days=days_back)).date()
-        for h, m in sorted(RUN_SLOTS, reverse=True):
+    """本次运行覆盖的起点。
+
+    最近一个定时点之后 3 小时内运行（定时运行、或刚过定时点的手动运行），
+    算作该定时点这一档，从再前一个定时点开始取；否则（两档之间的手动运行）
+    从最近的定时点开始取。
+    """
+    local = now.astimezone(ET)
+    slots = []
+    for days_back in range(3, -1, -1):
+        day = (local - timedelta(days=days_back)).date()
+        for h, m in sorted(RUN_SLOTS):
             slot = datetime(day.year, day.month, day.day, h, m, tzinfo=ET)
-            if slot <= ref:
-                return slot
-    return ref - timedelta(hours=24)
+            if slot <= local:
+                slots.append(slot)
+    if local - slots[-1] < timedelta(hours=3):
+        return slots[-2]
+    return slots[-1]
 
 
 def _parse_channel_page(page: str) -> list[dict]:
