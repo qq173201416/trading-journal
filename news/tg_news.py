@@ -8,7 +8,8 @@ Telegram 新闻群 → 市场影响分析 routine 的数据层（只负责收发
     python news/tg_news.py send report.md   # 把报告推送到个人 Telegram
 
 环境变量:
-    TG_GETNEWS_BOT_TOKEN / TG_GETNEWS_GROUP_ID   读群消息的 bot（需关闭 privacy mode）
+    TG_GETNEWS_BOT_TOKEN / TG_GETNEWS_GROUP_ID   读消息的 bot + 群/频道 ID（多个用逗号分隔）
+                                                 群里别的 bot 发的消息 bot 收不到；频道里 bot 当管理员就能全收
     TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID        推送报告的 bot + 个人 chat
 
 fetch 和 ack 分开：getUpdates 未确认的消息 Telegram 保留 24h，routine 中途失败
@@ -45,9 +46,9 @@ def _save_json(path: Path, obj) -> None:
     path.write_text(json.dumps(obj, ensure_ascii=False, indent=2) + "\n")
 
 
-def _extract(update: dict, group_id: int):
+def _extract(update: dict, chat_ids: set):
     msg = update.get("message") or update.get("channel_post") or update.get("edited_message")
-    if not msg or msg.get("chat", {}).get("id") != group_id:
+    if not msg or msg.get("chat", {}).get("id") not in chat_ids:
         return None
     text = msg.get("text") or msg.get("caption") or ""
     if not text.strip():
@@ -58,6 +59,7 @@ def _extract(update: dict, group_id: int):
         "update_id": update["update_id"],
         "message_id": msg["message_id"],
         "date": datetime.fromtimestamp(msg["date"], timezone.utc).isoformat(),
+        "chat": msg["chat"].get("title"),
         "sender": sender.get("username") or sender.get("title") or sender.get("first_name"),
         "forwarded_from": (origin.get("chat") or origin.get("sender_user") or {}).get("title")
         or origin.get("sender_user_name"),
@@ -68,7 +70,7 @@ def _extract(update: dict, group_id: int):
 
 def fetch() -> None:
     token = os.environ["TG_GETNEWS_BOT_TOKEN"]
-    group_id = int(os.environ["TG_GETNEWS_GROUP_ID"])
+    chat_ids = {int(x) for x in os.environ["TG_GETNEWS_GROUP_ID"].split(",") if x.strip()}
     # 不传 offset 时 getUpdates 只返回服务端尚未确认的 update
     offset, updates, max_id = None, [], None
     while True:
@@ -85,7 +87,7 @@ def fetch() -> None:
         if len(batch) < 100:
             break
 
-    messages = [m for m in (_extract(u, group_id) for u in updates) if m]
+    messages = [m for m in (_extract(u, chat_ids) for u in updates) if m]
     _save_json(PENDING_PATH, {"max_update_id": max_id, "messages": messages})
     print(json.dumps({"count": len(messages), "messages": messages}, ensure_ascii=False, indent=2))
 
