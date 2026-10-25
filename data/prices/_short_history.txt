@@ -1,0 +1,16 @@
+# Tickers whose full available history (fetched from 2025-09-20) is <260 daily bars (recent IPOs); backfill is complete for these, do not re-fetch.
+ARXS,133
+BLLN,242
+CBRS,113
+DPC,85
+FPS,181
+HONA,84
+MAIR,133
+MANE,182
+MDLN,214
+NAVN,247
+OGC,140
+PBLS,95
+SOLS,249
+SPCX,93
+SUNB,165
