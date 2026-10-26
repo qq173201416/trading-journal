@@ -28,7 +28,7 @@
     "last_alerted_ll_event": null,
     "last_profit_sign": null
   },
-  "last_heartbeat_date": "2026-10-23",
+  "last_heartbeat_date": "2026-10-26",
   "positions": {
     "TSM": {
       "highest_alerted_profit_tier": 3,
@@ -255,10 +255,10 @@
       "last_profit_sign": "negative"
     },
     "BE": {
-      "highest_alerted_profit_tier": 3,
+      "highest_alerted_profit_tier": 0,
       "highest_alerted_stop_tier": 1,
       "highest_alerted_add_tier": 1,
-      "current_stage": "TIER3",
+      "current_stage": "IDLE",
       "last_triggered_at": "2026-10-23T10:50:00-04:00",
       "rsi_peak": 69.3008,
       "hourly_rsi_peak": 86.4941,
@@ -272,15 +272,15 @@
       "peak_marked_swing_high": 298.75,
       "last_dca_trigger_trading_day": "2026-09-24",
       "last_action_category": "REDUCE_SELL",
-      "last_action_date": "2026-10-23",
+      "last_action_date": "2026-10-26",
       "last_avg_cost": 204.1,
       "last_shares": 0.1,
       "trailing_stop_price": 213.09,
       "trailing_stop_triggered": true,
       "last_processed_lh_event": "2026-10-21|241.37|high",
-      "atr_at_event": 20.5837,
+      "atr_at_event": 20.5869,
       "last_alerted_ll_event": "2026-10-20|213.09|low",
-      "last_profit_sign": "positive"
+      "last_profit_sign": "negative"
     },
     "QCOM": {
       "highest_alerted_profit_tier": 3,
