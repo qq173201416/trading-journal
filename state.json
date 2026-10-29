@@ -28,7 +28,7 @@
     "last_alerted_ll_event": null,
     "last_profit_sign": null
   },
-  "last_heartbeat_date": "2026-10-28",
+  "last_heartbeat_date": "2026-10-29",
   "positions": {
     "TSM": {
       "highest_alerted_profit_tier": 3,
@@ -60,7 +60,7 @@
     },
     "SKHY": {
       "highest_alerted_profit_tier": 0,
-      "highest_alerted_stop_tier": 1,
+      "highest_alerted_stop_tier": 0,
       "highest_alerted_add_tier": 0,
       "current_stage": "IDLE",
       "last_triggered_at": "2026-10-14T09:41:38-04:00",
@@ -84,11 +84,11 @@
       "last_processed_lh_event": "2026-09-22|196.4799|high",
       "atr_at_event": 8.812532385934269,
       "last_alerted_ll_event": "2026-10-22|130.79|low",
-      "last_profit_sign": "negative"
+      "last_profit_sign": "positive"
     },
     "ORCL": {
       "highest_alerted_profit_tier": 0,
-      "highest_alerted_stop_tier": 1,
+      "highest_alerted_stop_tier": 0,
       "highest_alerted_add_tier": 2,
       "current_stage": "IDLE",
       "last_triggered_at": "2026-10-14T09:41:38-04:00",
@@ -112,7 +112,7 @@
       "last_processed_lh_event": "2026-10-06|146.94|high",
       "atr_at_event": 6.292250000000001,
       "last_alerted_ll_event": "2026-10-22|122.76|low",
-      "last_profit_sign": "negative"
+      "last_profit_sign": "positive"
     },
     "NVDA": {
       "highest_alerted_profit_tier": 1,
@@ -200,10 +200,10 @@
     },
     "INFQ": {
       "highest_alerted_profit_tier": 0,
-      "highest_alerted_stop_tier": 0,
+      "highest_alerted_stop_tier": 1,
       "highest_alerted_add_tier": 1,
       "current_stage": "IDLE",
-      "last_triggered_at": "2026-10-14T12:41:10-04:00",
+      "last_triggered_at": "2026-10-29T09:58:30-04:00",
       "rsi_peak": 65.5527,
       "hourly_rsi_peak": 73.3488,
       "highest_price_since_buy": 14.735,
@@ -224,7 +224,7 @@
       "last_processed_lh_event": null,
       "atr_at_event": null,
       "last_alerted_ll_event": "2026-10-20|8.38|low",
-      "last_profit_sign": "positive"
+      "last_profit_sign": "negative"
     },
     "ACMR": {
       "highest_alerted_profit_tier": 0,
@@ -244,14 +244,14 @@
       "peak_marked_swing_high": 78.49,
       "last_dca_trigger_trading_day": null,
       "last_action_category": "REDUCE_SELL",
-      "last_action_date": "2026-09-21",
+      "last_action_date": "2026-10-29",
       "last_avg_cost": 84.31,
       "last_shares": 0.2,
       "trailing_stop_price": 67.1576,
       "trailing_stop_triggered": true,
       "last_processed_lh_event": "2026-09-08|78.71|high",
       "atr_at_event": 5.7762,
-      "last_alerted_ll_event": "2026-09-15|62.78|low",
+      "last_alerted_ll_event": "2026-10-22|48.25|low",
       "last_profit_sign": "negative"
     },
     "BE": {
@@ -361,8 +361,8 @@
       "last_shares": 4,
       "trailing_stop_price": 3.415,
       "trailing_stop_triggered": true,
-      "last_processed_lh_event": "2026-10-09|3.21|high",
-      "atr_at_event": 0.12249999999999998,
+      "last_processed_lh_event": "2026-10-15|3.03|high",
+      "atr_at_event": 0.10875000000000004,
       "last_alerted_ll_event": "2026-09-18|2.74|low",
       "last_profit_sign": "negative"
     },
@@ -430,8 +430,8 @@
       "last_triggered_at": "2026-09-16T10:48:22-04:00",
       "rsi_peak": 64.17510245932974,
       "hourly_rsi_peak": null,
-      "highest_price_since_buy": 38.38,
-      "swing_high": 38.38,
+      "highest_price_since_buy": 38.555,
+      "swing_high": 38.555,
       "dca_watch_stage": "IDLE",
       "dca_watch_low": null,
       "dca_watch_started_at": null,
@@ -456,7 +456,7 @@
       "highest_alerted_add_tier": 0,
       "current_stage": "IDLE",
       "last_triggered_at": "2026-10-22T12:47:57-04:00",
-      "rsi_peak": 44.580264027824335,
+      "rsi_peak": 49.364106298969546,
       "hourly_rsi_peak": null,
       "highest_price_since_buy": 13.225,
       "swing_high": 13.225,
@@ -484,10 +484,10 @@
       "highest_alerted_add_tier": 0,
       "current_stage": "IDLE",
       "last_triggered_at": "2026-10-19T13:50:00-04:00",
-      "rsi_peak": 43.56668936518634,
+      "rsi_peak": 46.90107727766508,
       "hourly_rsi_peak": null,
-      "highest_price_since_buy": 83.37,
-      "swing_high": 83.37,
+      "highest_price_since_buy": 83.535,
+      "swing_high": 83.535,
       "dca_watch_stage": "IDLE",
       "dca_watch_low": null,
       "dca_watch_started_at": null,
