@@ -31,7 +31,7 @@
   "MRVL": {
    "swing_high": 274.06,
    "watch_stage": "WATCHING",
-   "watch_low": 221.605,
+   "watch_low": 214.9,
    "watch_started_at": "2026-10-09T15:20:00-04:00",
    "last_alerted_leg_high": 291.6605,
    "last_alert_trading_day": "2026-10-08",
@@ -94,7 +94,7 @@
   "TER": {
    "swing_high": 403.84,
    "watch_stage": "WATCHING",
-   "watch_low": 310.58,
+   "watch_low": 292.37,
    "watch_started_at": "2026-10-08T15:20:00-04:00",
    "last_alerted_leg_high": 449.62,
    "last_alert_trading_day": "2026-10-07",
@@ -146,5 +146,5 @@
    "alert_count": 0
   }
  },
- "last_heartbeat_date": "2026-10-28"
+ "last_heartbeat_date": "2026-10-29"
 }
