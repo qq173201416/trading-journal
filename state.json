@@ -13,7 +13,7 @@
   "GLW": {
    "swing_high": 169.46,
    "watch_stage": "WATCHING",
-   "watch_low": 123.53,
+   "watch_low": 121.71,
    "watch_started_at": "2026-09-25T15:17:00-04:00",
    "last_alerted_leg_high": 169.565,
    "last_alert_trading_day": "2026-09-25",
@@ -22,7 +22,7 @@
   "PENG": {
    "swing_high": 60.97,
    "watch_stage": "WATCHING",
-   "watch_low": 51.845,
+   "watch_low": 51.04,
    "watch_started_at": "2026-10-16T15:20:00-04:00",
    "last_alerted_leg_high": 79.45,
    "last_alert_trading_day": "2026-10-15",
@@ -31,7 +31,7 @@
   "MRVL": {
    "swing_high": 274.06,
    "watch_stage": "WATCHING",
-   "watch_low": 214.9,
+   "watch_low": 192.85,
    "watch_started_at": "2026-10-09T15:20:00-04:00",
    "last_alerted_leg_high": 291.6605,
    "last_alert_trading_day": "2026-10-08",
@@ -49,7 +49,7 @@
   "POWI": {
    "swing_high": 54.885,
    "watch_stage": "WATCHING",
-   "watch_low": 44.43,
+   "watch_low": 43.35,
    "watch_started_at": "2026-09-02T15:18:06-04:00",
    "last_alerted_leg_high": null,
    "last_alert_trading_day": null,
@@ -67,7 +67,7 @@
   "BFAM": {
    "swing_high": 73.08,
    "watch_stage": "WATCHING",
-   "watch_low": 63.47,
+   "watch_low": 54.83,
    "watch_started_at": "2026-09-16T15:16:27-04:00",
    "last_alerted_leg_high": null,
    "last_alert_trading_day": null,
@@ -94,7 +94,7 @@
   "TER": {
    "swing_high": 403.84,
    "watch_stage": "WATCHING",
-   "watch_low": 292.37,
+   "watch_low": 269.055,
    "watch_started_at": "2026-10-08T15:20:00-04:00",
    "last_alerted_leg_high": 449.62,
    "last_alert_trading_day": "2026-10-07",
@@ -103,7 +103,7 @@
   "VECO": {
    "swing_high": 49.11,
    "watch_stage": "WATCHING",
-   "watch_low": 41.375,
+   "watch_low": 37.92,
    "watch_started_at": "2026-10-13T15:20:00-04:00",
    "last_alerted_leg_high": 57.46,
    "last_alert_trading_day": "2026-10-12",
@@ -112,7 +112,7 @@
   "AAUC": {
    "swing_high": 22.2927,
    "watch_stage": "WATCHING",
-   "watch_low": 19.245,
+   "watch_low": 18.73,
    "watch_started_at": "2026-09-25T15:17:00-04:00",
    "last_alerted_leg_high": null,
    "last_alert_trading_day": null,
@@ -137,7 +137,7 @@
    "alert_count": 0
   },
   "COST": {
-   "swing_high": 1015.19,
+   "swing_high": 1016.52,
    "watch_stage": "WATCHING",
    "watch_low": 916.22,
    "watch_started_at": "2026-10-01T15:20:00-04:00",
@@ -146,5 +146,5 @@
    "alert_count": 0
   }
  },
- "last_heartbeat_date": "2026-10-29"
+ "last_heartbeat_date": "2026-10-30"
 }
