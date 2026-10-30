@@ -256,10 +256,10 @@
     },
     "BE": {
       "highest_alerted_profit_tier": 0,
-      "highest_alerted_stop_tier": 0,
+      "highest_alerted_stop_tier": 1,
       "highest_alerted_add_tier": 1,
       "current_stage": "IDLE",
-      "last_triggered_at": "2026-10-23T10:50:00-04:00",
+      "last_triggered_at": "2026-10-30T14:46:53-04:00",
       "rsi_peak": 69.3008,
       "hourly_rsi_peak": 86.4941,
       "highest_price_since_buy": 298.75,
