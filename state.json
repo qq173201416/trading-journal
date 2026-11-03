@@ -31,7 +31,7 @@
   "MRVL": {
    "swing_high": 274.06,
    "watch_stage": "WATCHING",
-   "watch_low": 173.7678,
+   "watch_low": 169.6,
    "watch_started_at": "2026-10-09T15:20:00-04:00",
    "last_alerted_leg_high": 291.6605,
    "last_alert_trading_day": "2026-10-08",
@@ -67,7 +67,7 @@
   "BFAM": {
    "swing_high": 73.08,
    "watch_stage": "WATCHING",
-   "watch_low": 54.805,
+   "watch_low": 53.835,
    "watch_started_at": "2026-09-16T15:16:27-04:00",
    "last_alerted_leg_high": null,
    "last_alert_trading_day": null,
@@ -103,7 +103,7 @@
   "VECO": {
    "swing_high": 49.11,
    "watch_stage": "WATCHING",
-   "watch_low": 37.56,
+   "watch_low": 37.42,
    "watch_started_at": "2026-10-13T15:20:00-04:00",
    "last_alerted_leg_high": 57.46,
    "last_alert_trading_day": "2026-10-12",
@@ -128,7 +128,7 @@
    "alert_count": 0
   },
   "RACE": {
-   "swing_high": 401.71,
+   "swing_high": 417.78,
    "watch_stage": "WATCHING",
    "watch_low": 384.2927,
    "watch_started_at": "2026-10-01T15:20:00-04:00",
@@ -146,5 +146,5 @@
    "alert_count": 0
   }
  },
- "last_heartbeat_date": "2026-11-02"
+ "last_heartbeat_date": "2026-11-03"
 }
