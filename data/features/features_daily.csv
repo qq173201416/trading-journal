@@ -20632,3 +20632,11 @@ AAP,2026-11-02,20,34.6,3.75,base,accumulating,0.75,47.92,45.1331,49.132,49.9876,
 LCII,2026-08-13,20,35.6,3.54,base,accumulating,0.639,107.14,105.3282,110.7906,111.1886,0.6711,-0.0369,-0.347,-0.0849,157.13,-31.81,,True,False,True,8,91.92,False,6.41,True,False,True,True,True
 ADEA,2026-11-02,20,33.0,5.74,weakening,falling,1.158,20.67,24.0133,24.9391,24.3205,0.6019,-0.2859,-0.2963,0.1103,33.63,-38.54,,False,True,False,3,20.42,False,-17.23,False,False,False,False,False
 GLOB,2026-10-30,40,53.9,4.57,base,accumulating,0.718,46.72,39.169,40.6038,42.3528,0.648,0.2483,0.1236,-0.3247,71.21,-34.39,,False,False,False,16,29.96,False,33.11,True,False,False,True,True
+AMZN,2026-11-03,60,56.7,3.4,weakening,falling,1.143,250.69,251.9908,246.3484,243.2653,0.8999,0.0376,0.1501,0.0232,274.99,-8.84,,False,True,False,28,199.34,False,2.32,True,False,False,False,False
+ANET,2026-11-03,60,63.3,5.35,weakening,falling,1.142,169.91,187.083,171.8884,165.0567,0.7815,0.0392,0.3179,0.0723,215.36,-21.1,4.0,False,True,False,28,120.77,False,-14.74,False,False,False,False,False
+AMX,2026-11-03,60,49.1,2.42,base,accumulating,1.117,24.75,23.4995,23.8248,23.5525,0.8696,-0.035,-0.0493,0.0669,27.75,-10.81,,False,False,False,5,21.29,False,13.85,False,False,False,True,True
+ZTO,2026-11-02,0,38.0,1.53,weakening,stabilizing,0.833,20.35,20.5463,21.6772,21.7533,0.7767,-0.1225,-0.2258,-0.0092,25.88,-21.37,,False,False,True,6,19.49,False,4.32,True,False,False,True,False
+PRMB,2026-11-02,40,38.7,2.83,base,accumulating,1.128,20.77,20.4322,21.2693,21.2619,0.7924,-0.1612,-0.0033,-0.1585,25.39,-18.2,,False,False,True,4,19.27,False,7.51,True,False,False,True,True
+ANF,2026-11-03,100,100,3.78,early_breakout,accumulating,0.731,157.51,143.7975,119.7817,113.9137,0.9307,0.4442,0.9558,1.1414,152.08,3.57,2.6,True,False,True,25,70.57,False,20.85,False,False,False,True,True
+AN,2026-11-03,20,33.7,4.89,base,accumulating,1.124,178.51,174.2689,187.8988,191.4415,0.757,-0.1368,-0.1562,-0.2037,229.98,-22.38,,False,False,True,4,157.38,False,9.91,True,False,False,True,True
+XNCR,2026-11-02,80,100,6.51,early_breakout,accumulating,1.167,29.66,25.1069,20.5877,19.2524,0.8827,0.5134,1.2802,0.9124,29.3,1.23,1.0,False,False,False,25,11.22,False,19.64,False,False,False,True,True
