@@ -200,10 +200,10 @@
     },
     "INFQ": {
       "highest_alerted_profit_tier": 0,
-      "highest_alerted_stop_tier": 1,
+      "highest_alerted_stop_tier": 2,
       "highest_alerted_add_tier": 1,
       "current_stage": "IDLE",
-      "last_triggered_at": "2026-10-29T09:58:30-04:00",
+      "last_triggered_at": "2026-11-05T10:47:26-05:00",
       "rsi_peak": 65.5527,
       "hourly_rsi_peak": 73.3488,
       "highest_price_since_buy": 14.735,
