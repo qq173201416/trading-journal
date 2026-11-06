@@ -94,7 +94,7 @@
   "TER": {
    "swing_high": 403.84,
    "watch_stage": "WATCHING",
-   "watch_low": 224.075,
+   "watch_low": 217.46,
    "watch_started_at": "2026-10-08T15:20:00-04:00",
    "last_alerted_leg_high": 449.62,
    "last_alert_trading_day": "2026-10-07",
@@ -110,7 +110,7 @@
    "alert_count": 1
   },
   "AAUC": {
-   "swing_high": 22.2927,
+   "swing_high": 23.01,
    "watch_stage": "WATCHING",
    "watch_low": 18.73,
    "watch_started_at": "2026-09-25T15:17:00-04:00",
