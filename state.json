@@ -344,7 +344,7 @@
       "highest_alerted_add_tier": 0,
       "current_stage": "IDLE",
       "last_triggered_at": "2026-08-21T09:47:35-04:00",
-      "rsi_peak": 67.15895424909493,
+      "rsi_peak": 70.31415744491082,
       "hourly_rsi_peak": null,
       "highest_price_since_buy": 3.545,
       "swing_high": 3.645,
