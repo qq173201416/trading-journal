@@ -28,7 +28,7 @@
     "last_alerted_ll_event": null,
     "last_profit_sign": null
   },
-  "last_heartbeat_date": "2026-11-05",
+  "last_heartbeat_date": "2026-11-06",
   "positions": {
     "TSM": {
       "highest_alerted_profit_tier": 0,
@@ -48,13 +48,13 @@
       "peak_marked_swing_high": 487.22,
       "last_dca_trigger_trading_day": "2026-10-08",
       "last_action_category": "REDUCE_SELL",
-      "last_action_date": "2026-10-30",
+      "last_action_date": "2026-11-06",
       "last_avg_cost": 398.917,
       "last_shares": 0.3,
-      "trailing_stop_price": null,
-      "trailing_stop_triggered": false,
-      "last_processed_lh_event": null,
-      "atr_at_event": null,
+      "trailing_stop_price": 410.9929816569218,
+      "trailing_stop_triggered": true,
+      "last_processed_lh_event": "2026-10-28|440.879|high",
+      "atr_at_event": 14.943009171539114,
       "last_alerted_ll_event": "2026-10-15|407.13|low",
       "last_profit_sign": "negative"
     },
@@ -303,12 +303,12 @@
       "last_action_date": "2026-11-05",
       "last_avg_cost": 169.943,
       "last_shares": 0.7,
-      "trailing_stop_price": 172.26687,
-      "trailing_stop_triggered": true,
-      "last_processed_lh_event": "2026-10-29|185.59|high",
-      "atr_at_event": 6.661564999999999,
+      "trailing_stop_price": 160.38,
+      "trailing_stop_triggered": false,
+      "last_processed_lh_event": "2026-11-04|173.9999|high",
+      "atr_at_event": 8.530686630075554,
       "last_alerted_ll_event": "2026-11-03|160.38|low",
-      "last_profit_sign": "positive"
+      "last_profit_sign": "negative"
     },
     "VST": {
       "highest_alerted_profit_tier": 0,
@@ -346,7 +346,7 @@
       "last_triggered_at": "2026-08-21T09:47:35-04:00",
       "rsi_peak": 67.15895424909493,
       "hourly_rsi_peak": null,
-      "highest_price_since_buy": 3.445,
+      "highest_price_since_buy": 3.545,
       "swing_high": 3.645,
       "dca_watch_stage": "IDLE",
       "dca_watch_low": null,
@@ -389,8 +389,8 @@
       "last_shares": 0.8,
       "trailing_stop_price": 338.4305902927464,
       "trailing_stop_triggered": true,
-      "last_processed_lh_event": "2026-10-14|355.25|high",
-      "atr_at_event": 8.40970485362682,
+      "last_processed_lh_event": "2026-11-04|294.4|high",
+      "atr_at_event": 10.264063430796243,
       "last_alerted_ll_event": "2026-11-03|272.0|low",
       "last_profit_sign": "negative"
     },
@@ -473,8 +473,8 @@
       "last_shares": 1,
       "trailing_stop_price": 10.92689,
       "trailing_stop_triggered": true,
-      "last_processed_lh_event": "2026-10-21|13.055|high",
-      "atr_at_event": 1.0640550000000002,
+      "last_processed_lh_event": "2026-11-04|12.97|high",
+      "atr_at_event": 1.2473988851813402,
       "last_alerted_ll_event": "2026-11-02|10.811|low",
       "last_profit_sign": "negative"
     },
