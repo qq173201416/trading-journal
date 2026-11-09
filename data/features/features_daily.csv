@@ -20643,3 +20643,4 @@ XNCR,2026-11-02,80,100,6.51,early_breakout,accumulating,1.167,29.66,25.1069,20.5
 ECG,2026-11-04,20,10.8,13.35,weakening,falling,1.413,79.71,113.5815,120.5582,118.5955,0.4646,-0.4094,-0.545,-0.2155,169.16,-52.88,,False,True,False,0,79.71,False,-31.65,False,False,False,False,False
 LCII,2026-11-04,20,39.3,3.48,base,accumulating,1.519,104.28,91.6043,100.0773,102.3471,0.6531,-0.0332,-0.1525,-0.1596,157.13,-33.63,,False,False,False,4,78.3,False,24.86,True,False,False,True,True
 AA,2026-11-05,20,30.4,4.41,weakening,stabilizing,0.939,38.42,44.9467,51.2899,50.9984,0.4553,-0.3011,-0.3387,0.0874,83.79,-54.15,,False,False,True,2,37.91,False,-14.11,False,False,False,False,False
+ZBRA,2026-10-29,100,92.5,2.94,base,stabilizing,0.832,377.38,364.0831,317.7673,306.9113,0.9608,0.3398,0.6673,0.2968,383.06,-1.48,3.6,True,False,True,29,222.13,False,12.83,False,False,False,False,True
