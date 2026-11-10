@@ -76,14 +76,14 @@
       "peak_marked_swing_high": 198.65,
       "last_dca_trigger_trading_day": "2026-09-17",
       "last_action_category": "REDUCE_SELL",
-      "last_action_date": "2026-11-04",
+      "last_action_date": "2026-11-10",
       "last_avg_cost": 156.627,
       "last_shares": 1.5,
       "trailing_stop_price": 147.53431,
       "trailing_stop_triggered": true,
       "last_processed_lh_event": "2026-10-28|166.06|high",
       "atr_at_event": 9.262845,
-      "last_alerted_ll_event": "2026-10-22|130.79|low",
+      "last_alerted_ll_event": "2026-11-05|122.2|low",
       "last_profit_sign": "negative"
     },
     "ORCL": {

@@ -34,36 +34,36 @@
       "date": "2026-11-10"
     },
     "SKHY": {
-      "rsi": 36.40100688841313,
-      "ma20": 145.04250000000002,
-      "ma_20d_prev": 155.17000000000002,
-      "ma_50d": 166.78920000000002,
-      "atr20": 9.7810581018687,
-      "t1_close": 127.34,
+      "rsi": 41.00455132385433,
+      "ma20": 143.65000000000003,
+      "ma_20d_prev": 145.04250000000002,
+      "ma_50d": 166.25599999999997,
+      "atr20": 10.170304999999999,
+      "t1_close": 134.38,
       "t1_low_5d_min": 122.2,
       "t1_low_5d_min_prev": 122.2,
-      "ma_5d": 138.562,
-      "t1_volume": 27987645.0,
-      "vol_20ma": 25145941.45,
-      "t1_open": 129.125,
-      "pct_from_high": -35.890852338518854,
-      "swing_current_state": "LH_CONFIRMED",
+      "ma_5d": 135.896,
+      "t1_volume": 23137709.0,
+      "vol_20ma": 25566603.25,
+      "t1_open": 126.865,
+      "pct_from_high": -32.346574032120024,
+      "swing_current_state": "LL_CONFIRMED",
       "swing_trend_state": "BEARISH",
       "swing_last_high": {
         "date": "2026-10-28",
         "price": 166.06
       },
       "swing_last_low": {
+        "date": "2026-11-05",
+        "price": 122.2
+      },
+      "swing_previous_low": {
         "date": "2026-10-22",
         "price": 130.79
       },
-      "swing_previous_low": {
-        "date": "2026-09-15",
-        "price": 172.23
-      },
       "swing_reversal_threshold_used": 0.1,
       "next_earnings_date": null,
-      "date": "2026-11-09"
+      "date": "2026-11-10"
     },
     "ORCL": {
       "rsi": 41.86599168137831,
