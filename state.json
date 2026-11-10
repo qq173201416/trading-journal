@@ -28,7 +28,7 @@
     "last_alerted_ll_event": null,
     "last_profit_sign": null
   },
-  "last_heartbeat_date": "2026-11-09",
+  "last_heartbeat_date": "2026-11-10",
   "positions": {
     "TSM": {
       "highest_alerted_profit_tier": 0,
@@ -104,14 +104,14 @@
       "peak_marked_swing_high": 163.14,
       "last_dca_trigger_trading_day": "2026-09-14",
       "last_action_category": "REDUCE_SELL",
-      "last_action_date": "2026-11-05",
+      "last_action_date": "2026-11-10",
       "last_avg_cost": 143.12,
       "last_shares": 2,
       "trailing_stop_price": null,
       "trailing_stop_triggered": false,
       "last_processed_lh_event": null,
       "atr_at_event": null,
-      "last_alerted_ll_event": "2026-11-02|118.43|low",
+      "last_alerted_ll_event": "2026-11-06|109.21|low",
       "last_profit_sign": "negative"
     },
     "NVDA": {
@@ -137,8 +137,8 @@
       "last_shares": 0.4,
       "trailing_stop_price": 210.18,
       "trailing_stop_triggered": true,
-      "last_processed_lh_event": "2026-10-28|219.99|high",
-      "atr_at_event": 6.092209999999999,
+      "last_processed_lh_event": "2026-11-06|194.895|high",
+      "atr_at_event": 7.77379030596256,
       "last_alerted_ll_event": "2026-11-05|181.462|low",
       "last_profit_sign": "negative"
     },
@@ -284,7 +284,7 @@
     },
     "QCOM": {
       "highest_alerted_profit_tier": 0,
-      "highest_alerted_stop_tier": 1,
+      "highest_alerted_stop_tier": 0,
       "highest_alerted_add_tier": 0,
       "current_stage": "IDLE",
       "last_triggered_at": "2026-11-05T09:49:48-05:00",
@@ -308,7 +308,7 @@
       "last_processed_lh_event": "2026-11-04|173.9999|high",
       "atr_at_event": 8.530686630075554,
       "last_alerted_ll_event": "2026-11-05|148.25|low",
-      "last_profit_sign": "negative"
+      "last_profit_sign": "positive"
     },
     "VST": {
       "highest_alerted_profit_tier": 0,
@@ -432,9 +432,9 @@
       "hourly_rsi_peak": null,
       "highest_price_since_buy": 40.96,
       "swing_high": 40.96,
-      "dca_watch_stage": "IDLE",
-      "dca_watch_low": null,
-      "dca_watch_started_at": null,
+      "dca_watch_stage": "WATCHING",
+      "dca_watch_low": 38.83,
+      "dca_watch_started_at": "2026-11-10T09:48:29-05:00",
       "dca_executed_count": 0,
       "peak_shares_since_buy": 1.1,
       "peak_marked_swing_high": 36.9,
