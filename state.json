@@ -28,7 +28,7 @@
     "last_alerted_ll_event": null,
     "last_profit_sign": null
   },
-  "last_heartbeat_date": "2026-11-10",
+  "last_heartbeat_date": "2026-11-11",
   "positions": {
     "TSM": {
       "highest_alerted_profit_tier": 0,
@@ -433,7 +433,7 @@
       "highest_price_since_buy": 40.96,
       "swing_high": 40.96,
       "dca_watch_stage": "WATCHING",
-      "dca_watch_low": 38.83,
+      "dca_watch_low": 38.34,
       "dca_watch_started_at": "2026-11-10T09:48:29-05:00",
       "dca_executed_count": 0,
       "peak_shares_since_buy": 1.1,
@@ -456,7 +456,7 @@
       "highest_alerted_add_tier": 0,
       "current_stage": "IDLE",
       "last_triggered_at": "2026-10-22T12:47:57-04:00",
-      "rsi_peak": 49.364106298969546,
+      "rsi_peak": 49.43211400859075,
       "hourly_rsi_peak": null,
       "highest_price_since_buy": 13.225,
       "swing_high": 13.225,
