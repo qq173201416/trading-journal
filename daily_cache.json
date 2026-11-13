@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-12",
+  "date": "2026-11-13",
   "tickers": {
     "TSM": {
       "rsi": 47.25752861030911,
@@ -34,19 +34,19 @@
       "date": "2026-11-13"
     },
     "SKHY": {
-      "rsi": 46.577427156181045,
-      "ma20": 142.01500000000001,
-      "ma_20d_prev": 149.45700000000002,
-      "t1_close": 142.25,
-      "t1_low_5d_min": 122.2,
+      "rsi": 44.427442527962086,
+      "ma20": 141.595,
+      "ma_20d_prev": 147.127,
+      "t1_close": 137.71,
+      "t1_low_5d_min": 124.83,
       "t1_low_5d_min_prev": 122.2,
-      "ma_5d": 131.506,
-      "t1_volume": 20898237.0,
-      "vol_20ma": 25104052.9,
-      "t1_open": 139.625,
-      "ma_50d": 165.187,
-      "atr20": 10.217798492168793,
-      "pct_from_high": -28.384433368574737,
+      "ma_5d": 134.268,
+      "t1_volume": 15154720.0,
+      "vol_20ma": 24158155.35,
+      "t1_open": 134.25,
+      "ma_50d": 164.6416,
+      "atr20": 10.117408567560354,
+      "pct_from_high": -30.670090117303527,
       "swing_current_state": "LL_CONFIRMED",
       "swing_trend_state": "BEARISH",
       "swing_last_high": {
@@ -63,7 +63,7 @@
       },
       "swing_reversal_threshold_used": 0.1,
       "next_earnings_date": null,
-      "date": "2026-11-12"
+      "date": "2026-11-13"
     },
     "ORCL": {
       "rsi": 48.43143797060241,
@@ -546,19 +546,19 @@
       "date": "2026-11-13"
     },
     "SPCX": {
-      "rsi": 46.76019461104115,
-      "ma20": 142.88350000000003,
-      "ma_20d_prev": 148.5065,
-      "t1_close": 139.75,
-      "t1_low_5d_min": 120.39,
+      "rsi": 46.91438030747997,
+      "ma20": 142.44950000000003,
+      "ma_20d_prev": 146.659,
+      "t1_close": 139.94,
+      "t1_low_5d_min": 128.57,
       "t1_low_5d_min_prev": 120.39,
-      "ma_5d": 136.56,
-      "t1_volume": 114209103.0,
-      "vol_20ma": 114226236.0,
-      "t1_open": 143.375,
-      "ma_50d": 149.13260000000002,
-      "atr20": 8.05551205099337,
-      "pct_from_high": -30.74826560951437,
+      "ma_5d": 139.824,
+      "t1_volume": 95961810.0,
+      "vol_20ma": 113965469.35,
+      "t1_open": 137.845,
+      "ma_50d": 149.1172,
+      "atr20": 8.1452364484437,
+      "pct_from_high": -30.654112983151638,
       "swing_current_state": "LL_CONFIRMED",
       "swing_trend_state": "BEARISH",
       "swing_last_high": {
@@ -573,9 +573,9 @@
         "date": "2026-10-15",
         "price": 140.66
       },
-      "swing_reversal_threshold_used": 0.0868882315704362,
+      "swing_reversal_threshold_used": 0.08771079636894408,
       "next_earnings_date": null,
-      "date": "2026-11-12"
+      "date": "2026-11-13"
     }
   }
 }
