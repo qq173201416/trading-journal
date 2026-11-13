@@ -137,7 +137,7 @@
    "alert_count": 0
   },
   "COST": {
-   "swing_high": 1093.7,
+   "swing_high": 1101.54,
    "watch_stage": "WATCHING",
    "watch_low": 916.22,
    "watch_started_at": "2026-10-01T15:20:00-04:00",
@@ -146,5 +146,5 @@
    "alert_count": 0
   }
  },
- "last_heartbeat_date": "2026-11-12"
+ "last_heartbeat_date": "2026-11-13"
 }
