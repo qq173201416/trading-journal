@@ -424,10 +424,10 @@
     },
     "NKE": {
       "highest_alerted_profit_tier": 0,
-      "highest_alerted_stop_tier": 0,
+      "highest_alerted_stop_tier": 1,
       "highest_alerted_add_tier": 0,
       "current_stage": "IDLE",
-      "last_triggered_at": "2026-09-16T10:48:22-04:00",
+      "last_triggered_at": "2026-11-19T10:47:10-05:00",
       "rsi_peak": 67.84552592264777,
       "hourly_rsi_peak": 64.91283847960108,
       "highest_price_since_buy": 40.96,
