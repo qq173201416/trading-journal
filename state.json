@@ -85,7 +85,7 @@
   "LRCX": {
    "swing_high": 320.27,
    "watch_stage": "WATCHING",
-   "watch_low": 185.66,
+   "watch_low": 182.485,
    "watch_started_at": "2026-10-08T15:20:00-04:00",
    "last_alerted_leg_high": 348.22,
    "last_alert_trading_day": "2026-10-07",
@@ -146,5 +146,5 @@
    "alert_count": 0
   }
  },
- "last_heartbeat_date": "2026-11-24"
+ "last_heartbeat_date": "2026-11-25"
 }
