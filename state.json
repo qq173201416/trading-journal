@@ -28,7 +28,7 @@
     "last_alerted_ll_event": null,
     "last_profit_sign": null
   },
-  "last_heartbeat_date": "2026-11-25",
+  "last_heartbeat_date": "2026-11-26",
   "positions": {
     "TSM": {
       "highest_alerted_profit_tier": 0,
@@ -109,8 +109,8 @@
       "last_shares": 2,
       "trailing_stop_price": 115.07275967739176,
       "trailing_stop_triggered": true,
-      "last_processed_lh_event": "2026-11-11|130.7699|high",
-      "atr_at_event": 7.848570161304121,
+      "last_processed_lh_event": "2026-11-23|118.7|high",
+      "atr_at_event": 8.265910534061248,
       "last_alerted_ll_event": "2026-11-20|100.2505|low",
       "last_profit_sign": "negative"
     },
@@ -193,8 +193,8 @@
       "last_shares": 0.5,
       "trailing_stop_price": 524.47,
       "trailing_stop_triggered": true,
-      "last_processed_lh_event": "2026-11-19|526.49|high",
-      "atr_at_event": 15.512843531539541,
+      "last_processed_lh_event": "2026-11-23|509.15|high",
+      "atr_at_event": 15.984793131836188,
       "last_alerted_ll_event": "2026-11-20|481.03|low",
       "last_profit_sign": "positive"
     },
@@ -389,8 +389,8 @@
       "last_shares": 0.8,
       "trailing_stop_price": 338.4305902927464,
       "trailing_stop_triggered": true,
-      "last_processed_lh_event": "2026-11-04|294.4|high",
-      "atr_at_event": 10.264063430796243,
+      "last_processed_lh_event": "2026-11-23|282.62|high",
+      "atr_at_event": 10.950251425423597,
       "last_alerted_ll_event": "2026-11-20|262.27|low",
       "last_profit_sign": "negative"
     },
@@ -424,12 +424,12 @@
     },
     "NKE": {
       "highest_alerted_profit_tier": 0,
-      "highest_alerted_stop_tier": 1,
+      "highest_alerted_stop_tier": 0,
       "highest_alerted_add_tier": 0,
       "current_stage": "IDLE",
       "last_triggered_at": "2026-11-19T10:47:10-05:00",
-      "rsi_peak": 45.71786224233587,
-      "hourly_rsi_peak": 52.64,
+      "rsi_peak": 49.40036641246575,
+      "hourly_rsi_peak": 53.82406709676669,
       "highest_price_since_buy": 36.75,
       "swing_high": 40.96,
       "dca_watch_stage": "WATCHING",
@@ -448,7 +448,7 @@
       "last_processed_lh_event": "2026-11-04|41.1|high",
       "atr_at_event": 1.4424515795410504,
       "last_alerted_ll_event": "2026-10-02|31.97|low",
-      "last_profit_sign": "negative"
+      "last_profit_sign": "positive"
     },
     "WULF": {
       "highest_alerted_profit_tier": 0,
@@ -501,8 +501,8 @@
       "last_shares": 0.1,
       "trailing_stop_price": 78.55,
       "trailing_stop_triggered": true,
-      "last_processed_lh_event": "2026-11-09|75.605|high",
-      "atr_at_event": 3.657056862412049,
+      "last_processed_lh_event": "2026-11-23|63.68|high",
+      "atr_at_event": 3.665554095158524,
       "last_alerted_ll_event": "2026-11-20|57.87|low",
       "last_profit_sign": "negative"
     }
